@@ -26,7 +26,7 @@ public class ViewModul implements iPageModul {
                     break;
                 case "person":
                     try {
-                        if (key[1] != null) {
+                        if (key.length >= 2) {
 
                             Global.personHolder = Global.personList.get(Integer.parseInt(key[1]));
 

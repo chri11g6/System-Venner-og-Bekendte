@@ -23,6 +23,9 @@ public class ViewPersonModul implements iPageModul {
                 case "help":
                     display.printHelp();
                     break;
+                case "view":
+                    display.printView();
+                    break;                
                 case "set":
                     try {
                         switch (key[1]) {

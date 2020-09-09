@@ -8,6 +8,7 @@ public class DisplayViewPerson implements iDisplay {
     @Override
     public void printHelp() {
         defaultPrintHelp();
+        System.out.println("'view' For at se talben");
         System.out.println("'set' '[parmeter]' Hvilken del vil du ænder?");
         System.out.println("[parmeter]:");
         System.out.println("\t'fornavn'");

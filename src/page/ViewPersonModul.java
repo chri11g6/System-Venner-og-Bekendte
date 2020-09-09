@@ -16,13 +16,69 @@ public class ViewPersonModul implements iPageModul {
 
         do {
 
-            String key = display.getInputString("Person");
+            String[] key = display.getInputString("Person").split(" ");
 
-            switch (key) {
+            switch (key[0]) {
                 case "h":
                 case "help":
                     display.printHelp();
-                    break;  
+                    break;
+                case "set":
+                    try {
+                        switch (key[1]) {
+                            case "fornavn":
+                                Global.personHolder.forNavn = key[2];
+                                break;
+                            case "efternavn":
+                                Global.personHolder.efterNavn = key[2];
+                                break;
+                            case "alder":
+                                Global.personHolder.alder = Integer.parseInt(key[2]);
+                                break;
+                            case "telefon":
+                                Global.personHolder.setTelefon(key[2]);
+                                break;
+                            case "email":
+                                Global.personHolder.setEmail(key[2]);
+                                break;
+                            default:
+                                throw new IllegalArgumentException("Den parmeter finds ikke [" + key[1] + "]");
+                        }
+                    } catch (Exception e){
+                        display.printLine();
+                        System.out.println("Kunne ikke sætte denne parmeter fordi:");
+                        System.out.println(e.getMessage());
+                        display.printLine();
+                    }
+                    break;
+                case "get":
+                    try {
+                        switch (key[1]) {
+                            case "fornavn":
+                                System.out.println(Global.personHolder.forNavn);
+                                break;
+                            case "efternavn":
+                                System.out.println(Global.personHolder.efterNavn);
+                                break;
+                            case "alder":
+                                System.out.println(Global.personHolder.alder);
+                                break;
+                            case "telefon":
+                                System.out.println(Global.personHolder.getTelefon());
+                                break;
+                            case "email":
+                                System.out.println(Global.personHolder.getEmail());
+                                break;
+                            default:
+                                throw new IllegalArgumentException("Den parmeter finds ikke [" + key[1] + "]");
+                        }
+                    } catch (Exception e){
+                        display.printLine();
+                        System.out.println("Kunne ikke Hente denne parmeter fordi:");
+                        System.out.println(e.getMessage());
+                        display.printLine();
+                    }
+                    break;
                 case "pwd":
                     System.out.println("Du er på Person view og du ser på " + Global.personHolder.forNavn + " " + Global.personHolder.efterNavn);
                     break;                
@@ -38,5 +94,5 @@ public class ViewPersonModul implements iPageModul {
         } while (isRun);
 
     }
-    
+
 }

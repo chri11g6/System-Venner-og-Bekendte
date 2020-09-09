@@ -9,6 +9,7 @@ import Display.iDisplay;
 public class ViewModul implements iPageModul {
 
     private iDisplay display = new DisplayView();
+    private iPageModul personView = new ViewPersonModul();
 
     @Override
     public void run() {
@@ -16,15 +17,29 @@ public class ViewModul implements iPageModul {
 
         do {
 
-            String key = display.getInputString("View");
+            String[] key = display.getInputString("View").split(" ");
 
-            switch (key) {
+            switch (key[0]) {
                 case "h":
                 case "help":
                     display.printHelp();
                     break;
                 case "person":
-                    printPersonList();
+                    try {
+                        if (key[1] != null) {
+
+                            Global.personHolder = Global.personList.get(Integer.parseInt(key[1]))
+
+                            personView.run();
+                        } else {
+                            printPersonList();
+                        }
+                    } catch (Exception e) {
+                        display.printLine();
+                        System.out.println("Kunne ikke Hente denne parmeter fordi:");
+                        System.out.println(e.getMessage());
+                        display.printLine();
+                    }
                     break;
                 case "interesser":
                     printInteresserList();
@@ -51,7 +66,7 @@ public class ViewModul implements iPageModul {
 
         maxSizeId = Math.max(maxSizeId, String.valueOf(Global.interesserList.size()).length());
 
-        for(int i = 0; i < Global.interesserList.size(); i++){
+        for (int i = 0; i < Global.interesserList.size(); i++) {
             maxSizeInteresser = Math.max(maxSizeInteresser, Global.interesserList.get(i).navn.length());
         }
 
@@ -65,7 +80,7 @@ public class ViewModul implements iPageModul {
         System.out.println(header.toString());
         System.out.println(Tools.loopString(maxSizeId + maxSizeInteresser, "-"));
 
-        for(int i = 0; i < Global.interesserList.size(); i++){
+        for (int i = 0; i < Global.interesserList.size(); i++) {
             StringBuilder interesserText = new StringBuilder();
             interesserText.append(i);
             interesserText.append(Tools.loopString(maxSizeId - String.valueOf(i).length() + 2, " "));
@@ -113,7 +128,7 @@ public class ViewModul implements iPageModul {
 
         System.out.println("");
         System.out.println(header.toString());
-        System.out.println(Tools.loopString(header.length(),"-"));
+        System.out.println(Tools.loopString(header.length(), "-"));
 
         for (int i = 0; i < Global.personList.size(); i++) {
             Person person = Global.personList.get(i);
@@ -131,7 +146,8 @@ public class ViewModul implements iPageModul {
             personText.append(
                     Tools.loopString(maxSizeTelefon - String.valueOf(person.getTelefon()).length() + addSpaceTo, " "));
             personText.append(person.getEmail());
-            personText.append(Tools.loopString(maxSizeEmail - String.valueOf(person.getEmail()).length() + addSpaceTo, " "));
+            personText.append(
+                    Tools.loopString(maxSizeEmail - String.valueOf(person.getEmail()).length() + addSpaceTo, " "));
 
             for (int j = 0; j < person.interesser.size(); j++) {
                 personText.append(person.interesser.get(j).navn);

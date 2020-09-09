@@ -85,6 +85,14 @@ public class ViewPersonModul implements iPageModul {
                 case "q":
                 case "exit":
                     isRun = false;
+
+                    for(int i = 0; i < Global.personList.size(); i++){
+                        if(Global.personList.get(i).getId() == Global.personHolder.getId()){
+                            Global.personList.set(i, Global.personHolder);                            
+                            break;
+                        }
+                    }
+
                     break;
                 default:
                     System.out.println("'h' eller 'help' For at få hjælp");

@@ -28,6 +28,11 @@ public class Person {
     }
 
     public void setEmail(String email) {
+        if (email.isEmpty()){
+            this.email = "";
+            return;
+        }
+
         Pattern p = Pattern.compile("[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}");
         Matcher m = p.matcher(email);
 
@@ -43,6 +48,11 @@ public class Person {
     }
 
     public void setTelefon(String telefon) {
+        if (telefon.isEmpty()){
+            this.telefon = "";
+            return;
+        }
+
         Pattern p = Pattern.compile("(\\+?\\d{1,6})?(\\d{2} ?){4}");
         Matcher m = p.matcher(telefon);
 

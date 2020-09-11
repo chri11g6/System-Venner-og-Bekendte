@@ -12,12 +12,15 @@ public class OpretInteresserModul implements iPageModul {
     @Override
     public void run() {
 
+        Global.sti.push("interesser");
+
         System.out.println("Hvad er dit fornavn?");
 
-        Interesser interesser = new Interesser(display.getInputString("Opret interesser"));
+        Interesser interesser = new Interesser(display.getInputString(Global.getSti()));
 
         Global.interesserList.add(interesser);
 
+        Global.sti.pop();
     }
     
 }

@@ -15,8 +15,8 @@ public class OpretPersonModul implements iPageModul {
     public void run() {
         try {
             Person person = new Person();
-    
-            String textToInput = "Opret";
+            Global.sti.push("Opret");
+            String textToInput = Global.getSti();
 
             display.printLine();
 
@@ -96,6 +96,8 @@ public class OpretPersonModul implements iPageModul {
             System.out.println(e.getMessage());
             display.printLine();
         }
+
+        Global.sti.pop();
     }
     
     private void printPersonInteresserList(Person person){

@@ -12,11 +12,13 @@ public class ViewPersonModul implements iPageModul {
     public void run() {
         boolean isRun = true;
 
+        Global.sti.push("Person");
+
         display.printView();
 
         do {
 
-            String[] key = display.getInputString("Person").split(" ");
+            String[] key = display.getInputString(Global.getSti()).split(" ");
 
             switch (key[0]) {
                 case "h":
@@ -104,6 +106,7 @@ public class ViewPersonModul implements iPageModul {
 
         } while (isRun);
 
+        Global.sti.pop();
     }
 
 }

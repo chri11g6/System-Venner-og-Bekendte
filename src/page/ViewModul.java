@@ -15,9 +15,11 @@ public class ViewModul implements iPageModul {
     public void run() {
         boolean isRun = true;
 
+        Global.sti.push("View");
+
         do {
 
-            String[] key = display.getInputString("View").split(" ");
+            String[] key = display.getInputString(Global.getSti()).split(" ");
 
             switch (key[0]) {
                 case "h":
@@ -57,7 +59,7 @@ public class ViewModul implements iPageModul {
             }
 
         } while (isRun);
-
+        Global.sti.pop();
     }
 
     private void printInteresserList() {

@@ -24,7 +24,11 @@ public class Person {
     }
 
     public String getEmail() {
-        return this.email;
+        if(this.email != null){
+            return this.email;
+        }else{
+            return "";
+        }
     }
 
     public void setEmail(String email) {
@@ -44,7 +48,11 @@ public class Person {
     }
 
     public String getTelefon() {
-        return this.telefon;
+        if(this.telefon != null){
+            return this.telefon;
+        }else{
+            return "";
+        }
     }
 
     public void setTelefon(String telefon) {

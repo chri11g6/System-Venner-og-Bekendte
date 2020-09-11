@@ -9,6 +9,7 @@ public class DisplayViewPerson implements iDisplay {
     public void printHelp() {
         defaultPrintHelp();
         System.out.println("'view' For at se talben");
+        System.out.println("'edit interesser' For at ret, tilføjer eller slet interesser");
         System.out.println("'set' '[parmeter]' Hvilken del vil du ænder?");
         System.out.println("[parmeter]:");
         System.out.println("\t'fornavn'");

@@ -7,6 +7,7 @@ import Display.iDisplay;
 public class ViewPersonModul implements iPageModul {
 
     private iDisplay display = new DisplayViewPerson();
+    private iPageModul editPersonInteresser = new editPersonInteresserModul(); 
 
     @Override
     public void run() {
@@ -27,6 +28,22 @@ public class ViewPersonModul implements iPageModul {
                     break;
                 case "view":
                     display.printView();
+                    break;                
+                case "edit":
+                    try {
+                        switch (key[1]) {
+                            case "interesser":
+                                editPersonInteresser.run();
+                                break;
+                            default:
+                                throw new IllegalArgumentException("Den parmeter finds ikke [" + key[1] + "]");
+                        }
+                    } catch (Exception e){
+                        display.printLine();
+                        System.out.println("Kunne ikke sætte denne parmeter fordi:");
+                        System.out.println(e.getMessage());
+                        display.printLine();
+                    }
                     break;                
                 case "set":
                     try {

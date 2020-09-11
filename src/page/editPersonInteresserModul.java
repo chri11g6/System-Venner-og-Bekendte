@@ -32,7 +32,7 @@ public class editPersonInteresserModul implements iPageModul {
                     if(key.length > 1 && key[1] == "global"){
                         display.printLine();
                         System.out.println("Global interesser list");
-                        PrintTools.printInteresserList();
+                        PrintTools.printInteresserList(Global.interesserList);
                     }else{
                         display.printLine();
                         System.out.println("Person's interesser list");

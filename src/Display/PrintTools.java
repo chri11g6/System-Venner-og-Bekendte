@@ -1,18 +1,20 @@
 package Display;
 
-import DataType.Global;
+import java.util.ArrayList;
+
+import DataType.Interesser;
 import DataType.Person;
 import DataType.Tools;
 
 public class PrintTools {
-    public static void printInteresserList() {
+    public static void printInteresserList(ArrayList<Interesser> interessersList) {
         int maxSizeId = 2;
         int maxSizeInteresser = 10;
 
-        maxSizeId = Math.max(maxSizeId, String.valueOf(Global.interesserList.size()).length());
+        maxSizeId = Math.max(maxSizeId, String.valueOf(interessersList.size()).length());
 
-        for (int i = 0; i < Global.interesserList.size(); i++) {
-            maxSizeInteresser = Math.max(maxSizeInteresser, Global.interesserList.get(i).navn.length());
+        for (int i = 0; i < interessersList.size(); i++) {
+            maxSizeInteresser = Math.max(maxSizeInteresser, interessersList.get(i).navn.length());
         }
 
         StringBuilder header = new StringBuilder();
@@ -25,17 +27,17 @@ public class PrintTools {
         System.out.println(header.toString());
         System.out.println(Tools.loopString(maxSizeId + maxSizeInteresser, "-"));
 
-        for (int i = 0; i < Global.interesserList.size(); i++) {
+        for (int i = 0; i < interessersList.size(); i++) {
             StringBuilder interesserText = new StringBuilder();
             interesserText.append(i);
             interesserText.append(Tools.loopString(maxSizeId - String.valueOf(i).length() + 2, " "));
-            interesserText.append(Global.interesserList.get(i).navn);
+            interesserText.append(interessersList.get(i).navn);
             System.out.println(interesserText.toString());
         }
         System.out.println("");
     }
 
-    public static void printPersonList() {
+    public static void printPersonList(ArrayList<Person> personsList) {
         int maxSizeForNavn = 7;
         int maxSizeId = 2;
         int maxSizeEfterNavn = 9;
@@ -44,8 +46,8 @@ public class PrintTools {
         int maxSizeEmail = 5;
         int addSpaceTo = 2;
 
-        for (int i = 0; i < Global.personList.size(); i++) {
-            Person person = Global.personList.get(i);
+        for (int i = 0; i < personsList.size(); i++) {
+            Person person = personsList.get(i);
             maxSizeForNavn = Math.max(maxSizeForNavn, person.forNavn.length());
             maxSizeEfterNavn = Math.max(maxSizeEfterNavn, person.efterNavn.length());
             maxSizeTelefon = Math.max(maxSizeTelefon, person.getTelefon().length());
@@ -53,7 +55,7 @@ public class PrintTools {
             maxSizeAlder = Math.max(maxSizeAlder, String.valueOf(person.alder).length());
         }
 
-        maxSizeId = Math.max(maxSizeId, String.valueOf(Global.personList.size()).length());
+        maxSizeId = Math.max(maxSizeId, String.valueOf(personsList.size()).length());
 
         StringBuilder header = new StringBuilder();
 
@@ -75,8 +77,8 @@ public class PrintTools {
         System.out.println(header.toString());
         System.out.println(Tools.loopString(header.length(), "-"));
 
-        for (int i = 0; i < Global.personList.size(); i++) {
-            Person person = Global.personList.get(i);
+        for (int i = 0; i < personsList.size(); i++) {
+            Person person = personsList.get(i);
             StringBuilder personText = new StringBuilder();
 
             personText.append(i);

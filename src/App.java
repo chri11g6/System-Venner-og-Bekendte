@@ -27,6 +27,22 @@ public class App {
         per.setTelefon("12345678");
         per.setEmail("chri11g6@eamv.dk");
 
+        Person per1 = new Person();
+        per1.forNavn = "Martin";
+        per1.efterNavn = "Christensen";
+        per1.alder = 25;
+        per1.setTelefon("12345678");
+        per1.setEmail("");
+
+        Person per2 = new Person();
+        per2.forNavn = "Anita";
+        per2.efterNavn = "Christensen";
+        per2.alder = 25;
+        per2.setTelefon("12345678");
+        per2.setEmail("");
+
         Global.personList.add(per);
+        Global.personList.add(per1);
+        Global.personList.add(per2);
     }
 }

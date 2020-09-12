@@ -5,6 +5,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import DataType.Global;
+import DataType.Interesser;
 import DataType.Person;
 import DataType.SearchFilter;
 import Display.DisplaySearch;
@@ -14,7 +15,8 @@ import Display.iDisplay;
 public class SearchModul implements iPageModul {
 
     private iDisplay display = new DisplaySearch();
-    private ArrayList<Person> searchList = new ArrayList<Person>();
+    private ArrayList<Person> personSearchList = new ArrayList<Person>();
+    private ArrayList<Interesser> interesserSearchList = new ArrayList<Interesser>();
 
     @Override
     public void run() {
@@ -34,9 +36,13 @@ public class SearchModul implements iPageModul {
                 case "pwd":
                     System.out.println("Du er i søge måde");
                     break;
-                case "search":
+                case "person":
                     search(key);
-                    PrintTools.printPersonList(searchList);
+                    PrintTools.printPersonList(personSearchList);
+                    break;
+                case "interesser":
+                    search(key);
+                    PrintTools.printInteresserList(interesserSearchList);
                     break;
                 case "q":
                 case "exit":
@@ -54,31 +60,48 @@ public class SearchModul implements iPageModul {
     private void search(String[] word) {
         ArrayList<SearchFilter> filtersList = new ArrayList<SearchFilter>();
 
+        int counter = 3;
+
         try {
-            for (int i = 1; i < word.length; i += 3) {
+
+            if (word[0].equalsIgnoreCase("person")) {
+                counter = 3;
+            } else if (word[0].equalsIgnoreCase("interesser")) {
+                counter = 2;
+            }
+
+            for (int i = 1; i < word.length; i += counter) {
                 SearchFilter filter = new SearchFilter();
-                switch (word[i]) {
-                    case "fornavn":
-                        filter.permeter = "fornavn";
-                        break;
-                    case "efternavn":
-                        filter.permeter = "efternavn";
-                        break;
-                    case "telefon":
-                        filter.permeter = "telefon";
-                        break;
-                    case "email":
-                        filter.permeter = "email";
-                        break;
-                    case "interesser":
-                        filter.permeter = "interesser";
-                        break;
-                    default:
-                        throw new IllegalArgumentException("Der finde ikke en permeter der hedder " + word[i]);
-                    // break;
+                if (word[0].equalsIgnoreCase("person")) {
+                    switch (word[i]) {
+                        case "fornavn":
+                            filter.permeter = "fornavn";
+                            break;
+                        case "efternavn":
+                            filter.permeter = "efternavn";
+                            break;
+                        case "telefon":
+                            filter.permeter = "telefon";
+                            break;
+                        case "email":
+                            filter.permeter = "email";
+                            break;
+                        case "interesser":
+                            filter.permeter = "interesser";
+                            break;
+                        default:
+                            throw new IllegalArgumentException("Der finde ikke en permeter der hedder " + word[i]);
+                        // break;
+                    }
+                    filter.keyword = word[i + 1];
+                } else if (word[0].equalsIgnoreCase("interesser")) {
+                    filter.permeter = "interesser";
+                    filter.keyword = word[i];
+                } else {
+                    throw new IllegalArgumentException("Kan ikke søge i: " + word[0]);
                 }
 
-                filter.keyword = word[i + 1];
+                
 
                 if (i - 1 > 0) {
                     switch (word[i - 1]) {
@@ -102,7 +125,13 @@ public class SearchModul implements iPageModul {
                 filtersList.add(filter);
             }
 
-            searchFunction(filtersList);
+            if (word[0].equalsIgnoreCase("person")) {
+                searchPersonFunction(filtersList);
+            } else if (word[0].equalsIgnoreCase("interesser")) {
+                searchInteresserFunction(filtersList);
+            } else {
+                throw new IllegalArgumentException("Der ikke en function til: " + word[0]);
+            }
 
         } catch (Exception e) {
             display.printLine();
@@ -112,53 +141,96 @@ public class SearchModul implements iPageModul {
         }
     }
 
-    private void searchFunction(ArrayList<SearchFilter> filtersList) {
-        ArrayList<SearchFilter> orList = new ArrayList<SearchFilter>();
-        ArrayList<SearchFilter> andList = new ArrayList<SearchFilter>();
-        ArrayList<SearchFilter> notList = new ArrayList<SearchFilter>();
+    private void searchInteresserFunction(ArrayList<SearchFilter> filtersList) {
+        ArrayList<ArrayList<SearchFilter>> fullList = sortFilter(filtersList);
 
-        ArrayList<Person> bufferList = new ArrayList<Person>();
+        ArrayList<SearchFilter> orList = fullList.get(0);
+        ArrayList<SearchFilter> andList = fullList.get(1);
+        ArrayList<SearchFilter> notList = fullList.get(2);
 
-        searchList.clear();
+        ArrayList<Interesser> bufferList = new ArrayList<Interesser>();
 
-        filtersList.forEach(filter -> {
-            if (filter.type == SearchFilter.Operators.OR) {
-                orList.add(filter);
-            } else if (filter.type == SearchFilter.Operators.AND) {
-                andList.add(filter);
-            } else if (filter.type == SearchFilter.Operators.NOT) {
-                notList.add(filter);
-            }
-        });
+        interesserSearchList.clear();
 
-        searchList.addAll(searchData(orList, Global.personList));
-        if(andList.size() != 0){
+        interesserSearchList.addAll(searchInteresserData(orList, Global.interesserList));
+        if (andList.size() != 0) {
             bufferList.clear();
-            bufferList.addAll(searchData(andList, searchList));
-            searchList.clear();
-            searchList.addAll(bufferList);
+            bufferList.addAll(searchInteresserData(andList, interesserSearchList));
+            interesserSearchList.clear();
+            interesserSearchList.addAll(bufferList);
         }
-        if(notList.size() != 0){
+        if (notList.size() != 0) {
             bufferList.clear();
-            bufferList = searchData(notList, searchList);
+            bufferList = searchInteresserData(notList, interesserSearchList);
         }
 
-        bufferList.forEach(person -> searchList.remove(person));
+        bufferList.forEach(person -> interesserSearchList.remove(person));
         bufferList.clear();
 
         // Sletter dubble person
-        for (int i = 0; i < searchList.size(); i++) {
-            if (bufferList.indexOf(searchList.get(i)) == -1){
-                bufferList.add(searchList.get(i));
+        for (int i = 0; i < interesserSearchList.size(); i++) {
+            if (bufferList.indexOf(interesserSearchList.get(i)) == -1) {
+                bufferList.add(interesserSearchList.get(i));
             }
         }
 
-        searchList.clear();
-        searchList.addAll(bufferList);
+        interesserSearchList.clear();
+        interesserSearchList.addAll(bufferList);
 
     }
 
-    private ArrayList<Person> searchData(ArrayList<SearchFilter> filterList, ArrayList<Person> personList){
+    private void searchPersonFunction(ArrayList<SearchFilter> filtersList) {
+        ArrayList<ArrayList<SearchFilter>> fullList = sortFilter(filtersList);
+
+        ArrayList<SearchFilter> orList = fullList.get(0);
+        ArrayList<SearchFilter> andList = fullList.get(1);
+        ArrayList<SearchFilter> notList = fullList.get(2);
+
+        ArrayList<Person> bufferList = new ArrayList<Person>();
+
+        personSearchList.clear();
+
+        personSearchList.addAll(searchPersonData(orList, Global.personList));
+        if (andList.size() != 0) {
+            bufferList.clear();
+            bufferList.addAll(searchPersonData(andList, personSearchList));
+            personSearchList.clear();
+            personSearchList.addAll(bufferList);
+        }
+        if (notList.size() != 0) {
+            bufferList.clear();
+            bufferList = searchPersonData(notList, personSearchList);
+        }
+
+        bufferList.forEach(person -> personSearchList.remove(person));
+        bufferList.clear();
+
+        // Sletter dubble person
+        for (int i = 0; i < personSearchList.size(); i++) {
+            if (bufferList.indexOf(personSearchList.get(i)) == -1) {
+                bufferList.add(personSearchList.get(i));
+            }
+        }
+
+        personSearchList.clear();
+        personSearchList.addAll(bufferList);
+
+    }
+
+    private ArrayList<Interesser> searchInteresserData(ArrayList<SearchFilter> filterList, ArrayList<Interesser> interesserList){
+        ArrayList<Interesser> bufferList = new ArrayList<Interesser>();
+        filterList.forEach(filter -> {
+            interesserList.forEach(interesser -> {
+                if(regexTest(filter.keyword, interesser.navn)){
+                    bufferList.add(interesser);
+                }
+            });
+        });
+
+        return bufferList;
+    }
+
+    private ArrayList<Person> searchPersonData(ArrayList<SearchFilter> filterList, ArrayList<Person> personList) {
         ArrayList<Person> bufferList = new ArrayList<Person>();
         filterList.forEach(filter -> {
             personList.forEach(person -> {
@@ -200,7 +272,31 @@ public class SearchModul implements iPageModul {
         return bufferList;
     }
 
-    private boolean regexTest(String regex, String Text){
+    private ArrayList<ArrayList<SearchFilter>> sortFilter(ArrayList<SearchFilter> filtersList){
+        ArrayList<SearchFilter> orList = new ArrayList<SearchFilter>();
+        ArrayList<SearchFilter> andList = new ArrayList<SearchFilter>();
+        ArrayList<SearchFilter> notList = new ArrayList<SearchFilter>();
+
+        ArrayList<ArrayList<SearchFilter>> fullList = new ArrayList<ArrayList<SearchFilter>>();
+
+        filtersList.forEach(filter -> {
+            if (filter.type == SearchFilter.Operators.OR) {
+                orList.add(filter);
+            } else if (filter.type == SearchFilter.Operators.AND) {
+                andList.add(filter);
+            } else if (filter.type == SearchFilter.Operators.NOT) {
+                notList.add(filter);
+            }
+        });
+
+        fullList.add(orList);
+        fullList.add(andList);
+        fullList.add(notList);
+
+        return fullList;
+    }
+
+    private boolean regexTest(String regex, String Text) {
         Pattern p = Pattern.compile(regex);
         Matcher m = p.matcher(Text);
         return m.find();

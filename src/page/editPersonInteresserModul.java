@@ -28,8 +28,7 @@ public class EditPersonInteresserModul implements iPageModul {
                     display.printHelp();
                     break;
                 case "view":
-                    // TODO Hjælp til det her
-                    if(key.length > 1 && key[1] == "global"){
+                    if(key.length > 1 && key[1].equalsIgnoreCase("global")){
                         display.printLine();
                         System.out.println("Global interesser list");
                         PrintTools.printInteresserList(Global.interesserList);

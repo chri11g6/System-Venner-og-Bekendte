@@ -7,7 +7,7 @@ import Display.iDisplay;
 public class ViewPersonModul implements iPageModul {
 
     private iDisplay display = new DisplayViewPerson();
-    private iPageModul editPersonInteresser = new editPersonInteresserModul(); 
+    private iPageModul editPersonInteresser = new EditPersonInteresserModul(); 
 
     @Override
     public void run() {

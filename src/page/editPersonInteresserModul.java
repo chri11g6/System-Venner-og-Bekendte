@@ -6,7 +6,7 @@ import Display.DisplayEditPersonInteresser;
 import Display.PrintTools;
 import Display.iDisplay;
 
-public class editPersonInteresserModul implements iPageModul {
+public class EditPersonInteresserModul implements iPageModul {
 
     private iDisplay display = new DisplayEditPersonInteresser();
 

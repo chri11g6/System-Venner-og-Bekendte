@@ -146,7 +146,7 @@ public class SearchModul implements iPageModul {
         bufferList.forEach(person -> searchList.remove(person));
         bufferList.clear();
 
-        // filter dubble
+        // Sletter dubble person
         for (int i = 0; i < searchList.size(); i++) {
             if (bufferList.indexOf(searchList.get(i)) == -1){
                 bufferList.add(searchList.get(i));

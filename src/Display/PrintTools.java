@@ -29,7 +29,7 @@ public class PrintTools {
 
         for (int i = 0; i < interessersList.size(); i++) {
             StringBuilder interesserText = new StringBuilder();
-            interesserText.append(i);
+            interesserText.append(interessersList.get(i).getId());
             interesserText.append(Tools.loopString(maxSizeId - String.valueOf(i).length() + 2, " "));
             interesserText.append(interessersList.get(i).navn);
             System.out.println(interesserText.toString());

@@ -144,6 +144,17 @@ public class SearchModul implements iPageModul {
         }
 
         bufferList.forEach(person -> searchList.remove(person));
+        bufferList.clear();
+
+        // filter dubble
+        for (int i = 0; i < searchList.size(); i++) {
+            if (bufferList.indexOf(searchList.get(i)) == -1){
+                bufferList.add(searchList.get(i));
+            }
+        }
+
+        searchList.clear();
+        searchList.addAll(bufferList);
 
     }
 

@@ -4,17 +4,15 @@ import DataType.Person;
 import page.MenuModul;
 import page.iPageModul;
 // import IO.File;
-import IO.JSON.JsonPerson;
+// import IO.JSON.JsonPerson;
 
 public class App {
     public static void main(String[] args) throws Exception {
         load();
 
-        // iPageModul menu = new MenuModul();
+        iPageModul menu = new MenuModul();
 
-        // menu.run();
-
-        JsonPerson.encode((Person[])Global.personList.toArray());
+        menu.run();
 
     }
 

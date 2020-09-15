@@ -10,6 +10,7 @@ public class MenuModul implements iPageModul {
     private iPageModul opretPersonModul = new OpretPersonModul();
     private iPageModul viewModul = new ViewModul();
     private iPageModul searchModul = new SearchModul();
+    private iPageModul fileMoudul = new FileModul();
 
 
     @Override
@@ -30,13 +31,16 @@ public class MenuModul implements iPageModul {
                     break;
                 case "view":
                     viewModul.run();
-                    break;                
+                    break;
                 case "search":
                     searchModul.run();
-                    break;                
+                    break;
+                case "file":
+                    fileMoudul.run();
+                    break;
                 case "pwd":
                     System.out.println("Du er på menu'en");
-                    break;                
+                    break;
                 case "q":
                 case "exit":
                     isRun = false;

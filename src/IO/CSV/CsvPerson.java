@@ -6,10 +6,22 @@ import DataType.Interesser;
 import DataType.Person;
 
 public class CsvPerson {
-    private static char tegnSpliter = ';';
+    private static char tegnSpliter = ',';
 
     public static String encode(ArrayList<Person> datas) {
         StringBuilder builder = new StringBuilder();
+
+        builder.append("forNavn");
+        builder.append(tegnSpliter);
+        builder.append("efterNavn");
+        builder.append(tegnSpliter);
+        builder.append("alder");
+        builder.append(tegnSpliter);
+        builder.append("Telefon");
+        builder.append(tegnSpliter);
+        builder.append("Email");
+        builder.append("\n");
+
 
         for(int i = 0; i < datas.size(); i++){
             Person data = datas.get(i);
@@ -42,7 +54,7 @@ public class CsvPerson {
 
         ArrayList<Person> personList = new ArrayList<Person>();
 
-        for(int i = 0; i < lings.length; i++){
+        for(int i = 1; i < lings.length; i++){
             try{
                 String[] data = lings[i].split(";");
                 Person person = new Person();

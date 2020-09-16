@@ -3,8 +3,6 @@ import DataType.Interesser;
 import DataType.Person;
 import page.MenuModul;
 import page.iPageModul;
-// import IO.File;
-// import IO.JSON.JsonPerson;
 
 public class App {
     public static void main(String[] args) throws Exception {

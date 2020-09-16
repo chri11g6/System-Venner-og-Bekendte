@@ -1,5 +1,6 @@
 package page;
 
+import DataType.Global;
 import Display.DisplayMenu;
 import Display.iDisplay;
 
@@ -37,6 +38,12 @@ public class MenuModul implements iPageModul {
                     break;
                 case "file":
                     fileMoudul.run();
+                    break;
+                case "status":
+                    display.printLine();
+                    System.out.println("Der er " + Global.personList.size() + " person registreret");
+                    System.out.println("Der er " + Global.interesserList.size() + " interesser registreret");
+                    display.printLine();
                     break;
                 case "pwd":
                     System.out.println("Du er på menu'en");

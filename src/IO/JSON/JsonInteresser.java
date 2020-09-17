@@ -22,8 +22,15 @@ public class JsonInteresser {
         return jsonArray;
     }
 
-    public static void decode(String data) {
-        // TODO Auto-generated method stub
+    public static ArrayList<Interesser> decode(String data) {
+        JSONArray interesserJson = new JSONArray(data);
+        ArrayList<Interesser> interesserList = new ArrayList<Interesser>();
+
+        for (int i = 0; i < interesserJson.length(); i++) {
+            interesserList.add(new Interesser(interesserJson.getString(i)));
+        }
+
+        return interesserList;
 
     }
     

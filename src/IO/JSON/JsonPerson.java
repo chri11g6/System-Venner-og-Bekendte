@@ -39,8 +39,22 @@ public class JsonPerson {
         return jsonArray;
     }
 
-    public static void decode(String data) {
-        // TODO Auto-generated method stub
+    public static ArrayList<Person> decode(String data) {
+        JSONArray personsJson = new JSONArray(data);
+        ArrayList<Person> personList = new ArrayList<Person>();
 
+        for (int i = 0; i < personsJson.length(); i++) {
+            JSONObject personJson = personsJson.getJSONObject(i);
+            Person person = new Person();
+            person.forNavn = personJson.getString("forNavn");
+            person.efterNavn = personJson.getString("efterNavn");
+            person.alder= personJson.getInt("alder");
+            person.setTelefon(personJson.getString("Telefon"));
+            person.setEmail(personJson.getString("Email"));
+
+            personList.add(person);
+        }
+
+        return personList;
     }
 }

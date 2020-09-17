@@ -1,3 +1,5 @@
+// https://github.com/stleary/JSON-java
+
 package IO.JSON;
 
 import java.util.ArrayList;
@@ -21,8 +23,17 @@ public class JsonAll {
         return json;
     }
 
-    public static void decode(String data) {
-        // TODO Auto-generated method stub
+    public static Object[] decode(String data) {
+        JSONObject Json = new JSONObject(data);
 
+        ArrayList<Person> personList = JsonPerson.decode(Json.getString("persons"));
+        ArrayList<Interesser> interessersList = JsonInteresser.decode(Json.getString("interesser"));
+
+        Object[] obj = new Object[2];
+
+        obj[0] = personList;
+        obj[1] = interessersList;
+
+        return obj;
     }
 }

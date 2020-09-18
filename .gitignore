@@ -39,3 +39,5 @@ hs_err_pid*
 .history
 
 # End of https://www.toptal.com/developers/gitignore/api/java,visualstudiocode
+
+src/egg/data.json

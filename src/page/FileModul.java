@@ -1,6 +1,10 @@
 package page;
 
+import java.util.ArrayList;
+
 import DataType.Global;
+import DataType.Interesser;
+import DataType.Person;
 import Display.DisplayFile;
 import Display.iDisplay;
 import IO.File;
@@ -35,7 +39,8 @@ public class FileModul implements iPageModul {
                     }
                     break;
                 case "load":
-                    System.out.println("Denne funktion er midlertidig ikke funktionær");
+                    // System.out.println("Denne funktion er midlertidig ikke funktionær");
+                    loadToJSON(key[1]);
                     break;
                 case "pwd":
                     System.out.println("Du er i file måde");
@@ -92,6 +97,44 @@ public class FileModul implements iPageModul {
         } catch (Exception e) {
             display.printLine();
             System.out.println("Kunne ikke save file fordi:");
+            System.out.println(e.getMessage());
+            display.printLine();
+        }
+    }
+
+    public void loadToJSON(String type) {
+        try {
+            System.out.println("Hvor skal den hent den?");
+            String path = display.getInputString(Global.getSti() + "> Load");
+            String data = File.read(path);
+            switch (type) {
+                case "all":
+                    Object[] datas = JsonAll.decode(data);
+                    ArrayList<Person> personsDataAll = (ArrayList<Person>)datas[0];
+                    ArrayList<Interesser> interessersDataAll = (ArrayList<Interesser>)datas[1];
+
+                    Global.personList.clear();
+                    Global.personList.addAll(personsDataAll);
+                    Global.interesserList.clear();
+                    Global.interesserList.addAll(interessersDataAll);
+                    break;
+                case "personlist":
+                    ArrayList<Person> personsData = JsonPerson.decode(data);
+                    Global.personList.clear();
+                    Global.personList.addAll(personsData);
+                    break;
+                case "interesserlist":
+                    ArrayList<Interesser> interessersData = JsonInteresser.decode(data);
+                    Global.interesserList.clear();
+                    Global.interesserList.addAll(interessersData);
+                    break;
+                default:
+                    throw new IllegalArgumentException("Kan ikke finde den type: " + type);
+            }
+
+        } catch (Exception e) {
+            display.printLine();
+            System.out.println("Kunne ikke load file fordi:");
             System.out.println(e.getMessage());
             display.printLine();
         }

@@ -3,6 +3,10 @@ package egg;
 import java.util.ArrayList;
 import java.util.Random;
 
+import org.json.JSONArray;
+
+import IO.File;
+
 public class Fun {
     private static ArrayList<String> list = new ArrayList<String>();
     private Random ran = new Random();
@@ -23,6 +27,14 @@ public class Fun {
         if (list.size() != 0) {
             return;
         }
-        // Data komme ikke med til git fordi copyright
+        // Data file komme ikke med til git fordi copyright
+        try{
+            JSONArray dataList = new JSONArray(File.read("./src/egg/data.json"));
+            
+            for(int i = 0; i < dataList.length(); i++){
+                list.add(dataList.getString(i));
+            }
+
+        } catch (Exception e) {}
     }
 }

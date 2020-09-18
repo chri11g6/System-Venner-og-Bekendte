@@ -3,6 +3,7 @@ package page;
 import DataType.Global;
 import Display.DisplayMenu;
 import Display.iDisplay;
+import egg.Fun;
 
 public class MenuModul implements iPageModul {
 
@@ -13,6 +14,7 @@ public class MenuModul implements iPageModul {
     private iPageModul searchModul = new SearchModul();
     private iPageModul fileMoudul = new FileModul();
 
+    private Fun fun = new Fun();
 
     @Override
     public void run() {
@@ -32,6 +34,11 @@ public class MenuModul implements iPageModul {
                     break;
                 case "view":
                     viewModul.run();
+                    break;
+                case "egg":
+                    System.out.println();
+                    System.out.println(fun.getText());
+                    System.out.println();
                     break;
                 case "search":
                     searchModul.run();

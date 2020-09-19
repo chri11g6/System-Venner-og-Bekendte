@@ -1,7 +1,7 @@
-package view.console.Display;
+package view.console.display;
 
-import data.DataType.Global;
-import data.DataType.Tools;
+import data.dataType.Global;
+import data.dataType.Tools;
 
 public class DisplayEditPersonInteresser implements iDisplay {
 

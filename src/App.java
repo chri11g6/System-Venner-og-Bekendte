@@ -1,6 +1,6 @@
-import data.DataType.Global;
-import data.DataType.Interesser;
-import data.DataType.Person;
+import data.dataType.Global;
+import data.dataType.Interesser;
+import data.dataType.Person;
 import view.console.page.MenuModul;
 import view.console.page.iPageModul;
 

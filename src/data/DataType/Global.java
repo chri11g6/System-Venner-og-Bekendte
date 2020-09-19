@@ -1,4 +1,4 @@
-package data.DataType;
+package data.dataType;
 
 import java.util.ArrayList;
 import java.util.Stack;

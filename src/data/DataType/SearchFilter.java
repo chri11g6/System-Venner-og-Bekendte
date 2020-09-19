@@ -1,4 +1,4 @@
-package data.DataType;
+package data.dataType;
 
 public class SearchFilter {
     public enum Operators {

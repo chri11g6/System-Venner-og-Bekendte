@@ -1,10 +1,11 @@
-package data.IO.JSON;
+package data.io.json;
 
 import java.util.ArrayList;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import data.DataType.Person;
+
+import data.dataType.Person;
 
 public class JsonPerson {
 

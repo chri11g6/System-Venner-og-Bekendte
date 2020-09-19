@@ -1,9 +1,9 @@
 package view.console.page;
 
-import data.DataType.Global;
-import data.DataType.Interesser;
-import view.console.Display.DisplayOpretInteresser;
-import view.console.Display.iDisplay;
+import data.dataType.Global;
+import data.dataType.Interesser;
+import view.console.display.DisplayOpretInteresser;
+import view.console.display.iDisplay;
 
 public class OpretInteresserModul implements iPageModul {
 

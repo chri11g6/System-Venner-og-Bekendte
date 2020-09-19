@@ -1,8 +1,8 @@
 package view.console.page;
 
-import data.DataType.Global;
-import view.console.Display.DisplayMenu;
-import view.console.Display.iDisplay;
+import data.dataType.Global;
+import view.console.display.DisplayMenu;
+import view.console.display.iDisplay;
 
 public class MenuModul implements iPageModul {
 

@@ -1,9 +1,9 @@
 package view.console.page;
 
-import data.DataType.Global;
-import view.console.Display.DisplayView;
-import view.console.Display.PrintTools;
-import view.console.Display.iDisplay;
+import data.dataType.Global;
+import view.console.display.DisplayView;
+import view.console.display.PrintTools;
+import view.console.display.iDisplay;
 
 public class ViewModul implements iPageModul {
 

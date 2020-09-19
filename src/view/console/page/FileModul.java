@@ -2,16 +2,16 @@ package view.console.page;
 
 import java.util.ArrayList;
 
-import data.DataType.Global;
-import data.DataType.Interesser;
-import data.DataType.Person;
-import view.console.Display.DisplayFile;
-import view.console.Display.iDisplay;
-import data.IO.File;
-import data.IO.CSV.CsvPerson;
-import data.IO.JSON.JsonAll;
-import data.IO.JSON.JsonInteresser;
-import data.IO.JSON.JsonPerson;
+import data.dataType.Global;
+import data.dataType.Interesser;
+import data.dataType.Person;
+import data.io.File;
+import data.io.csv.CsvPerson;
+import data.io.json.JsonAll;
+import data.io.json.JsonInteresser;
+import data.io.json.JsonPerson;
+import view.console.display.DisplayFile;
+import view.console.display.iDisplay;
 
 public class FileModul implements iPageModul {
 

@@ -1,6 +1,6 @@
-package view.console.Display;
+package view.console.display;
 
-import data.DataType.Global;
+import data.dataType.Global;
 
 public class DisplayOpretPerson implements iDisplay {
 

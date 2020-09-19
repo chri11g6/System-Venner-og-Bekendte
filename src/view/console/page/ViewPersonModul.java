@@ -1,8 +1,8 @@
 package view.console.page;
 
-import data.DataType.Global;
-import view.console.Display.DisplayViewPerson;
-import view.console.Display.iDisplay;
+import data.dataType.Global;
+import view.console.display.DisplayViewPerson;
+import view.console.display.iDisplay;
 
 public class ViewPersonModul implements iPageModul {
 

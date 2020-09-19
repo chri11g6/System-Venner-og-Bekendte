@@ -1,10 +1,10 @@
 package view.console.page;
 
-import data.DataType.Global;
-import data.DataType.Interesser;
-import data.DataType.Person;
-import view.console.Display.DisplayOpretPerson;
-import view.console.Display.iDisplay;
+import data.dataType.Global;
+import data.dataType.Interesser;
+import data.dataType.Person;
+import view.console.display.DisplayOpretPerson;
+import view.console.display.iDisplay;
 
 public class OpretPersonModul implements iPageModul {
 

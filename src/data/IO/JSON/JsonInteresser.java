@@ -1,10 +1,10 @@
-package data.IO.JSON;
+package data.io.json;
 
 import java.util.ArrayList;
 
 import org.json.JSONArray;
 
-import data.DataType.Interesser;
+import data.dataType.Interesser;
 
 public class JsonInteresser {
 

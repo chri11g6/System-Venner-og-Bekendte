@@ -1,10 +1,10 @@
-package view.console.Display;
+package view.console.display;
 
 import java.util.ArrayList;
 
-import data.DataType.Interesser;
-import data.DataType.Person;
-import data.DataType.Tools;
+import data.dataType.Interesser;
+import data.dataType.Person;
+import data.dataType.Tools;
 
 public class PrintTools {
     public static void printInteresserList(ArrayList<Interesser> interessersList) {

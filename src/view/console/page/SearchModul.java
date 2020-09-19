@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import data.DataType.Global;
-import data.DataType.Interesser;
-import data.DataType.Person;
-import data.DataType.SearchFilter;
-import view.console.Display.DisplaySearch;
-import view.console.Display.PrintTools;
-import view.console.Display.iDisplay;
+import data.dataType.Global;
+import data.dataType.Interesser;
+import data.dataType.Person;
+import data.dataType.SearchFilter;
+import view.console.display.DisplaySearch;
+import view.console.display.PrintTools;
+import view.console.display.iDisplay;
 
 public class SearchModul implements iPageModul {
 

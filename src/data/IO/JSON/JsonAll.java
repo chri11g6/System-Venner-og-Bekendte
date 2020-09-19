@@ -1,13 +1,13 @@
 // https://github.com/stleary/JSON-java
 
-package data.IO.JSON;
+package data.io.json;
 
 import java.util.ArrayList;
 
 import org.json.JSONObject;
 
-import data.DataType.Interesser;
-import data.DataType.Person;
+import data.dataType.Interesser;
+import data.dataType.Person;
 
 public class JsonAll {
     public static String encodeToString(ArrayList<Person> persons, ArrayList<Interesser> interessers) {

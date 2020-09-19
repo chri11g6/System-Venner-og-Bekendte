@@ -1,4 +1,4 @@
-package view.console.Display;
+package view.console.display;
 
 import java.util.Scanner;
 

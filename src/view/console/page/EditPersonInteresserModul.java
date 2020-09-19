@@ -1,10 +1,10 @@
 package view.console.page;
 
-import data.DataType.Global;
-import data.DataType.Interesser;
-import view.console.Display.DisplayEditPersonInteresser;
-import view.console.Display.PrintTools;
-import view.console.Display.iDisplay;
+import data.dataType.Global;
+import data.dataType.Interesser;
+import view.console.display.DisplayEditPersonInteresser;
+import view.console.display.PrintTools;
+import view.console.display.iDisplay;
 
 public class EditPersonInteresserModul implements iPageModul {
 

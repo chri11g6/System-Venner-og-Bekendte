@@ -1,4 +1,4 @@
-package data.IO;
+package data.io;
 
 import java.io.FileInputStream;
 import java.io.FileWriter;

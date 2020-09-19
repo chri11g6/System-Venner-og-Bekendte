@@ -1,4 +1,4 @@
-package view.console.Display;
+package view.console.display;
 
 public class DisplayOpretInteresser implements iDisplay {
 

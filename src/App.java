@@ -1,8 +1,8 @@
-import DataType.Global;
-import DataType.Interesser;
-import DataType.Person;
-import page.MenuModul;
-import page.iPageModul;
+import data.DataType.Global;
+import data.DataType.Interesser;
+import data.DataType.Person;
+import view.console.page.MenuModul;
+import view.console.page.iPageModul;
 
 public class App {
     public static void main(String[] args) throws Exception {

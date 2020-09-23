@@ -1,6 +1,6 @@
 package view.console.display;
 
-import data.dataType.Global;
+import logic.Global;
 
 public class DisplayOpretPerson implements iDisplay {
 

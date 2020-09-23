@@ -6,8 +6,8 @@ import java.util.ArrayList;
 
 import org.json.JSONObject;
 
-import data.dataType.Interesser;
-import data.dataType.Person;
+import dto.dataType.Interesser;
+import dto.dataType.Person;
 
 public class JsonAll {
     public static String encodeToString(ArrayList<Person> persons, ArrayList<Interesser> interessers) {

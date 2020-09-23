@@ -1,4 +1,4 @@
-package data.dataType;
+package dto.dataType;
 
 public class Interesser {
     public String navn;

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import data.dataType.Person;
+import dto.dataType.Person;
 
 public class JsonPerson {
 

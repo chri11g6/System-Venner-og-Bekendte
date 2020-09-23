@@ -1,4 +1,4 @@
-package data.dataType;
+package dto.dataType;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;

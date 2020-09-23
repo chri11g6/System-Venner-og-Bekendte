@@ -2,9 +2,9 @@ package view.console.page;
 
 import java.util.ArrayList;
 
-import data.dataType.Global;
-import data.dataType.Interesser;
-import data.dataType.Person;
+import logic.Global;
+import dto.dataType.Interesser;
+import dto.dataType.Person;
 import data.io.File;
 import data.io.csv.CsvPerson;
 import data.io.json.JsonAll;

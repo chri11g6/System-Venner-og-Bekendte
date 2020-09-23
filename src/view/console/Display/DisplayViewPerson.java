@@ -1,7 +1,6 @@
 package view.console.display;
 
-import data.dataType.Global;
-import data.dataType.Tools;
+import logic.Global;
 
 public class DisplayViewPerson implements iDisplay {
 

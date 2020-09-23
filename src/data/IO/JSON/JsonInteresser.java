@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import org.json.JSONArray;
 
-import data.dataType.Interesser;
+import dto.dataType.Interesser;
 
 public class JsonInteresser {
 

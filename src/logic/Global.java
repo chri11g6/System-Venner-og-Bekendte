@@ -1,7 +1,10 @@
-package data.dataType;
+package logic;
 
 import java.util.ArrayList;
 import java.util.Stack;
+
+import dto.dataType.Interesser;
+import dto.dataType.Person;
 
 public class Global {
     public static ArrayList<Person> personList = new ArrayList<Person>();

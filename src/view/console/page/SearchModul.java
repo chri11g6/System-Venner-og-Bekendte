@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import data.dataType.Global;
-import data.dataType.Interesser;
-import data.dataType.Person;
-import data.dataType.SearchFilter;
+import logic.Global;
+import dto.dataType.Interesser;
+import dto.dataType.Person;
+import view.console.SearchFilter;
 import view.console.display.DisplaySearch;
 import view.console.display.PrintTools;
 import view.console.display.iDisplay;

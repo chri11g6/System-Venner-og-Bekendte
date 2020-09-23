@@ -2,9 +2,9 @@ package view.console.display;
 
 import java.util.ArrayList;
 
-import data.dataType.Interesser;
-import data.dataType.Person;
-import data.dataType.Tools;
+import dto.dataType.Interesser;
+import dto.dataType.Person;
+
 
 public class PrintTools {
     public static void printInteresserList(ArrayList<Interesser> interessersList) {

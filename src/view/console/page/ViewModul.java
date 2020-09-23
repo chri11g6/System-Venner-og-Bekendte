@@ -1,6 +1,6 @@
 package view.console.page;
 
-import data.dataType.Global;
+import logic.Global;
 import view.console.display.DisplayView;
 import view.console.display.PrintTools;
 import view.console.display.iDisplay;

@@ -2,8 +2,8 @@ package data.io.csv;
 
 import java.util.ArrayList;
 
-import data.dataType.Interesser;
-import data.dataType.Person;
+import dto.dataType.Interesser;
+import dto.dataType.Person;
 
 public class CsvPerson {
     private static char tegnSpliter = ',';

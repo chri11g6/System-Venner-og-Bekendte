@@ -1,7 +1,7 @@
 package view.console.page;
 
-import data.dataType.Global;
-import data.dataType.Interesser;
+import logic.Global;
+import dto.dataType.Interesser;
 import view.console.display.DisplayOpretInteresser;
 import view.console.display.iDisplay;
 

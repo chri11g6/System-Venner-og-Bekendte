@@ -1,4 +1,4 @@
-package data.dataType;
+package view.console.display;
 
 public class Tools {
     public static String loopString(int tal, String str) {

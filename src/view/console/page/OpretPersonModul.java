@@ -1,8 +1,8 @@
 package view.console.page;
 
-import data.dataType.Global;
-import data.dataType.Interesser;
-import data.dataType.Person;
+import logic.Global;
+import dto.dataType.Interesser;
+import dto.dataType.Person;
 import view.console.display.DisplayOpretPerson;
 import view.console.display.iDisplay;
 

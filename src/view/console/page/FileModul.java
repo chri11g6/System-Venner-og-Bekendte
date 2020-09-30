@@ -1,21 +1,16 @@
 package view.console.page;
 
-import java.util.ArrayList;
-
 import logic.Global;
-import dto.dataType.Interesser;
-import dto.dataType.Person;
-import data.io.File;
-import data.io.csv.CsvPerson;
-import data.io.json.JsonAll;
-import data.io.json.JsonInteresser;
-import data.io.json.JsonPerson;
+import logic.SaveAndLoad;
+import logic.iSaveAndLoad;
 import view.console.display.DisplayFile;
 import view.console.display.iDisplay;
 
 public class FileModul implements iPageModul {
 
     private iDisplay display = new DisplayFile();
+
+    private iSaveAndLoad saveAndLoad = new SaveAndLoad();
 
     @Override
     public void run() {
@@ -39,7 +34,6 @@ public class FileModul implements iPageModul {
                     }
                     break;
                 case "load":
-                    // System.out.println("Denne funktion er midlertidig ikke funktionær");
                     loadToJSON(key[1]);
                     break;
                 case "pwd":
@@ -59,41 +53,38 @@ public class FileModul implements iPageModul {
         Global.sti.pop();
     }
 
-    public void saveToCSV() {
-        try {
-            System.out.println("Hvor skal den gemme henne?");
-            String path = display.getInputString(Global.getSti() + "> Save");
-            String data = CsvPerson.encode(Global.personList);
+    // public void saveToCSV() {
+    //     try {
+    //         System.out.println("Hvor skal den gemme henne?");
+    //         String path = display.getInputString(Global.getSti() + "> Save");
+    //         String data = CsvPerson.encode(Global.personList);
 
-            File.write(data, path);
-        } catch (Exception e) {
-            display.printLine();
-            System.out.println("Kunne ikke save file fordi:");
-            System.out.println(e.getMessage());
-            display.printLine();
-        }
-    }
+    //         FileIO.write(data, path);
+    //     } catch (Exception e) {
+    //         display.printLine();
+    //         System.out.println("Kunne ikke save file fordi:");
+    //         System.out.println(e.getMessage());
+    //         display.printLine();
+    //     }
+    // }
 
     public void saveToJSON(String type) {
         try {
             System.out.println("Hvor skal den gemme henne?");
             String path = display.getInputString(Global.getSti() + "> Save");
-            String data = "";
             switch (type) {
                 case "all":
-                    data = JsonAll.encodeToString(Global.personList, Global.interesserList);
+                    saveAndLoad.saveAllAsJSON(path);
                     break;
                 case "personlist":
-                    data = JsonPerson.encodeToString(Global.personList);
+                    saveAndLoad.savePersonsAsJSON(path);
                     break;
                 case "interesserlist":
-                    data = JsonInteresser.encodeToString(Global.interesserList);
+                    saveAndLoad.saveInteressersAsJSON(path);
                     break;
                 default:
                     throw new IllegalArgumentException("Kan ikke finde den type: " + type);
             }
-
-            File.write(data, path);
         } catch (Exception e) {
             display.printLine();
             System.out.println("Kunne ikke save file fordi:");
@@ -106,27 +97,15 @@ public class FileModul implements iPageModul {
         try {
             System.out.println("Hvor skal den hent den?");
             String path = display.getInputString(Global.getSti() + "> Load");
-            String data = File.read(path);
             switch (type) {
                 case "all":
-                    Object[] datas = JsonAll.decode(data);
-                    ArrayList<Person> personsDataAll = (ArrayList<Person>)datas[0];
-                    ArrayList<Interesser> interessersDataAll = (ArrayList<Interesser>)datas[1];
-
-                    Global.personList.clear();
-                    Global.personList.addAll(personsDataAll);
-                    Global.interesserList.clear();
-                    Global.interesserList.addAll(interessersDataAll);
+                    saveAndLoad.loadAllAsJSON(path);
                     break;
                 case "personlist":
-                    ArrayList<Person> personsData = JsonPerson.decode(data);
-                    Global.personList.clear();
-                    Global.personList.addAll(personsData);
+                    saveAndLoad.loadPersonsAsJSON(path);
                     break;
                 case "interesserlist":
-                    ArrayList<Interesser> interessersData = JsonInteresser.decode(data);
-                    Global.interesserList.clear();
-                    Global.interesserList.addAll(interessersData);
+                    saveAndLoad.loadInteressersAsJSON(path);
                     break;
                 default:
                     throw new IllegalArgumentException("Kan ikke finde den type: " + type);

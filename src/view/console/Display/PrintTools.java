@@ -1,13 +1,13 @@
 package view.console.display;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import dto.dataType.Interesser;
 import dto.dataType.Person;
 
 
 public class PrintTools {
-    public static void printInteresserList(ArrayList<Interesser> interessersList) {
+    public static void printInteresserList(List<Interesser> interessersList) {
         int maxSizeId = 2;
         int maxSizeInteresser = 10;
 
@@ -37,7 +37,7 @@ public class PrintTools {
         System.out.println("");
     }
 
-    public static void printPersonList(ArrayList<Person> personsList) {
+    public static void printPersonList(List<Person> personsList) {
         int maxSizeForNavn = 7;
         int maxSizeId = 2;
         int maxSizeEfterNavn = 9;

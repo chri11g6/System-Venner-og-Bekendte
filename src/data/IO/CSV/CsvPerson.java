@@ -1,6 +1,7 @@
 package data.io.csv;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import dto.dataType.Interesser;
 import dto.dataType.Person;
@@ -8,7 +9,7 @@ import dto.dataType.Person;
 public class CsvPerson {
     private static char tegnSpliter = ',';
 
-    public static String encode(ArrayList<Person> datas) {
+    public static String encode(List<Person> datas) {
         StringBuilder builder = new StringBuilder();
 
         builder.append("forNavn");
@@ -49,10 +50,10 @@ public class CsvPerson {
         return builder.toString();
     }
 
-    public static ArrayList<Person> decode(String text) {
+    public static List<Person> decode(String text) {
         String[] lings = text.split("\n");
 
-        ArrayList<Person> personList = new ArrayList<Person>();
+        List<Person> personList = new ArrayList<Person>();
 
         for(int i = 1; i < lings.length; i++){
             try{

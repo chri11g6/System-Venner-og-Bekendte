@@ -1,6 +1,7 @@
 package view.console.page;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -15,8 +16,8 @@ import view.console.display.iDisplay;
 public class SearchModul implements iPageModul {
 
     private iDisplay display = new DisplaySearch();
-    private ArrayList<Person> personSearchList = new ArrayList<Person>();
-    private ArrayList<Interesser> interesserSearchList = new ArrayList<Interesser>();
+    private List<Person> personSearchList = new ArrayList<Person>();
+    private List<Interesser> interesserSearchList = new ArrayList<Interesser>();
 
     @Override
     public void run() {
@@ -58,7 +59,7 @@ public class SearchModul implements iPageModul {
     }
 
     private void search(String[] word) {
-        ArrayList<SearchFilter> filtersList = new ArrayList<SearchFilter>();
+        List<SearchFilter> filtersList = new ArrayList<SearchFilter>();
 
         int counter = 3;
 
@@ -141,14 +142,14 @@ public class SearchModul implements iPageModul {
         }
     }
 
-    private void searchInteresserFunction(ArrayList<SearchFilter> filtersList) {
-        ArrayList<ArrayList<SearchFilter>> fullList = sortFilter(filtersList);
+    private void searchInteresserFunction(List<SearchFilter> filtersList) {
+        List<List<SearchFilter>> fullList = sortFilter(filtersList);
 
-        ArrayList<SearchFilter> orList = fullList.get(0);
-        ArrayList<SearchFilter> andList = fullList.get(1);
-        ArrayList<SearchFilter> notList = fullList.get(2);
+        List<SearchFilter> orList = fullList.get(0);
+        List<SearchFilter> andList = fullList.get(1);
+        List<SearchFilter> notList = fullList.get(2);
 
-        ArrayList<Interesser> bufferList = new ArrayList<Interesser>();
+        List<Interesser> bufferList = new ArrayList<Interesser>();
 
         interesserSearchList.clear();
 
@@ -179,14 +180,14 @@ public class SearchModul implements iPageModul {
 
     }
 
-    private void searchPersonFunction(ArrayList<SearchFilter> filtersList) {
-        ArrayList<ArrayList<SearchFilter>> fullList = sortFilter(filtersList);
+    private void searchPersonFunction(List<SearchFilter> filtersList) {
+        List<List<SearchFilter>> fullList = sortFilter(filtersList);
 
-        ArrayList<SearchFilter> orList = fullList.get(0);
-        ArrayList<SearchFilter> andList = fullList.get(1);
-        ArrayList<SearchFilter> notList = fullList.get(2);
+        List<SearchFilter> orList = fullList.get(0);
+        List<SearchFilter> andList = fullList.get(1);
+        List<SearchFilter> notList = fullList.get(2);
 
-        ArrayList<Person> bufferList = new ArrayList<Person>();
+        List<Person> bufferList = new ArrayList<Person>();
 
         personSearchList.clear();
 
@@ -217,8 +218,8 @@ public class SearchModul implements iPageModul {
 
     }
 
-    private ArrayList<Interesser> searchInteresserData(ArrayList<SearchFilter> filterList, ArrayList<Interesser> interesserList){
-        ArrayList<Interesser> bufferList = new ArrayList<Interesser>();
+    private List<Interesser> searchInteresserData(List<SearchFilter> filterList, List<Interesser> interesserList){
+        List<Interesser> bufferList = new ArrayList<Interesser>();
         filterList.forEach(filter -> {
             interesserList.forEach(interesser -> {
                 if(regexTest(filter.keyword, interesser.navn)){
@@ -230,8 +231,8 @@ public class SearchModul implements iPageModul {
         return bufferList;
     }
 
-    private ArrayList<Person> searchPersonData(ArrayList<SearchFilter> filterList, ArrayList<Person> personList) {
-        ArrayList<Person> bufferList = new ArrayList<Person>();
+    private List<Person> searchPersonData(List<SearchFilter> filterList, List<Person> personList) {
+        List<Person> bufferList = new ArrayList<Person>();
         filterList.forEach(filter -> {
             personList.forEach(person -> {
                 switch (filter.permeter) {
@@ -272,12 +273,12 @@ public class SearchModul implements iPageModul {
         return bufferList;
     }
 
-    private ArrayList<ArrayList<SearchFilter>> sortFilter(ArrayList<SearchFilter> filtersList){
-        ArrayList<SearchFilter> orList = new ArrayList<SearchFilter>();
-        ArrayList<SearchFilter> andList = new ArrayList<SearchFilter>();
-        ArrayList<SearchFilter> notList = new ArrayList<SearchFilter>();
+    private List<List<SearchFilter>> sortFilter(List<SearchFilter> filtersList){
+        List<SearchFilter> orList = new ArrayList<SearchFilter>();
+        List<SearchFilter> andList = new ArrayList<SearchFilter>();
+        List<SearchFilter> notList = new ArrayList<SearchFilter>();
 
-        ArrayList<ArrayList<SearchFilter>> fullList = new ArrayList<ArrayList<SearchFilter>>();
+        List<List<SearchFilter>> fullList = new ArrayList<List<SearchFilter>>();
 
         filtersList.forEach(filter -> {
             if (filter.type == SearchFilter.Operators.OR) {

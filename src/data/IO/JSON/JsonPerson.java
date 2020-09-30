@@ -1,6 +1,7 @@
 package data.io.json;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -9,11 +10,11 @@ import dto.dataType.Person;
 
 public class JsonPerson {
 
-    public static String encodeToString(ArrayList<Person> persons) {
+    public static String encodeToString(List<Person> persons) {
         return encode(persons).toString();
     }
 
-    public static JSONArray encode(ArrayList<Person> persons) {
+    public static JSONArray encode(List<Person> persons) {
         
         JSONArray jsonArray = new JSONArray();
 
@@ -40,9 +41,9 @@ public class JsonPerson {
         return jsonArray;
     }
 
-    public static ArrayList<Person> decode(String data) {
+    public static List<Person> decode(String data) {
         JSONArray personsJson = new JSONArray(data);
-        ArrayList<Person> personList = new ArrayList<Person>();
+        List<Person> personList = new ArrayList<Person>();
 
         for (int i = 0; i < personsJson.length(); i++) {
             JSONObject personJson = personsJson.getJSONObject(i);

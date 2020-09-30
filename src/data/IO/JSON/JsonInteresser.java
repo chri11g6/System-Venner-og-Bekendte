@@ -1,6 +1,7 @@
 package data.io.json;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.json.JSONArray;
 
@@ -8,11 +9,11 @@ import dto.dataType.Interesser;
 
 public class JsonInteresser {
 
-    public static String encodeToString(ArrayList<Interesser> interessers) {
+    public static String encodeToString(List<Interesser> interessers) {
         return encode(interessers).toString();
     }
 
-    public static JSONArray encode(ArrayList<Interesser> datas) {
+    public static JSONArray encode(List<Interesser> datas) {
         JSONArray jsonArray = new JSONArray();
 
         for (int i = 0; i < datas.size(); i++) {
@@ -22,9 +23,9 @@ public class JsonInteresser {
         return jsonArray;
     }
 
-    public static ArrayList<Interesser> decode(String data) {
+    public static List<Interesser> decode(String data) {
         JSONArray interesserJson = new JSONArray(data);
-        ArrayList<Interesser> interesserList = new ArrayList<Interesser>();
+        List<Interesser> interesserList = new ArrayList<Interesser>();
 
         for (int i = 0; i < interesserJson.length(); i++) {
             interesserList.add(new Interesser(interesserJson.getString(i)));

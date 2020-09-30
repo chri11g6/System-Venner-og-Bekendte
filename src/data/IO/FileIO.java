@@ -5,7 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class File {
+public class FileIO {
     public static void write(String data, String path) throws IOException {
         FileWriter out = null;
 

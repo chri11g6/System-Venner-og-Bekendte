@@ -2,38 +2,39 @@
 
 package data.io.json;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.json.JSONObject;
 
+import dto.dataType.FileData;
 import dto.dataType.Interesser;
 import dto.dataType.Person;
 
 public class JsonAll {
-    public static String encodeToString(ArrayList<Person> persons, ArrayList<Interesser> interessers) {
-        return encode(persons, interessers).toString();
+    public static String encodeToString(FileData jsonDatas) {
+        return encode(jsonDatas).toString();
     }
 
-    public static JSONObject encode(ArrayList<Person> persons, ArrayList<Interesser> interessers) {
+    public static JSONObject encode(FileData jsonDatas) {
         JSONObject json = new JSONObject();
 
-        json.put("persons", JsonPerson.encode(persons));
-        json.put("interessers", JsonInteresser.encode(interessers));
+        json.put("persons", JsonPerson.encode(jsonDatas.persons));
+        json.put("interessers", JsonInteresser.encode(jsonDatas.interessers));
 
         return json;
     }
 
-    public static Object[] decode(String data) {
-        JSONObject Json = new JSONObject(data);
+    public static FileData decode(String jsonData) {
+        JSONObject Json = new JSONObject(jsonData);
 
-        ArrayList<Person> personList = JsonPerson.decode(Json.getJSONArray("persons").toString());
-        ArrayList<Interesser> interessersList = JsonInteresser.decode(Json.getJSONArray("interessers").toString());
+        List<Person> personList = JsonPerson.decode(Json.getJSONArray("persons").toString());
+        List<Interesser> interessersList = JsonInteresser.decode(Json.getJSONArray("interessers").toString());
 
-        Object[] obj = new Object[2];
+        FileData data = new FileData();
 
-        obj[0] = personList;
-        obj[1] = interessersList;
+        data.persons = personList;
+        data.interessers = interessersList;
 
-        return obj;
+        return data;
     }
 }

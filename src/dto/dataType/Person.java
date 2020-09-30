@@ -1,6 +1,7 @@
 package dto.dataType;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -12,7 +13,7 @@ public class Person {
     public int alder;
     private String telefon;
     private String email;
-    public ArrayList<Interesser> interesser = new ArrayList<Interesser>();
+    public List<Interesser> interesser = new ArrayList<Interesser>();
 
     public Person(){
         this.id = counter;

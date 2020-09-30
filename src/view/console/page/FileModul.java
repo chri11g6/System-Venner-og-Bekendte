@@ -29,7 +29,6 @@ public class FileModul implements iPageModul {
                     break;
                 case "save":
                     if(key.length > 1){
-                        // saveToCSV();
                         saveToJSON(key[1]);
                     }
                     break;
@@ -52,21 +51,6 @@ public class FileModul implements iPageModul {
 
         Global.sti.pop();
     }
-
-    // public void saveToCSV() {
-    //     try {
-    //         System.out.println("Hvor skal den gemme henne?");
-    //         String path = display.getInputString(Global.getSti() + "> Save");
-    //         String data = CsvPerson.encode(Global.personList);
-
-    //         FileIO.write(data, path);
-    //     } catch (Exception e) {
-    //         display.printLine();
-    //         System.out.println("Kunne ikke save file fordi:");
-    //         System.out.println(e.getMessage());
-    //         display.printLine();
-    //     }
-    // }
 
     public void saveToJSON(String type) {
         try {

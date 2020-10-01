@@ -14,7 +14,7 @@ public class OpretInteresserModul implements iPageModul {
 
         Global.sti.push("interesser");
 
-        System.out.println("Hvad er dit fornavn?");
+        System.out.println("Hvad er interesse navn?");
 
         Interesser interesser = new Interesser(display.getInputString(Global.getSti()));
 

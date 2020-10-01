@@ -7,20 +7,20 @@ import view.console.display.iDisplay;
 
 public class OpretInteresserModul implements iPageModul {
 
-    private iDisplay display = new DisplayOpretInteresser();
+	private iDisplay display = new DisplayOpretInteresser();
 
-    @Override
-    public void run() {
+	@Override
+	public void run() {
 
-        Global.sti.push("interesser");
+		Global.sti.push("interesser");
 
-        System.out.println("Hvad er interesse navn?");
+		System.out.println("Hvad er interesse navn?");
 
-        Interesser interesser = new Interesser(display.getInputString(Global.getSti()));
+		Interesser interesser = new Interesser(display.getInputString(Global.getSti()));
 
-        Global.interesserList.add(interesser);
+		Global.interesserList.add(interesser);
 
-        Global.sti.pop();
-    }
-    
+		Global.sti.pop();
+	}
+
 }

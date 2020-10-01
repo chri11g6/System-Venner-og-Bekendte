@@ -6,47 +6,46 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class FileIO {
-    public static void write(String data, String path) throws IOException {
-        FileWriter out = null;
+	public static void write(String data, String path) throws IOException {
+		FileWriter out = null;
 
-        try {
-            out = new FileWriter(path);
+		try {
+			out = new FileWriter(path);
 
-            out.write(data);
-        } finally {
-            if (out != null) {
-                out.close();
-            }
-        }
-    }
+			out.write(data);
+		} finally {
+			if (out != null) {
+				out.close();
+			}
+		}
+	}
 
-    public static String read(String path) throws IOException {
-        FileInputStream file = null;
-        Scanner scanner = null;
+	public static String read(String path) throws IOException {
+		FileInputStream file = null;
+		Scanner scanner = null;
 
-        try {
-            StringBuilder data = new StringBuilder();
+		try {
+			StringBuilder data = new StringBuilder();
 
-            file = new FileInputStream(path);
+			file = new FileInputStream(path);
 
-            scanner = new Scanner(file);
+			scanner = new Scanner(file);
 
-            while(scanner.hasNextLine()){
-                data.append(scanner.nextLine());
-                data.append("\n");
-            }
+			while (scanner.hasNextLine()) {
+				data.append(scanner.nextLine());
+				data.append("\n");
+			}
 
-            return data.toString();
+			return data.toString();
 
-
-        } finally {
-            if (file != null) {
-                file.close();
-            }
-            if (scanner != null) {
-                scanner.close();
-            }
-        }
-    }
+		} finally {
+			if (file != null) {
+				file.close();
+			}
+			if (scanner != null) {
+				scanner.close();
+			}
+		}
+	}
 
 }

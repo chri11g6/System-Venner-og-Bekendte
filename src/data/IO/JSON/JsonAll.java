@@ -11,30 +11,30 @@ import dto.dataType.Interesser;
 import dto.dataType.Person;
 
 public class JsonAll {
-    public static String encodeToString(FileData jsonDatas) {
-        return encode(jsonDatas).toString();
-    }
+	public static String encodeToString(FileData jsonDatas) {
+		return encode(jsonDatas).toString();
+	}
 
-    public static JSONObject encode(FileData jsonDatas) {
-        JSONObject json = new JSONObject();
+	public static JSONObject encode(FileData jsonDatas) {
+		JSONObject json = new JSONObject();
 
-        json.put("persons", JsonPerson.encode(jsonDatas.persons));
-        json.put("interessers", JsonInteresser.encode(jsonDatas.interessers));
+		json.put("persons", JsonPerson.encode(jsonDatas.persons));
+		json.put("interessers", JsonInteresser.encode(jsonDatas.interessers));
 
-        return json;
-    }
+		return json;
+	}
 
-    public static FileData decode(String jsonData) {
-        JSONObject Json = new JSONObject(jsonData);
+	public static FileData decode(String jsonData) {
+		JSONObject Json = new JSONObject(jsonData);
 
-        List<Person> personList = JsonPerson.decode(Json.getJSONArray("persons").toString());
-        List<Interesser> interessersList = JsonInteresser.decode(Json.getJSONArray("interessers").toString());
+		List<Person> personList = JsonPerson.decode(Json.getJSONArray("persons").toString());
+		List<Interesser> interessersList = JsonInteresser.decode(Json.getJSONArray("interessers").toString());
 
-        FileData data = new FileData();
+		FileData data = new FileData();
 
-        data.persons = personList;
-        data.interessers = interessersList;
+		data.persons = personList;
+		data.interessers = interessersList;
 
-        return data;
-    }
+		return data;
+	}
 }

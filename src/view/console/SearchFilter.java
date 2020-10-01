@@ -1,13 +1,11 @@
 package view.console;
 
 public class SearchFilter {
-    public enum Operators {
-        OR,
-        AND,
-        NOT
-    }
+	public enum Operators {
+		OR, AND, NOT
+	}
 
-    public Operators type;
-    public String permeter;
-    public String keyword;
+	public Operators type;
+	public String permeter;
+	public String keyword;
 }

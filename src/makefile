@@ -124,3 +124,6 @@ $(dto)/Interesser.class:
 
 $(dto)/FileData.class: $(dto)/Interesser.class $(dto)/Person.class
 	$(JC) -cp . $(dto)/FileData.java
+
+clean:
+	find -iname "*.class" -delete

@@ -21,4 +21,4 @@ RUN make
 
 WORKDIR /usr/src/myapp/src
 
-CMD ["java", "App"]
+CMD ["java","-cp", ".:../lib/json-java.jar", "App"]

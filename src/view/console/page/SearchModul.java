@@ -6,8 +6,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import logic.Global;
-import dto.dataType.Interesser;
-import dto.dataType.Person;
+import dto.Interesser;
+import dto.Person;
 import view.console.SearchFilter;
 import view.console.display.DisplaySearch;
 import view.console.display.PrintTools;

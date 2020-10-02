@@ -1,9 +1,12 @@
 JC		:= javac
 
-logic	:= logic
-view	:= view
-data	:= data
-dto		:= dto/dataType
+# lib		:= ../lib/json-java.jar
+lib		:= lib/json-java.jar
+src		:= src
+logic	:= $(src)/logic
+view	:= $(src)/view
+data	:= $(src)/data
+dto		:= $(src)/dto/dataType
 console	:= $(view)/console
 page	:= $(console)/page
 display	:= $(console)/display
@@ -12,7 +15,7 @@ csv		:= $(io)/csv
 json	:= $(io)/json
 
 default: $(page)/MenuModul.class $(page)/iPageModul.class $(dto)/Interesser.class $(dto)/Person.class $(logic)/Global.class
-	$(JC) App.java
+	$(JC) $(src)/App.java
 
 # page
 $(page)/EditPersonInteresserModul.class: $(logic)/Global.class $(dto)/Interesser.class $(display)/DisplayEditPersonInteresser.class $(display)/iDisplay.class $(display)/PrintTools.class
@@ -103,13 +106,13 @@ $(io)/FileIO.class:
 
 # json
 $(json)/JsonAll.class:  $(dto)/FileData.class $(dto)/Interesser.class $(dto)/Person.class
-	$(JC) -cp .:./lib/json-java.jar; . $(json)/JsonAll.java
+	$(JC) -cp $(lib) . $(json)/JsonAll.java
 
 $(json)/JsonInteresser.class: $(dto)/Interesser.class
-	$(JC) -cp .:./lib/json-java.jar; . $(json)/JsonInteresser.java
+	$(JC) -cp $(lib) . $(json)/JsonInteresser.java
 
 $(json)/JsonPerson.class: $(dto)/Person.class
-	$(JC) -cp .:./lib/json-java.jar; . $(json)/JsonPerson.java
+	$(JC) -cp $(lib) . $(json)/JsonPerson.java
 
 # csv
 $(csv)/JsonPerson.class: $(dto)/Interesser.class $(dto)/Person.class

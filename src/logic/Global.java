@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-import dto.dataType.Interesser;
-import dto.dataType.Person;
+import dto.Interesser;
+import dto.Person;
 
 public class Global {
 	public static List<Person> personList = new ArrayList<Person>();

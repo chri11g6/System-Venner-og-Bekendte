@@ -2,8 +2,8 @@ package view.console.display;
 
 import java.util.List;
 
-import dto.dataType.Interesser;
-import dto.dataType.Person;
+import dto.Interesser;
+import dto.Person;
 
 public class PrintTools {
 	public static void printInteresserList(List<Interesser> interessersList) {

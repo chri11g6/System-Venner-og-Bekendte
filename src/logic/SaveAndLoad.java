@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import data.File;
 import data.iFile;
-import dto.dataType.FileData;
+import dto.FileData;
 
 public class SaveAndLoad implements iSaveAndLoad {
 

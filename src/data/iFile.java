@@ -3,9 +3,9 @@ package data;
 import java.io.IOException;
 import java.util.List;
 
-import dto.dataType.FileData;
-import dto.dataType.Interesser;
-import dto.dataType.Person;
+import dto.FileData;
+import dto.Interesser;
+import dto.Person;
 
 public interface iFile {
 	public void saveInteressersAsJSON(FileData data) throws IOException;

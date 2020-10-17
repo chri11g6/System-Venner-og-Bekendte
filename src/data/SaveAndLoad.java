@@ -1,9 +1,7 @@
-package logic;
+package data;
 
 import java.io.IOException;
 
-import data.File;
-import data.iFile;
 import dto.FileData;
 
 public class SaveAndLoad implements iSaveAndLoad {
@@ -15,17 +13,17 @@ public class SaveAndLoad implements iSaveAndLoad {
 		FileData data = new FileData();
 
 		data.path = path;
-		data.interessers = Global.interesserList;
+		data.interessers = HoldData.getInteresserData().getAllAsList();
 		file.saveInteressersAsJSON(data);
 	}
 
 	@Override
 	public void savePersonsAsJSON(String path) throws IOException {
-		FileData data = new FileData();
-
-		data.path = path;
-		data.persons = Global.personList;
-		file.savePersonsAsJSON(data);
+			FileData data = new FileData();
+	
+			data.path = path;
+			data.persons = HoldData.getPersonData().getAllAsList();
+			file.savePersonsAsJSON(data);
 	}
 
 	@Override
@@ -33,33 +31,27 @@ public class SaveAndLoad implements iSaveAndLoad {
 		FileData data = new FileData();
 
 		data.path = path;
-		data.persons = Global.personList;
-		data.interessers = Global.interesserList;
+		data.persons = HoldData.getPersonData().getAllAsList();
+		data.interessers = HoldData.getInteresserData().getAllAsList();
 		file.saveAllAsJSON(data);
 	}
 
 	@Override
 	public void loadInteressersAsJSON(String path) throws IOException {
-		Global.interesserList.clear();
-		Global.interesserList.addAll(file.loadInteressersAsJSON(path));
-
+		HoldData.getInteresserData().addFresh(file.loadInteressersAsJSON(path));
 	}
 
 	@Override
 	public void loadPersonsAsJSON(String path) throws IOException {
-		Global.personList.clear();
-		Global.personList.addAll(file.loadPersonsAsJSON(path));
-
+		HoldData.getPersonData().addFresh(file.loadPersonsAsJSON(path));
 	}
 
 	@Override
 	public void loadAllAsJSON(String path) throws IOException {
 		FileData data = file.loadAllAsJSON(path);
 
-		Global.personList.clear();
-		Global.personList.addAll(data.persons);
-		Global.interesserList.clear();
-		Global.interesserList.addAll(data.interessers);
+		HoldData.getInteresserData().addFresh(data.interessers);
+		HoldData.getPersonData().addFresh(data.persons);
 	}
-
+	
 }

@@ -1,10 +1,11 @@
 package view.console.page;
 
 import logic.Global;
+import view.iView;
 import view.console.display.DisplayMenu;
 import view.console.display.iDisplay;
 
-public class MenuModul implements iPageModul {
+public class MenuModul implements iPageModul, iView {
 
 	private iDisplay display = new DisplayMenu();
 

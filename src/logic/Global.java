@@ -1,15 +1,13 @@
 package logic;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Stack;
 
-import dto.Interesser;
 import dto.Person;
 
 public class Global {
-	public static List<Person> personList = new ArrayList<Person>();
-	public static List<Interesser> interesserList = new ArrayList<Interesser>();
+
+	public static iPesonLogicData personList = new PesonLogicData();
+	public static iInteresserLogicData interesserList = new InteresserLogicData();
 
 	public static Person personHolder;
 

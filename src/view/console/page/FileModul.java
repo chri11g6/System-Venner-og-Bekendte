@@ -1,8 +1,8 @@
 package view.console.page;
 
 import logic.Global;
-import logic.SaveAndLoad;
-import logic.iSaveAndLoad;
+import logic.SaveAndLoadLogic;
+import logic.iSaveAndLoadLogic;
 import view.console.display.DisplayFile;
 import view.console.display.iDisplay;
 
@@ -10,7 +10,7 @@ public class FileModul implements iPageModul {
 
 	private iDisplay display = new DisplayFile();
 
-	private iSaveAndLoad saveAndLoad = new SaveAndLoad();
+	private iSaveAndLoadLogic saveAndLoad = new SaveAndLoadLogic();
 
 	@Override
 	public void run() {

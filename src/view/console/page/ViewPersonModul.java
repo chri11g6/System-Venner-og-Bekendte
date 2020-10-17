@@ -111,7 +111,7 @@ public class ViewPersonModul implements iPageModul {
 
 					for (int i = 0; i < Global.personList.size(); i++) {
 						if (Global.personList.get(i).getId() == Global.personHolder.getId()) {
-							Global.personList.set(i, Global.personHolder);
+							Global.personList.update(Global.personHolder, i);
 							break;
 						}
 					}

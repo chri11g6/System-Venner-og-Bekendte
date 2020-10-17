@@ -151,7 +151,7 @@ public class SearchModul implements iPageModul {
 
 		interesserSearchList.clear();
 
-		interesserSearchList.addAll(searchInteresserData(orList, Global.interesserList));
+		interesserSearchList.addAll(searchInteresserData(orList, Global.interesserList.getAllAsList()));
 		if (andList.size() != 0) {
 			bufferList.clear();
 			bufferList.addAll(searchInteresserData(andList, interesserSearchList));
@@ -189,7 +189,7 @@ public class SearchModul implements iPageModul {
 
 		personSearchList.clear();
 
-		personSearchList.addAll(searchPersonData(orList, Global.personList));
+		personSearchList.addAll(searchPersonData(orList, Global.personList.getAllAsList()));
 		if (andList.size() != 0) {
 			bufferList.clear();
 			bufferList.addAll(searchPersonData(andList, personSearchList));

@@ -33,7 +33,7 @@ public class ViewModul implements iPageModul {
 
 							personView.run();
 						} else {
-							PrintTools.printPersonList(Global.personList);
+							PrintTools.printPersonList(Global.personList.getAllAsList());
 						}
 					} catch (Exception e) {
 						display.printLine();
@@ -43,7 +43,7 @@ public class ViewModul implements iPageModul {
 					}
 					break;
 				case "interesser":
-					PrintTools.printInteresserList(Global.interesserList);
+					PrintTools.printInteresserList(Global.interesserList.getAllAsList());
 					break;
 				case "pwd":
 					System.out.println("Du er på view");

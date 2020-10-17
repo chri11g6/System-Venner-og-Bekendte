@@ -31,7 +31,7 @@ public class EditPersonInteresserModul implements iPageModul {
 					if (key.length > 1 && key[1].equalsIgnoreCase("global")) {
 						display.printLine();
 						System.out.println("Global interesser list");
-						PrintTools.printInteresserList(Global.interesserList);
+						PrintTools.printInteresserList(Global.interesserList.getAllAsList());
 					} else {
 						display.printLine();
 						System.out.println("Person's interesser list");
@@ -76,7 +76,7 @@ public class EditPersonInteresserModul implements iPageModul {
 
 					for (int i = 0; i < Global.personList.size(); i++) {
 						if (Global.personList.get(i).getId() == Global.personHolder.getId()) {
-							Global.personList.set(i, Global.personHolder);
+							Global.personList.update(Global.personHolder, i);
 							break;
 						}
 					}

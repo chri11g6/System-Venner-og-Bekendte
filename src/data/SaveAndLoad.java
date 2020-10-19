@@ -19,11 +19,11 @@ public class SaveAndLoad implements iSaveAndLoad {
 
 	@Override
 	public void savePersonsAsJSON(String path) throws IOException {
-			FileData data = new FileData();
-	
-			data.path = path;
-			data.persons = HoldData.getPersonData().getAllAsList();
-			file.savePersonsAsJSON(data);
+		FileData data = new FileData();
+
+		data.path = path;
+		data.persons = HoldData.getPersonData().getAllAsList();
+		file.savePersonsAsJSON(data);
 	}
 
 	@Override
@@ -53,5 +53,5 @@ public class SaveAndLoad implements iSaveAndLoad {
 		HoldData.getInteresserData().addFresh(data.interessers);
 		HoldData.getPersonData().addFresh(data.persons);
 	}
-	
+
 }

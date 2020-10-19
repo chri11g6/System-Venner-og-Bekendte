@@ -22,7 +22,7 @@ default: $(page)/MenuModul.class $(page)/iPageModul.class $(dto)/Interesser.clas
 $(page)/EditPersonInteresserModul.class: $(logic)/Global.class $(dto)/Interesser.class $(display)/DisplayEditPersonInteresser.class $(display)/iDisplay.class $(display)/PrintTools.class
 	$(JC) -cp $(src) $(JCFLAG) $(page)/EditPersonInteresserModul.java
 
-$(page)/FileModul.class: $(logic)/Global.class $(logic)/SaveAndLoad.class $(logic)/iSaveAndLoad.class $(display)/DisplayFile.class $(display)/iDisplay.class
+$(page)/FileModul.class: $(logic)/Global.class $(logic)/SaveAndLoadLogic.class $(logic)/iSaveAndLoadLogic.class $(display)/DisplayFile.class $(display)/iDisplay.class
 	$(JC) -cp $(src) $(JCFLAG) $(page)/FileModul.java
 
 $(page)/iPageModul.class:
@@ -85,14 +85,26 @@ $(display)/Tools.class:
 	$(JC) -cp $(src) $(JCFLAG) $(display)/Tools.java
 
 # logic
-$(logic)/Global.class: $(dto)/Interesser.class $(dto)/Person.class
+$(logic)/Global.class: $(logic)/iInteresserLogicData.class $(logic)/InteresserLogicData.class $(logic)/iPesonLogicData.class $(logic)/PesonLogicData.class
 	$(JC) -cp $(src) $(JCFLAG) $(logic)/Global.java
 
-$(logic)/iSaveAndLoad.class:
-	$(JC) -cp $(src) $(JCFLAG) $(logic)/iSaveAndLoad.java
+$(logic)/iSaveAndLoadLogic.class: $(data)/iSaveAndLoad.class
+	$(JC) -cp $(src) $(JCFLAG) $(logic)/iSaveAndLoadLogic.java
 
-$(logic)/SaveAndLoad.class: $(dto)/FileData.class $(data)/File.class $(data)/iFile.class
-	$(JC) -cp $(src) $(JCFLAG) $(logic)/SaveAndLoad.java
+$(logic)/SaveAndLoadLogic.class: $(dto)/FileData.class $(data)/iSaveAndLoad.class $(data)/SaveAndLoad.class
+	$(JC) -cp $(src) $(JCFLAG) $(logic)/SaveAndLoadLogic.java
+
+$(logic)/InteresserLogicData.class: $(logic)/iInteresserLogicData.class $(dto)/Interesser.class $(data)/iInteresserData.class $(data)/HoldData.class
+	$(JC) -cp $(src) $(JCFLAG) $(logic)/InteresserLogicData.java
+
+$(logic)/iInteresserLogicData.class:
+	$(JC) -cp $(src) $(JCFLAG) $(logic)/iInteresserLogicData.java
+
+$(logic)/PesonLogicData.class: $(logic)/iPesonLogicData.class: $(dto)/Person.class $(data)/HoldData.class $(data)/iPersonData.class
+	$(JC) -cp $(src) $(JCFLAG) $(logic)/PesonLogicData.java
+
+$(logic)/iPesonLogicData.class:
+	$(JC) -cp $(src) $(JCFLAG) $(logic)/iPesonLogicData.java
 
 # data
 $(data)/File.class: $(dto)/FileData.class $(dto)/Interesser.class $(dto)/Person.class $(data)/iFile.class $(json)/JsonAll.class $(json)/JsonInteresser.class $(json)/JsonPerson.class $(io)/FileIO.class
@@ -100,6 +112,30 @@ $(data)/File.class: $(dto)/FileData.class $(dto)/Interesser.class $(dto)/Person.
 
 $(data)/iFile.class: $(dto)/FileData.class $(dto)/Interesser.class $(dto)/Person.class $(dto)/FileData.class
 	$(JC) -cp $(src) $(JCFLAG) $(data)/iFile.java
+
+$(data)/iDatabase.class:
+	$(JC) -cp $(src) $(JCFLAG) $(data)/iDatabase.java
+
+$(data)/iInteresserData.class: $(data)/iDatabase.class $(dto)/Interesser.class
+	$(JC) -cp $(src) $(JCFLAG) $(data)/iInteresserData.java
+
+$(data)/InteresserData.class: $(data)/iInteresserData.class $(dto)/Interesser.class
+	$(JC) -cp $(src) $(JCFLAG) $(data)/InteresserData.java
+
+$(data)/iPersonData.class: $(data)/iDatabase.class $(dto)/Person.class
+	$(JC) -cp $(src) $(JCFLAG) $(data)/iPersonData.java
+
+$(data)/PersonData.class: $(dto)/Person.class $(data)/iPersonData.class
+	$(JC) -cp $(src) $(JCFLAG) $(data)/PersonData.java
+
+$(data)/iSaveAndLoad.class:
+	$(JC) -cp $(src) $(JCFLAG) $(data)/iSaveAndLoad.java
+
+$(data)/SaveAndLoad.class: $(data)/iSaveAndLoad.class $(data)/iFile.class $(data)/File.class $(data)/HoldData.class $(dto)/FileData.class
+	$(JC) -cp $(src) $(JCFLAG) $(data)/SaveAndLoad.java
+
+$(data)/HoldData.class: $(data)/iInteresserData.class $(data)/iPersonData.class $(data)/PersonData.class $(data)/InteresserData.class
+	$(JC) -cp $(src) $(JCFLAG) $(data)/HoldData.java
 
 # io
 $(io)/FileIO.class:

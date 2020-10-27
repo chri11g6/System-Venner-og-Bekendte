@@ -1,14 +1,15 @@
 import logic.Global;
 import dto.Interesser;
 import dto.Person;
-import view.console.page.MenuModul;
-import view.console.page.iPageModul;
+import view.ViewFactory;
+import view.iView;
 
 public class App {
 	public static void main(String[] args) throws Exception {
 		load();
 
-		iPageModul menu = new MenuModul();
+		// iView menu = ViewFactory.getGUI();
+		iView menu = ViewFactory.getConsole();
 
 		menu.run();
 

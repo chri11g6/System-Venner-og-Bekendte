@@ -3,16 +3,16 @@ package view.gui;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import view.iView;
 
-public class GuiApp extends Application {
-	public void run(String[] args){
-		launch(args);
+public class GuiApp extends Application implements iView {
+	public void run() {
+		launch();
 	}
 
 	public void start(Stage stage) throws Exception {
-		// Parent root = FXMLLoader.load(getClass().getResource("gui.fxml"));
 		stage.setTitle("Venner og bekendte");
-		// stage.setScene(new Scene(root, 800, 800));
+		stage.setScene(new Scene(new WindowsPage().load(), 640, 400));
 
 		stage.show();
 	}

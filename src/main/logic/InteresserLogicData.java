@@ -2,13 +2,13 @@ package main.logic;
 
 import java.util.List;
 
-import main.data.HoldData;
+import main.data.DataFactory;
 import main.data.iInteresserData;
 import main.dto.iInteresser;
 
 public class InteresserLogicData implements iInteresserLogicData {
 
-	private iInteresserData interesserData = HoldData.getInteresserData();
+	private iInteresserData interesserData = DataFactory.getInteresserData();
 
 	@Override
 	public void add(iInteresser data) {

@@ -13,7 +13,7 @@ public class SaveAndLoad implements iSaveAndLoad {
 		FileData data = new FileData();
 
 		data.path = path;
-		data.interessers = HoldData.getInteresserData().getAllAsList();
+		data.interessers = DataFactory.getInteresserData().getAllAsList();
 		file.saveInteressersAsJSON(data);
 	}
 
@@ -22,7 +22,7 @@ public class SaveAndLoad implements iSaveAndLoad {
 		FileData data = new FileData();
 
 		data.path = path;
-		data.persons = HoldData.getPersonData().getAllAsList();
+		data.persons = DataFactory.getPersonData().getAllAsList();
 		file.savePersonsAsJSON(data);
 	}
 
@@ -31,27 +31,27 @@ public class SaveAndLoad implements iSaveAndLoad {
 		FileData data = new FileData();
 
 		data.path = path;
-		data.persons = HoldData.getPersonData().getAllAsList();
-		data.interessers = HoldData.getInteresserData().getAllAsList();
+		data.persons = DataFactory.getPersonData().getAllAsList();
+		data.interessers = DataFactory.getInteresserData().getAllAsList();
 		file.saveAllAsJSON(data);
 	}
 
 	@Override
 	public void loadInteressersAsJSON(String path) throws IOException {
-		HoldData.getInteresserData().addFresh(file.loadInteressersAsJSON(path));
+		DataFactory.getInteresserData().addFresh(file.loadInteressersAsJSON(path));
 	}
 
 	@Override
 	public void loadPersonsAsJSON(String path) throws IOException {
-		HoldData.getPersonData().addFresh(file.loadPersonsAsJSON(path));
+		DataFactory.getPersonData().addFresh(file.loadPersonsAsJSON(path));
 	}
 
 	@Override
 	public void loadAllAsJSON(String path) throws IOException {
 		FileData data = file.loadAllAsJSON(path);
 
-		HoldData.getInteresserData().addFresh(data.interessers);
-		HoldData.getPersonData().addFresh(data.persons);
+		DataFactory.getInteresserData().addFresh(data.interessers);
+		DataFactory.getPersonData().addFresh(data.persons);
 	}
 
 }

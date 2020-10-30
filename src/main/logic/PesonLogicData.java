@@ -2,13 +2,13 @@ package main.logic;
 
 import java.util.List;
 
-import main.data.HoldData;
+import main.data.DataFactory;
 import main.data.iPersonData;
 import main.dto.iPerson;
 
 public class PesonLogicData implements iPesonLogicData {
 
-	private iPersonData personData = HoldData.getPersonData();
+	private iPersonData personData = DataFactory.getPersonData();
 
 	@Override
 	public void add(iPerson data) {

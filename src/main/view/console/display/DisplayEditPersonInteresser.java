@@ -20,10 +20,10 @@ public class DisplayEditPersonInteresser implements iDisplay {
 		int maxSizeId = 2;
 		int maxSizeInteresser = 10;
 
-		maxSizeId = Math.max(maxSizeId, String.valueOf(Global.personHolder.interesser.size()).length());
+		maxSizeId = Math.max(maxSizeId, String.valueOf(Global.personHolder.getInteresser().size()).length());
 
-		for (int i = 0; i < Global.personHolder.interesser.size(); i++) {
-			maxSizeInteresser = Math.max(maxSizeInteresser, Global.personHolder.interesser.get(i).navn.length());
+		for (int i = 0; i < Global.personHolder.getInteresser().size(); i++) {
+			maxSizeInteresser = Math.max(maxSizeInteresser, Global.personHolder.getInteresser().get(i).getNavn().length());
 		}
 
 		StringBuilder header = new StringBuilder();
@@ -36,11 +36,11 @@ public class DisplayEditPersonInteresser implements iDisplay {
 		System.out.println(header.toString());
 		System.out.println(Tools.loopString(maxSizeId + maxSizeInteresser, "-"));
 
-		for (int i = 0; i < Global.personHolder.interesser.size(); i++) {
+		for (int i = 0; i < Global.personHolder.getInteresser().size(); i++) {
 			StringBuilder interesserText = new StringBuilder();
 			interesserText.append(i);
 			interesserText.append(Tools.loopString(maxSizeId - String.valueOf(i).length() + 2, " "));
-			interesserText.append(Global.personHolder.interesser.get(i).navn);
+			interesserText.append(Global.personHolder.getInteresser().get(i).getNavn());
 			System.out.println(interesserText.toString());
 		}
 		System.out.println("");

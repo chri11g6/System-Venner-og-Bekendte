@@ -49,13 +49,13 @@ public class ViewPersonModul implements iPageModul {
 					try {
 						switch (key[1]) {
 							case "fornavn":
-								Global.personHolder.forNavn = key[2];
+								Global.personHolder.setForNavn(key[2]);
 								break;
 							case "efternavn":
-								Global.personHolder.efterNavn = key[2];
+								Global.personHolder.setEfterNavn(key[2]);
 								break;
-							case "alder":
-								Global.personHolder.alder = Integer.parseInt(key[2]);
+							case "fødselsdage":
+								Global.personHolder.getBirthday().setBirthdays(key[2]);
 								break;
 							case "telefon":
 								Global.personHolder.setTelefon(key[2]);
@@ -77,13 +77,13 @@ public class ViewPersonModul implements iPageModul {
 					try {
 						switch (key[1]) {
 							case "fornavn":
-								System.out.println(Global.personHolder.forNavn);
+								System.out.println(Global.personHolder.getForNavn());
 								break;
 							case "efternavn":
-								System.out.println(Global.personHolder.efterNavn);
+								System.out.println(Global.personHolder.getEfterNavn());
 								break;
 							case "alder":
-								System.out.println(Global.personHolder.alder);
+								System.out.println(Global.personHolder.getBirthday().getAlder());
 								break;
 							case "telefon":
 								System.out.println(Global.personHolder.getTelefon());
@@ -102,8 +102,8 @@ public class ViewPersonModul implements iPageModul {
 					}
 					break;
 				case "pwd":
-					System.out.println("Du er på Person view og du ser på " + Global.personHolder.forNavn + " "
-							+ Global.personHolder.efterNavn);
+					System.out.println("Du er på Person view og du ser på " + Global.personHolder.getForNavn() + " "
+							+ Global.personHolder.getEfterNavn());
 					break;
 				case "q":
 				case "exit":

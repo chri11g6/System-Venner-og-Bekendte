@@ -1,6 +1,7 @@
 package main.view.gui.customList;
 
 import main.dto.Interesser;
+import main.dto.iInteresser;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
@@ -14,10 +15,10 @@ import javafx.util.Callback;
 
 public class IntersserListView {
 
-	public ObservableList<Interesser> items;
+	public ObservableList<iInteresser> items;
 
 	public ListView load() {
-		ListView<Interesser> list = new ListView<Interesser>();
+		ListView<iInteresser> list = new ListView<iInteresser>();
 		items = FXCollections.observableArrayList();
 
 		items.addAll(new Interesser("Skak"), new Interesser("CounterStrike"), new Interesser("Litteratur"), new Interesser("Natur"));
@@ -25,9 +26,9 @@ public class IntersserListView {
 		list.setItems(items);
 
 		list.setCellFactory(
-			(Callback<ListView<Interesser>, ListCell<Interesser>>) new Callback<ListView<Interesser>, ListCell<Interesser>>(){
+			(Callback<ListView<iInteresser>, ListCell<iInteresser>>) new Callback<ListView<iInteresser>, ListCell<iInteresser>>(){
 				@Override
-				public ListCell<Interesser> call(ListView<Interesser> list) {
+				public ListCell<iInteresser> call(ListView<iInteresser> list) {
 					return new CustomListCell();
 				}
 			});
@@ -35,7 +36,7 @@ public class IntersserListView {
 		return list;
 	}
 
-	private class CustomListCell extends ListCell<Interesser> {
+	private class CustomListCell extends ListCell<iInteresser> {
 		private HBox rightBox;
 		private HBox leftBox;
 		private AnchorPane anchorPane;
@@ -66,10 +67,10 @@ public class IntersserListView {
 		}
 
 		@Override
-		protected void updateItem(Interesser item, boolean empty) {
+		protected void updateItem(iInteresser item, boolean empty) {
 			super.updateItem(item, empty);
 			if (item != null && !empty) { // <== test for null item and empty parameter
-				name.setText(item.navn);
+				name.setText(item.getNavn());
 				setGraphic(anchorPane);
 			} else {
 				setGraphic(null);

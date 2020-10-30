@@ -7,8 +7,8 @@ import java.util.List;
 import org.json.JSONObject;
 
 import main.dto.FileData;
-import main.dto.Interesser;
-import main.dto.Person;
+import main.dto.iInteresser;
+import main.dto.iPerson;
 
 public class JsonAll {
 	public static String encodeToString(FileData jsonDatas) {
@@ -27,8 +27,8 @@ public class JsonAll {
 	public static FileData decode(String jsonData) {
 		JSONObject Json = new JSONObject(jsonData);
 
-		List<Person> personList = JsonPerson.decode(Json.getJSONArray("persons").toString());
-		List<Interesser> interessersList = JsonInteresser.decode(Json.getJSONArray("interessers").toString());
+		List<iPerson> personList = JsonPerson.decode(Json.getJSONArray("persons").toString());
+		List<iInteresser> interessersList = JsonInteresser.decode(Json.getJSONArray("interessers").toString());
 
 		FileData data = new FileData();
 

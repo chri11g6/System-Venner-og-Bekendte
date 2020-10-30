@@ -7,30 +7,31 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import main.dto.Person;
+import main.dto.iPerson;
 
 public class JsonPerson {
 
-	public static String encodeToString(List<Person> persons) {
+	public static String encodeToString(List<iPerson> persons) {
 		return encode(persons).toString();
 	}
 
-	public static JSONArray encode(List<Person> persons) {
+	public static JSONArray encode(List<iPerson> persons) {
 
 		JSONArray jsonArray = new JSONArray();
 
 		for (int i = 0; i < persons.size(); i++) {
-			Person person = persons.get(i);
+			iPerson person = persons.get(i);
 
 			JSONObject personJson = new JSONObject();
-			personJson.put("forNavn", person.forNavn);
-			personJson.put("efterNavn", person.efterNavn);
-			personJson.put("alder", person.alder);
+			personJson.put("forNavn", person.getForNavn());
+			personJson.put("efterNavn", person.getEfterNavn());
+			personJson.put("fødselsdage", person.getBirthday().getBirthdays());
 			personJson.put("Telefon", person.getTelefon());
 			personJson.put("Email", person.getEmail());
 			JSONArray interesserArray = new JSONArray();
 
-			for (int j = 0; j < person.interesser.size(); j++) {
-				interesserArray.put(person.interesser.get(j).navn);
+			for (int j = 0; j < person.getInteresser().size(); j++) {
+				interesserArray.put(person.getInteresser().get(j).getNavn());
 			}
 
 			personJson.put("interesser", interesserArray);
@@ -40,16 +41,16 @@ public class JsonPerson {
 		return jsonArray;
 	}
 
-	public static List<Person> decode(String data) {
+	public static List<iPerson> decode(String data) {
 		JSONArray personsJson = new JSONArray(data);
-		List<Person> personList = new ArrayList<Person>();
+		List<iPerson> personList = new ArrayList<iPerson>();
 
 		for (int i = 0; i < personsJson.length(); i++) {
 			JSONObject personJson = personsJson.getJSONObject(i);
 			Person person = new Person();
-			person.forNavn = personJson.getString("forNavn");
-			person.efterNavn = personJson.getString("efterNavn");
-			person.alder = personJson.getInt("alder");
+			person.setForNavn(personJson.getString("forNavn"));
+			person.setEfterNavn(personJson.getString("efterNavn"));
+			person.getBirthday().setBirthdays(personJson.getString("fødselsdage"));
 			person.setTelefon(personJson.getString("Telefon"));
 			person.setEmail(personJson.getString("Email"));
 

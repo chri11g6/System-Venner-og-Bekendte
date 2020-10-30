@@ -3,10 +3,10 @@ package main.data;
 import java.util.ArrayList;
 import java.util.List;
 
-import main.dto.Interesser;
+import main.dto.iInteresser;
 
 public class InteresserData implements iInteresserData {
-	private List<Interesser> interesserList = new ArrayList<Interesser>();
+	private List<iInteresser> interesserList = new ArrayList<iInteresser>();
 
 	@Override
 	public void remove(int index) {
@@ -19,17 +19,17 @@ public class InteresserData implements iInteresserData {
 	}
 
 	@Override
-	public void add(Interesser data) {
+	public void add(iInteresser data) {
 		interesserList.add(data);
 	}
 
 	@Override
-	public void update(Interesser data, int index) {
+	public void update(iInteresser data, int index) {
 		interesserList.set(index, data);
 	}
 
 	@Override
-	public void update(Interesser data) {
+	public void update(iInteresser data) {
 		if(data == null){
 			return;
 		}
@@ -43,7 +43,7 @@ public class InteresserData implements iInteresserData {
 	}
 
 	@Override
-	public void remove(Interesser data) {
+	public void remove(iInteresser data) {
 		if(data == null){
 			return;
 		}
@@ -57,28 +57,28 @@ public class InteresserData implements iInteresserData {
 	}
 
 	@Override
-	public Interesser get(int index) {
+	public iInteresser get(int index) {
 		return interesserList.get(index);
 	}
 
 	@Override
-	public Interesser[] getAll() {
-		return (Interesser[]) interesserList.toArray();
+	public iInteresser[] getAll() {
+		return (iInteresser[]) interesserList.toArray();
 	}
 
 	@Override
-	public void addAll(List<Interesser> datas) {
+	public void addAll(List<iInteresser> datas) {
 		interesserList.addAll(datas);
 	}
 
 	@Override
-	public void addFresh(List<Interesser> datas) {
+	public void addFresh(List<iInteresser> datas) {
 		clear();
 		addAll(datas);
 	}
 
 	@Override
-	public List<Interesser> getAllAsList() {
+	public List<iInteresser> getAllAsList() {
 		return interesserList;
 	}
 

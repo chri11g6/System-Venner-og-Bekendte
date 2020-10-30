@@ -2,16 +2,16 @@ package main.logic;
 
 import java.util.List;
 
-import main.dto.Person;
+import main.dto.iPerson;
 
 public interface iPesonLogicData {
-	public void add(Person data);
-	public void update(Person data, int index);
-	public void update(Person data);
-	public void remove(Person data);
+	public void add(iPerson data);
+	public void update(iPerson data, int index);
+	public void update(iPerson data);
+	public void remove(iPerson data);
 	public void remove(int index);
-	public Person get(int index);
-	public Person[] getAll();
-	public List<Person> getAllAsList();
+	public iPerson get(int index);
+	public iPerson[] getAll();
+	public List<iPerson> getAllAsList();
 	public int size();
 }

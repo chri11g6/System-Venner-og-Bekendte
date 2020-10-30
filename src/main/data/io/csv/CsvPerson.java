@@ -5,18 +5,19 @@ import java.util.List;
 
 import main.dto.Interesser;
 import main.dto.Person;
+import main.dto.iPerson;
 
 public class CsvPerson {
 	private static char tegnSpliter = ',';
 
-	public static String encode(List<Person> datas) {
+	public static String encode(List<iPerson> datas) {
 		StringBuilder builder = new StringBuilder();
 
 		builder.append("forNavn");
 		builder.append(tegnSpliter);
 		builder.append("efterNavn");
 		builder.append(tegnSpliter);
-		builder.append("alder");
+		builder.append("fødselsdage");
 		builder.append(tegnSpliter);
 		builder.append("Telefon");
 		builder.append(tegnSpliter);
@@ -24,20 +25,20 @@ public class CsvPerson {
 		builder.append("\n");
 
 		for (int i = 0; i < datas.size(); i++) {
-			Person data = datas.get(i);
-			builder.append(data.forNavn);
+			iPerson data = datas.get(i);
+			builder.append(data.getForNavn());
 			builder.append(tegnSpliter);
-			builder.append(data.efterNavn);
+			builder.append(data.getEfterNavn());
 			builder.append(tegnSpliter);
-			builder.append(data.alder);
+			builder.append(data.getBirthday().getBirthdays());
 			builder.append(tegnSpliter);
 			builder.append(data.getTelefon());
 			builder.append(tegnSpliter);
 			builder.append(data.getEmail());
 
-			for (int j = 0; j < data.interesser.size(); j++) {
-				builder.append(data.forNavn);
-				if (j < data.interesser.size() - 1) {
+			for (int j = 0; j < data.getInteresser().size(); j++) {
+				builder.append(data.getForNavn());
+				if (j < data.getInteresser().size() - 1) {
 					builder.append(tegnSpliter);
 				}
 			}
@@ -48,24 +49,24 @@ public class CsvPerson {
 		return builder.toString();
 	}
 
-	public static List<Person> decode(String text) {
+	public static List<iPerson> decode(String text) {
 		String[] lings = text.split("\n");
 
-		List<Person> personList = new ArrayList<Person>();
+		List<iPerson> personList = new ArrayList<iPerson>();
 
 		for (int i = 1; i < lings.length; i++) {
 			try {
 				String[] data = lings[i].split(";");
-				Person person = new Person();
+				iPerson person = new Person();
 
-				person.forNavn = data[0];
-				person.efterNavn = data[1];
-				person.alder = Integer.parseInt(data[2]);
+				person.setForNavn(data[0]);
+				person.setEfterNavn(data[1]);
+				person.getBirthday().setBirthdays(data[2]);
 				person.setTelefon(data[3]);
 				person.setEmail(data[4]);
 
 				for (int j = 5; j < data.length; j++) {
-					person.interesser.add(new Interesser(data[j]));
+					person.getInteresser().add(new Interesser(data[j]));
 				}
 
 				personList.add(person);

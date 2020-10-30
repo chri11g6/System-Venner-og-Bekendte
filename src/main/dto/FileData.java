@@ -4,6 +4,6 @@ import java.util.List;
 
 public class FileData {
 	public String path;
-	public List<Person> persons;
-	public List<Interesser> interessers;
+	public List<iPerson> persons;
+	public List<iInteresser> interessers;
 }

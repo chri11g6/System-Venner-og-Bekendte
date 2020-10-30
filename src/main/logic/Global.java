@@ -2,14 +2,14 @@ package main.logic;
 
 import java.util.Stack;
 
-import main.dto.Person;
+import main.dto.iPerson;
 
 public class Global {
 
 	public static iPesonLogicData personList = new PesonLogicData();
 	public static iInteresserLogicData interesserList = new InteresserLogicData();
 
-	public static Person personHolder;
+	public static iPerson personHolder;
 
 	public static Stack<String> sti = new Stack<String>();
 

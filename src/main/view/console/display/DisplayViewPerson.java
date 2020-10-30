@@ -13,7 +13,7 @@ public class DisplayViewPerson implements iDisplay {
 		System.out.println("[parmeter]:");
 		System.out.println("\t'fornavn'");
 		System.out.println("\t'efternavn'");
-		System.out.println("\t'alder'");
+		System.out.println("\t'fødselsdage'");
 		System.out.println("\t'telefon'");
 		System.out.println("\t'email'");
 		System.out.println("'get' '[parmeter]' Hvilken del vil du hente?");
@@ -34,11 +34,11 @@ public class DisplayViewPerson implements iDisplay {
 		int maxSizeEmail = 5;
 		int addSpaceTo = 2;
 
-		maxSizeForNavn = Math.max(maxSizeForNavn, Global.personHolder.forNavn.length());
-		maxSizeEfterNavn = Math.max(maxSizeEfterNavn, Global.personHolder.efterNavn.length());
+		maxSizeForNavn = Math.max(maxSizeForNavn, Global.personHolder.getForNavn().length());
+		maxSizeEfterNavn = Math.max(maxSizeEfterNavn, Global.personHolder.getEfterNavn().length());
 		maxSizeTelefon = Math.max(maxSizeTelefon, Global.personHolder.getTelefon().length());
 		maxSizeEmail = Math.max(maxSizeEmail, Global.personHolder.getEmail().length());
-		maxSizeAlder = Math.max(maxSizeAlder, String.valueOf(Global.personHolder.alder).length());
+		maxSizeAlder = Math.max(maxSizeAlder, String.valueOf(Global.personHolder.getBirthday().getAlder()).length());
 
 		StringBuilder header = new StringBuilder();
 
@@ -60,14 +60,14 @@ public class DisplayViewPerson implements iDisplay {
 
 		StringBuilder personText = new StringBuilder();
 
-		personText.append(Global.personHolder.forNavn);
-		personText.append(Tools.loopString(maxSizeForNavn - Global.personHolder.forNavn.length() + addSpaceTo, " "));
-		personText.append(Global.personHolder.efterNavn);
+		personText.append(Global.personHolder.getForNavn());
+		personText.append(Tools.loopString(maxSizeForNavn - Global.personHolder.getForNavn().length() + addSpaceTo, " "));
+		personText.append(Global.personHolder.getEfterNavn());
 		personText
-				.append(Tools.loopString(maxSizeEfterNavn - Global.personHolder.efterNavn.length() + addSpaceTo, " "));
-		personText.append(Global.personHolder.alder);
+				.append(Tools.loopString(maxSizeEfterNavn - Global.personHolder.getEfterNavn().length() + addSpaceTo, " "));
+		personText.append(Global.personHolder.getBirthday().getAlder());
 		personText.append(
-				Tools.loopString(maxSizeAlder - String.valueOf(Global.personHolder.alder).length() + addSpaceTo, " "));
+				Tools.loopString(maxSizeAlder - String.valueOf(Global.personHolder.getBirthday().getAlder()).length() + addSpaceTo, " "));
 		personText.append(Global.personHolder.getTelefon());
 		personText.append(Tools.loopString(
 				maxSizeTelefon - String.valueOf(Global.personHolder.getTelefon()).length() + addSpaceTo, " "));
@@ -75,9 +75,9 @@ public class DisplayViewPerson implements iDisplay {
 		personText.append(Tools
 				.loopString(maxSizeEmail - String.valueOf(Global.personHolder.getEmail()).length() + addSpaceTo, " "));
 
-		for (int j = 0; j < Global.personHolder.interesser.size(); j++) {
-			personText.append(Global.personHolder.interesser.get(j).navn);
-			if (j < Global.personHolder.interesser.size() - 1) {
+		for (int j = 0; j < Global.personHolder.getInteresser().size(); j++) {
+			personText.append(Global.personHolder.getInteresser().get(j).getNavn());
+			if (j < Global.personHolder.getInteresser().size() - 1) {
 				personText.append(", ");
 			}
 		}

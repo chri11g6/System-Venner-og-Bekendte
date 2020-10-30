@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import main.dto.Person;
+import main.dto.iPerson;
 
 public class PersonData implements iPersonData {
-	private List<Person> personList = new ArrayList<Person>();
+	private List<iPerson> personList = new ArrayList<iPerson>();
 
 	@Override
 	public void remove(int index) {
@@ -14,7 +15,7 @@ public class PersonData implements iPersonData {
 	}
 
 	@Override
-	public void remove(Person data) {
+	public void remove(iPerson data) {
 		if(data == null){
 			return;
 		}
@@ -33,17 +34,17 @@ public class PersonData implements iPersonData {
 	}
 
 	@Override
-	public void add(Person data) {
+	public void add(iPerson data) {
 		personList.add(data);
 	}
 
 	@Override
-	public void update(Person data, int index) {
+	public void update(iPerson data, int index) {
 		personList.set(index, data);
 	}
 
 	@Override
-	public void update(Person data) {
+	public void update(iPerson data) {
 		if(data == null){
 			return;
 		}
@@ -57,28 +58,28 @@ public class PersonData implements iPersonData {
 	}
 
 	@Override
-	public Person get(int index) {
+	public iPerson get(int index) {
 		return personList.get(index);
 	}
 
 	@Override
-	public Person[] getAll() {
+	public iPerson[] getAll() {
 		return (Person[]) personList.toArray();
 	}
 
 	@Override
-	public void addAll(List<Person> datas) {
+	public void addAll(List<iPerson> datas) {
 		personList.addAll(datas);
 	}
 
 	@Override
-	public void addFresh(List<Person> datas) {
+	public void addFresh(List<iPerson> datas) {
 		clear();
 		addAll(datas);
 	}
 
 	@Override
-	public List<Person> getAllAsList() {
+	public List<iPerson> getAllAsList() {
 		return personList;
 	}
 

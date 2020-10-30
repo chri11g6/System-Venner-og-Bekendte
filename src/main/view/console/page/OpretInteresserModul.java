@@ -2,6 +2,7 @@ package main.view.console.page;
 
 import main.logic.Global;
 import main.dto.Interesser;
+import main.dto.iInteresser;
 import main.view.console.display.DisplayOpretInteresser;
 import main.view.console.display.iDisplay;
 
@@ -16,7 +17,7 @@ public class OpretInteresserModul implements iPageModul {
 
 		System.out.println("Hvad er interesse navn?");
 
-		Interesser interesser = new Interesser(display.getInputString(Global.getSti()));
+		iInteresser interesser = new Interesser(display.getInputString(Global.getSti()));
 
 		Global.interesserList.add(interesser);
 

@@ -4,29 +4,29 @@ import java.util.List;
 
 import main.data.HoldData;
 import main.data.iInteresserData;
-import main.dto.Interesser;
+import main.dto.iInteresser;
 
 public class InteresserLogicData implements iInteresserLogicData {
 
 	private iInteresserData interesserData = HoldData.getInteresserData();
 
 	@Override
-	public void add(Interesser data) {
+	public void add(iInteresser data) {
 		interesserData.add(data);
 	}
 
 	@Override
-	public void update(Interesser data, int index) {
+	public void update(iInteresser data, int index) {
 		interesserData.update(data, index);
 	}
 
 	@Override
-	public void update(Interesser data) {
+	public void update(iInteresser data) {
 		interesserData.update(data);
 	}
 
 	@Override
-	public void remove(Interesser data) {
+	public void remove(iInteresser data) {
 		interesserData.remove(data);
 	}
 
@@ -36,17 +36,17 @@ public class InteresserLogicData implements iInteresserLogicData {
 	}
 
 	@Override
-	public Interesser get(int index) {
+	public iInteresser get(int index) {
 		return interesserData.get(index);
 	}
 
 	@Override
-	public Interesser[] getAll() {
+	public iInteresser[] getAll() {
 		return interesserData.getAll();
 	}
 
 	@Override
-	public List<Interesser> getAllAsList() {
+	public List<iInteresser> getAllAsList() {
 		return interesserData.getAllAsList();
 	}
 

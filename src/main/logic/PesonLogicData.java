@@ -4,29 +4,29 @@ import java.util.List;
 
 import main.data.HoldData;
 import main.data.iPersonData;
-import main.dto.Person;
+import main.dto.iPerson;
 
 public class PesonLogicData implements iPesonLogicData {
 
 	private iPersonData personData = HoldData.getPersonData();
 
 	@Override
-	public void add(Person data) {
+	public void add(iPerson data) {
 		personData.add(data);
 	}
 
 	@Override
-	public void update(Person data, int index) {
+	public void update(iPerson data, int index) {
 		personData.update(data, index);
 	}
 
 	@Override
-	public void update(Person data) {
+	public void update(iPerson data) {
 		personData.update(data);
 	}
 
 	@Override
-	public void remove(Person data) {
+	public void remove(iPerson data) {
 		personData.remove(data);
 	}
 
@@ -36,17 +36,17 @@ public class PesonLogicData implements iPesonLogicData {
 	}
 
 	@Override
-	public Person get(int index) {
+	public iPerson get(int index) {
 		return personData.get(index);
 	}
 
 	@Override
-	public Person[] getAll() {
+	public iPerson[] getAll() {
 		return personData.getAll();
 	}
 
 	@Override
-	public List<Person> getAllAsList() {
+	public List<iPerson> getAllAsList() {
 		return personData.getAllAsList();
 	}
 

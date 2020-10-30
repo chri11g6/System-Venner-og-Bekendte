@@ -20,9 +20,9 @@ public class DisplayOpretPerson implements iDisplay {
 		for (int i = 0; i < Global.interesserList.size(); i++) {
 
 			if (i < 10) {
-				System.out.println(i + "  | " + Global.interesserList.get(i).navn);
+				System.out.println(i + "  | " + Global.interesserList.get(i).getNavn());
 			} else {
-				System.out.println(i + " | " + Global.interesserList.get(i).navn);
+				System.out.println(i + " | " + Global.interesserList.get(i).getNavn());
 			}
 		}
 

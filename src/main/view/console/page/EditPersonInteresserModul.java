@@ -1,5 +1,6 @@
 package main.view.console.page;
 
+import main.dto.iInteresser;
 import main.logic.Global;
 import main.dto.Interesser;
 import main.view.console.display.DisplayEditPersonInteresser;
@@ -42,12 +43,12 @@ public class EditPersonInteresserModul implements iPageModul {
 					try {
 						if (key.length > 1 && key[1] == "new") {
 							System.out.println("Hvad er den nye interesser");
-							Interesser newInteresser = new Interesser(
+							iInteresser newInteresser = new Interesser(
 									display.getInputString(Global.getSti() + " > Nye"));
-							Global.personHolder.interesser.add(newInteresser);
+							Global.personHolder.getInteresser().add(newInteresser);
 							Global.interesserList.add(newInteresser);
 						} else {
-							Global.personHolder.interesser.add(Global.interesserList.get(Integer.parseInt(key[1])));
+							Global.personHolder.getInteresser().add(Global.interesserList.get(Integer.parseInt(key[1])));
 						}
 					} catch (Exception e) {
 						display.printLine();
@@ -58,7 +59,7 @@ public class EditPersonInteresserModul implements iPageModul {
 					break;
 				case "remove":
 					try {
-						Global.personHolder.interesser.remove(Integer.parseInt(key[1]));
+						Global.personHolder.getInteresser().remove(Integer.parseInt(key[1]));
 					} catch (Exception e) {
 						display.printLine();
 						System.out.println("Kunne ikke sætte denne parmeter fordi:");
@@ -67,8 +68,8 @@ public class EditPersonInteresserModul implements iPageModul {
 					}
 					break;
 				case "pwd":
-					System.out.println("Du er på Person view og du ser på " + Global.personHolder.forNavn + " "
-							+ Global.personHolder.efterNavn + " interesser");
+					System.out.println("Du er på Person view og du ser på " + Global.personHolder.getForNavn() + " "
+							+ Global.personHolder.getEfterNavn() + " interesser");
 					break;
 				case "q":
 				case "exit":

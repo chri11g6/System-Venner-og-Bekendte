@@ -6,8 +6,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import main.logic.Global;
-import main.dto.Interesser;
-import main.dto.Person;
+import main.dto.iInteresser;
+import main.dto.iPerson;
 import main.view.console.SearchFilter;
 import main.view.console.display.DisplaySearch;
 import main.view.console.display.PrintTools;
@@ -16,8 +16,8 @@ import main.view.console.display.iDisplay;
 public class SearchModul implements iPageModul {
 
 	private iDisplay display = new DisplaySearch();
-	private List<Person> personSearchList = new ArrayList<Person>();
-	private List<Interesser> interesserSearchList = new ArrayList<Interesser>();
+	private List<iPerson> personSearchList = new ArrayList<iPerson>();
+	private List<iInteresser> interesserSearchList = new ArrayList<iInteresser>();
 
 	@Override
 	public void run() {
@@ -147,7 +147,7 @@ public class SearchModul implements iPageModul {
 		List<SearchFilter> andList = fullList.get(1);
 		List<SearchFilter> notList = fullList.get(2);
 
-		List<Interesser> bufferList = new ArrayList<Interesser>();
+		List<iInteresser> bufferList = new ArrayList<iInteresser>();
 
 		interesserSearchList.clear();
 
@@ -185,7 +185,7 @@ public class SearchModul implements iPageModul {
 		List<SearchFilter> andList = fullList.get(1);
 		List<SearchFilter> notList = fullList.get(2);
 
-		List<Person> bufferList = new ArrayList<Person>();
+		List<iPerson> bufferList = new ArrayList<iPerson>();
 
 		personSearchList.clear();
 
@@ -216,11 +216,11 @@ public class SearchModul implements iPageModul {
 
 	}
 
-	private List<Interesser> searchInteresserData(List<SearchFilter> filterList, List<Interesser> interesserList) {
-		List<Interesser> bufferList = new ArrayList<Interesser>();
+	private List<iInteresser> searchInteresserData(List<SearchFilter> filterList, List<iInteresser> interesserList) {
+		List<iInteresser> bufferList = new ArrayList<iInteresser>();
 		filterList.forEach(filter -> {
 			interesserList.forEach(interesser -> {
-				if (regexTest(filter.keyword, interesser.navn)) {
+				if (regexTest(filter.keyword, interesser.getNavn())) {
 					bufferList.add(interesser);
 				}
 			});
@@ -229,18 +229,18 @@ public class SearchModul implements iPageModul {
 		return bufferList;
 	}
 
-	private List<Person> searchPersonData(List<SearchFilter> filterList, List<Person> personList) {
-		List<Person> bufferList = new ArrayList<Person>();
+	private List<iPerson> searchPersonData(List<SearchFilter> filterList, List<iPerson> personList) {
+		List<iPerson> bufferList = new ArrayList<iPerson>();
 		filterList.forEach(filter -> {
 			personList.forEach(person -> {
 				switch (filter.permeter) {
 					case "fornavn":
-						if (regexTest(filter.keyword, person.forNavn)) {
+						if (regexTest(filter.keyword, person.getForNavn())) {
 							bufferList.add(person);
 						}
 						break;
 					case "efternavn":
-						if (regexTest(filter.keyword, person.efterNavn)) {
+						if (regexTest(filter.keyword, person.getEfterNavn())) {
 							bufferList.add(person);
 						}
 						break;
@@ -255,8 +255,8 @@ public class SearchModul implements iPageModul {
 						}
 						break;
 					case "interesser":
-						for (int i = 0; i < person.interesser.size(); i++) {
-							if (regexTest(filter.keyword, person.interesser.get(i).navn)) {
+						for (int i = 0; i < person.getInteresser().size(); i++) {
+							if (regexTest(filter.keyword, person.getInteresser().get(i).getNavn())) {
 								bufferList.add(person);
 								break;
 							}

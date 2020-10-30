@@ -2,16 +2,16 @@ package main.data;
 
 import java.util.List;
 
-import main.dto.Interesser;
+import main.dto.iInteresser;
 
 public interface iInteresserData extends iDatabase {
-	public void add(Interesser data);
-	public void addAll(List<Interesser> datas);
-	public void addFresh(List<Interesser> datas);
-	public void update(Interesser data, int index);
-	public void update(Interesser data);
-	public void remove(Interesser data);
-	public Interesser get(int index);
-	public Interesser[] getAll();
-	public List<Interesser> getAllAsList();
+	public void add(iInteresser data);
+	public void addAll(List<iInteresser> datas);
+	public void addFresh(List<iInteresser> datas);
+	public void update(iInteresser data, int index);
+	public void update(iInteresser data);
+	public void remove(iInteresser data);
+	public iInteresser get(int index);
+	public iInteresser[] getAll();
+	public List<iInteresser> getAllAsList();
 }

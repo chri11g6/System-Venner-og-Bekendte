@@ -8,8 +8,8 @@ import main.data.io.json.JsonAll;
 import main.data.io.json.JsonInteresser;
 import main.data.io.json.JsonPerson;
 import main.dto.FileData;
-import main.dto.Interesser;
-import main.dto.Person;
+import main.dto.iInteresser;
+import main.dto.iPerson;
 
 public class File implements iFile {
 	@Override
@@ -31,13 +31,13 @@ public class File implements iFile {
 	}
 
 	@Override
-	public List<Interesser> loadInteressersAsJSON(String path) throws IOException {
+	public List<iInteresser> loadInteressersAsJSON(String path) throws IOException {
 		String data = FileIO.read(path);
 		return JsonInteresser.decode(data);
 	}
 
 	@Override
-	public List<Person> loadPersonsAsJSON(String path) throws IOException {
+	public List<iPerson> loadPersonsAsJSON(String path) throws IOException {
 		String data = FileIO.read(path);
 		return JsonPerson.decode(data);
 	}

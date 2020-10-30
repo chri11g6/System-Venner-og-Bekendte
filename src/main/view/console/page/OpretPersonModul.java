@@ -1,8 +1,10 @@
 package main.view.console.page;
 
 import main.logic.Global;
-import main.dto.Interesser;
+// import main.dto.Interesser;
 import main.dto.Person;
+import main.dto.iInteresser;
+import main.dto.iPerson;
 import main.view.console.display.DisplayOpretPerson;
 import main.view.console.display.iDisplay;
 
@@ -14,20 +16,20 @@ public class OpretPersonModul implements iPageModul {
 	@Override
 	public void run() {
 		try {
-			Person person = new Person();
+			iPerson person = new Person();
 			Global.sti.push("Opret");
 			String textToInput = Global.getSti();
 
 			display.printLine();
 
 			System.out.println("Hvad er dit fornavn?");
-			person.forNavn = display.getInputString(textToInput);
+			person.setForNavn(display.getInputString(textToInput));
 
 			System.out.println("Hvad er dit efternavn?");
-			person.efterNavn = display.getInputString(textToInput);
+			person.setEfterNavn(display.getInputString(textToInput));
 
-			System.out.println("Hvad er din alder?");
-			person.alder = Integer.parseInt(display.getInputString(textToInput));
+			System.out.println("Hvad er din fødselsdage? [dd-MM-yyyy]");
+			person.getBirthday().setBirthdays(display.getInputString(textToInput));
 
 			System.out.println("Hvad er dit telefon nummer?");
 			person.setTelefon(display.getInputString(textToInput));
@@ -48,13 +50,13 @@ public class OpretPersonModul implements iPageModul {
 						display.printHelp();
 						break;
 					case "add":
-						Interesser interesserData = Global.interesserList.get(Integer.parseInt(key[1]));
+						iInteresser interesserData = Global.interesserList.get(Integer.parseInt(key[1]));
 
-						if (person.interesser.indexOf(interesserData) == -1) {
-							person.interesser.add(interesserData);
-							System.out.println("Interesse: " + interesserData.navn + " er nu tilføjet.");
+						if (person.getInteresser().indexOf(interesserData) == -1) {
+							person.getInteresser().add(interesserData);
+							System.out.println("Interesse: " + interesserData.getNavn() + " er nu tilføjet.");
 						} else {
-							System.out.println("Den interesse: " + interesserData.navn + " er tilføjet.");
+							System.out.println("Den interesse: " + interesserData.getNavn() + " er tilføjet.");
 						}
 
 						break;
@@ -63,9 +65,9 @@ public class OpretPersonModul implements iPageModul {
 
 						opretInteresserNew.run();
 
-						Interesser interesserNewData = Global.interesserList.get(lastIndex);
+						iInteresser interesserNewData = Global.interesserList.get(lastIndex);
 
-						person.interesser.add(interesserNewData);
+						person.getInteresser().add(interesserNewData);
 
 						break;
 
@@ -99,10 +101,10 @@ public class OpretPersonModul implements iPageModul {
 		Global.sti.pop();
 	}
 
-	private void printPersonInteresserList(Person person) {
+	private void printPersonInteresserList(iPerson person) {
 		display.printLine();
-		for (int i = 0; i < person.interesser.size(); i++) {
-			System.out.println(person.interesser.get(i).navn);
+		for (int i = 0; i < person.getInteresser().size(); i++) {
+			System.out.println(person.getInteresser().get(i).getNavn());
 		}
 		display.printLine();
 	}

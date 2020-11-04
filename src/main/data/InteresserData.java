@@ -2,6 +2,7 @@ package main.data;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import main.dto.iInteresser;
 
@@ -79,7 +80,7 @@ public class InteresserData implements iInteresserData {
 
 	@Override
 	public List<iInteresser> getAllAsList() {
-		return interesserList;
+		return interesserList.stream().collect(Collectors.toList());
 	}
 
 	@Override

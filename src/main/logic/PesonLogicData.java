@@ -1,6 +1,7 @@
 package main.logic;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import main.data.DataFactory;
 import main.data.iPersonData;
@@ -47,7 +48,7 @@ public class PesonLogicData implements iPesonLogicData {
 
 	@Override
 	public List<iPerson> getAllAsList() {
-		return personData.getAllAsList();
+		return personData.getAllAsList().stream().collect(Collectors.toList());
 	}
 
 	@Override

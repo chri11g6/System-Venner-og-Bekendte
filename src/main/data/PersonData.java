@@ -2,6 +2,7 @@ package main.data;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import main.dto.Person;
 import main.dto.iPerson;
@@ -80,7 +81,7 @@ public class PersonData implements iPersonData {
 
 	@Override
 	public List<iPerson> getAllAsList() {
-		return personList;
+		return personList.stream().collect(Collectors.toList());
 	}
 
 	@Override

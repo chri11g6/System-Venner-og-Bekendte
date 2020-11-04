@@ -1,6 +1,7 @@
 package main.logic;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import main.data.DataFactory;
 import main.data.iInteresserData;
@@ -47,7 +48,7 @@ public class InteresserLogicData implements iInteresserLogicData {
 
 	@Override
 	public List<iInteresser> getAllAsList() {
-		return interesserData.getAllAsList();
+		return interesserData.getAllAsList().stream().collect(Collectors.toList());
 	}
 
 	@Override

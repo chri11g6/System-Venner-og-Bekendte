@@ -75,9 +75,9 @@ public class DisplayViewPerson implements iDisplay {
 		personText.append(Tools
 				.loopString(maxSizeEmail - String.valueOf(Global.getPersonHolder().getEmail()).length() + addSpaceTo, " "));
 
-		for (int j = 0; j < Global.getPersonHolder().getInteresser().size(); j++) {
-			personText.append(Global.getPersonHolder().getInteresser().get(j).getNavn());
-			if (j < Global.getPersonHolder().getInteresser().size() - 1) {
+		for (int j = 0; j < Global.getPersonHolder().getPersonInteresserList().getInteresser().size(); j++) {
+			personText.append(Global.getPersonHolder().getPersonInteresserList().getInteresser().get(j).getNavn());
+			if (j < Global.getPersonHolder().getPersonInteresserList().getInteresser().size() - 1) {
 				personText.append(", ");
 			}
 		}

@@ -52,8 +52,8 @@ public class OpretPersonModul implements iPageModul {
 					case "add":
 						iInteresser interesserData = Global.interesserList.get(Integer.parseInt(key[1]));
 
-						if (person.getInteresser().indexOf(interesserData) == -1) {
-							person.getInteresser().add(interesserData);
+						if (person.getPersonInteresserList().getInteresser().indexOf(interesserData) == -1) {
+							person.getPersonInteresserList().getInteresser().add(interesserData);
 							System.out.println("Interesse: " + interesserData.getNavn() + " er nu tilføjet.");
 						} else {
 							System.out.println("Den interesse: " + interesserData.getNavn() + " er tilføjet.");
@@ -67,7 +67,7 @@ public class OpretPersonModul implements iPageModul {
 
 						iInteresser interesserNewData = Global.interesserList.get(lastIndex);
 
-						person.getInteresser().add(interesserNewData);
+						person.getPersonInteresserList().getInteresser().add(interesserNewData);
 
 						break;
 
@@ -103,8 +103,8 @@ public class OpretPersonModul implements iPageModul {
 
 	private void printPersonInteresserList(iPerson person) {
 		display.printLine();
-		for (int i = 0; i < person.getInteresser().size(); i++) {
-			System.out.println(person.getInteresser().get(i).getNavn());
+		for (int i = 0; i < person.getPersonInteresserList().getInteresser().size(); i++) {
+			System.out.println(person.getPersonInteresserList().getInteresser().get(i).getNavn());
 		}
 		display.printLine();
 	}

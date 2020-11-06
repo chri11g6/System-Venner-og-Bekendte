@@ -34,8 +34,8 @@ public class JsonPerson {
 
 			JSONArray interesserArray = new JSONArray();
 
-			for (int j = 0; j < person.getInteresser().size(); j++) {
-				interesserArray.put(person.getInteresser().get(j).getNavn());
+			for (int j = 0; j < person.getPersonInteresserList().getInteresser().size(); j++) {
+				interesserArray.put(person.getPersonInteresserList().getInteresser().get(j).getNavn());
 			}
 
 			personJson.put("interesser", interesserArray);

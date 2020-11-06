@@ -36,9 +36,9 @@ public class CsvPerson {
 			builder.append(tegnSpliter);
 			builder.append(data.getEmail());
 
-			for (int j = 0; j < data.getInteresser().size(); j++) {
+			for (int j = 0; j < data.getPersonInteresserList().getInteresser().size(); j++) {
 				builder.append(data.getForNavn());
-				if (j < data.getInteresser().size() - 1) {
+				if (j < data.getPersonInteresserList().getInteresser().size() - 1) {
 					builder.append(tegnSpliter);
 				}
 			}
@@ -66,7 +66,7 @@ public class CsvPerson {
 				person.setEmail(data[4]);
 
 				for (int j = 5; j < data.length; j++) {
-					person.getInteresser().add(new Interesser(data[j]));
+					person.getPersonInteresserList().getInteresser().add(new Interesser(data[j]));
 				}
 
 				personList.add(person);

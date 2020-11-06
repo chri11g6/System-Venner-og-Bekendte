@@ -37,6 +37,8 @@ public class App {
 		per.getAddress().setGade("Østervang");
 		per.getAddress().setNr("30");
 		per.getAddress().setLand("Danmark");
+		per.getPersonInteresserList().getInteresser().add(new Interesser("Kage"));
+		per.getPersonInteresserList().getInteresser().add(new Interesser("Game"));
 		
 		iPerson per1 = new Person();
 		per1.setForNavn("Martin");

@@ -255,8 +255,8 @@ public class SearchModul implements iPageModul {
 						}
 						break;
 					case "interesser":
-						for (int i = 0; i < person.getInteresser().size(); i++) {
-							if (regexTest(filter.keyword, person.getInteresser().get(i).getNavn())) {
+						for (int i = 0; i < person.getPersonInteresserList().getInteresser().size(); i++) {
+							if (regexTest(filter.keyword, person.getPersonInteresserList().getInteresser().get(i).getNavn())) {
 								bufferList.add(person);
 								break;
 							}

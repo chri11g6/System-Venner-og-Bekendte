@@ -1,12 +1,9 @@
 package main.dto;
 
-import java.util.List;
-
 public interface iPerson extends Cloneable {
 	public int getId();
 
-	public List<iInteresser> getInteresser();
-	public String getInteresserToString();
+	public iPersonInteresserList getPersonInteresserList();
 	
 	public String getEmail();
 	public void setEmail(String email);

@@ -1,7 +1,5 @@
 package main.dto;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -17,7 +15,7 @@ public class Person implements iPerson {
 	private iAddress address = new Address();
 	private iBirthday birthday = new Birthday();
 
-	private List<iInteresser> interesser = new ArrayList<iInteresser>();
+	private iPersonInteresserList personInteresserList = new PersonInteresserList();
 
 	public Person() {
 		this.id = counter;
@@ -82,19 +80,8 @@ public class Person implements iPerson {
 	}
 
 	@Override
-	public List<iInteresser> getInteresser() {
-		return interesser;
-	}
-
-	@Override
-	public String getInteresserToString() {
-		List<String> localList = new ArrayList<String>();
-
-		for(iInteresser interesserData : interesser){
-			localList.add(interesserData.getNavn());
-		}
-
-		return String.join(", ", localList);
+	public iPersonInteresserList getPersonInteresserList() {
+		return personInteresserList;
 	}
 
 	@Override

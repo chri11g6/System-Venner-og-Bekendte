@@ -271,7 +271,7 @@ public class UIController {
 		personEmail.setCellValueFactory(new PropertyValueFactory<iPerson,String>("email"));
 		personTelefon.setCellValueFactory(new PropertyValueFactory<iPerson,String>("telefon"));
 		personAddress.setCellValueFactory(new PropertyValueFactory<iPerson,String>("address"));
-		personInteresser.setCellValueFactory(new PropertyValueFactory<iPerson,String>("interesserToString"));
+		personInteresser.setCellValueFactory(new PropertyValueFactory<iPerson,String>("personInteresserList"));
 
 		personTable.setItems(personList);
 	}

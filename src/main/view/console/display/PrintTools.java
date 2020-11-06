@@ -95,9 +95,9 @@ public class PrintTools {
 			personText.append(
 					Tools.loopString(maxSizeEmail - String.valueOf(person.getEmail()).length() + addSpaceTo, " "));
 
-			for (int j = 0; j < person.getInteresser().size(); j++) {
-				personText.append(person.getInteresser().get(j).getNavn());
-				if (j < person.getInteresser().size() - 1) {
+			for (int j = 0; j < person.getPersonInteresserList().getInteresser().size(); j++) {
+				personText.append(person.getPersonInteresserList().getInteresser().get(j).getNavn());
+				if (j < person.getPersonInteresserList().getInteresser().size() - 1) {
 					personText.append(", ");
 				}
 			}

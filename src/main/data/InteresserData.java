@@ -30,16 +30,27 @@ public class InteresserData implements iInteresserData {
 	}
 
 	@Override
-	public void update(iInteresser data) {
+	public boolean update(iInteresser data) {
+		boolean isUpdate = false;
 		if(data == null){
-			return;
+			return isUpdate;
 		}
 
 		for(int i = 0; i < interesserList.size(); i++){
 			if(data.getId() == interesserList.get(i).getId()){
-				interesserList.set(i, data);				
+				interesserList.set(i, data);
+				isUpdate = true;
 				break;
 			}
+		}
+
+		return isUpdate;
+	}
+
+	@Override
+	public void updateOrAdd(iInteresser data) {
+		if(!update(data)){
+			add(data);
 		}
 	}
 
@@ -87,5 +98,4 @@ public class InteresserData implements iInteresserData {
 	public int size() {
 		return interesserList.size();
 	}
-	
 }

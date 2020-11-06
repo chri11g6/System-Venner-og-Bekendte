@@ -21,7 +21,12 @@ public class Birthday implements iBirthday {
 
 	@Override
 	public void setBirthdays(String birthdays) {
-		this.birthdays = LocalDate.parse(birthdays, dateFormat);		
+		this.birthdays = LocalDate.parse(birthdays, dateFormat);
+	}
+
+	@Override
+	public void setBirthdays(LocalDate birthdays) {
+		setBirthdays(birthdays.format(dateFormat));
 	}
 
 	@Override
@@ -32,5 +37,10 @@ public class Birthday implements iBirthday {
 	@Override
 	public String toString(){
 		return getBirthdays() + " (" + getAlder() + ")";
+	}
+
+	@Override
+	public LocalDate getLocalDateBirthdays() {
+		return birthdays;
 	}
 }

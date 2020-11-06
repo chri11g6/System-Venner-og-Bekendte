@@ -45,10 +45,10 @@ public class EditPersonInteresserModul implements iPageModul {
 							System.out.println("Hvad er den nye interesser");
 							iInteresser newInteresser = new Interesser(
 									display.getInputString(Global.getSti() + " > Nye"));
-							Global.personHolder.getInteresser().add(newInteresser);
+							Global.getPersonHolder().getInteresser().add(newInteresser);
 							Global.interesserList.add(newInteresser);
 						} else {
-							Global.personHolder.getInteresser().add(Global.interesserList.get(Integer.parseInt(key[1])));
+							Global.getPersonHolder().getInteresser().add(Global.interesserList.get(Integer.parseInt(key[1])));
 						}
 					} catch (Exception e) {
 						display.printLine();
@@ -59,7 +59,7 @@ public class EditPersonInteresserModul implements iPageModul {
 					break;
 				case "remove":
 					try {
-						Global.personHolder.getInteresser().remove(Integer.parseInt(key[1]));
+						Global.getPersonHolder().getInteresser().remove(Integer.parseInt(key[1]));
 					} catch (Exception e) {
 						display.printLine();
 						System.out.println("Kunne ikke sætte denne parmeter fordi:");
@@ -68,16 +68,16 @@ public class EditPersonInteresserModul implements iPageModul {
 					}
 					break;
 				case "pwd":
-					System.out.println("Du er på Person view og du ser på " + Global.personHolder.getForNavn() + " "
-							+ Global.personHolder.getEfterNavn() + " interesser");
+					System.out.println("Du er på Person view og du ser på " + Global.getPersonHolder().getForNavn() + " "
+							+ Global.getPersonHolder().getEfterNavn() + " interesser");
 					break;
 				case "q":
 				case "exit":
 					isRun = false;
 
 					for (int i = 0; i < Global.personList.size(); i++) {
-						if (Global.personList.get(i).getId() == Global.personHolder.getId()) {
-							Global.personList.update(Global.personHolder, i);
+						if (Global.personList.get(i).getId() == Global.getPersonHolder().getId()) {
+							Global.personList.update(Global.getPersonHolder(), i);
 							break;
 						}
 					}

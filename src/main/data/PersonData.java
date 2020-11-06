@@ -45,16 +45,28 @@ public class PersonData implements iPersonData {
 	}
 
 	@Override
-	public void update(iPerson data) {
+	public boolean update(iPerson data) {
+		boolean isUpdate = false;
+
 		if(data == null){
-			return;
+			return isUpdate;
 		}
 
 		for(int i = 0; i < personList.size(); i++){
 			if(data.getId() == personList.get(i).getId()){
-				personList.set(i, data);				
+				personList.set(i, data);
+				isUpdate = true;				
 				break;
 			}
+		}
+
+		return isUpdate;
+	}
+
+	@Override
+	public void updateOrAdd(iPerson data) {
+		if(!update(data)){
+			add(data);
 		}
 	}
 

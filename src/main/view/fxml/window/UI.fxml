@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.view.fxml.window.UIController">
+  <children>
+    <MenuBar VBox.vgrow="NEVER">
+      <menus>
+        <Menu mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem mnemonicParsing="false" text="New" />
+            <MenuItem mnemonicParsing="false" text="Open…" />
+            <Menu mnemonicParsing="false" text="Open Recent" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Close" />
+            <MenuItem mnemonicParsing="false" text="Save" />
+            <MenuItem mnemonicParsing="false" text="Save As…" />
+            <MenuItem mnemonicParsing="false" text="Revert" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Preferences…" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Quit" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Edit">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Undo" />
+            <MenuItem mnemonicParsing="false" text="Redo" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Cut" />
+            <MenuItem mnemonicParsing="false" text="Copy" />
+            <MenuItem mnemonicParsing="false" text="Paste" />
+            <MenuItem mnemonicParsing="false" text="Delete" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Select All" />
+            <MenuItem mnemonicParsing="false" text="Unselect All" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+          </items>
+        </Menu>
+            <Menu mnemonicParsing="false" text="Debug">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goToOverView" text="Go to overView" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToOpretPerson" text="Go to opretPerson" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToViewPerson" text="Go to viewPerson" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#openTestDialog" text="Open dialog" />
+               </items>
+            </Menu>
+      </menus>
+    </MenuBar>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+         <children>
+            <AnchorPane fx:id="overView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="611.0" prefWidth="976.0">
+               <children>
+                  <TabPane prefHeight="200.0" prefWidth="200.0" side="BOTTOM" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <tabs>
+                      <Tab text="Person">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TableView fx:id="personTable" prefHeight="556.0" prefWidth="956.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="45.0">
+                                       <columns>
+                                          <TableColumn fx:id="personFornavn" prefWidth="75.0" text="Fornavn" />
+                                          <TableColumn fx:id="personEfternavn" prefWidth="75.0" text="Efternavn" />
+                                          <TableColumn fx:id="personTitle" prefWidth="75.0" text="Title" />
+                                          <TableColumn fx:id="personBirthday" prefWidth="75.0" text="Fødselsdag" />
+                                          <TableColumn fx:id="personEmail" prefWidth="75.0" text="Email" />
+                                          <TableColumn fx:id="personTelefon" prefWidth="75.0" text="Telefon" />
+                                          <TableColumn fx:id="personAddress" prefWidth="75.0" text="Address" />
+                                          <TableColumn fx:id="personInteresser" prefWidth="75.0" text="Interesser" />
+                                       </columns>
+                                       <contextMenu>
+                                          <ContextMenu>
+                                            <items>
+                                              <MenuItem mnemonicParsing="false" onAction="#menuItemClickPersonTableSeMere" text="Se mere" />
+                                              <MenuItem mnemonicParsing="false" onAction="#menuItemClickPersonTableEdit" text="Edit" />
+                                              <SeparatorMenuItem mnemonicParsing="false" />
+                                              <MenuItem mnemonicParsing="false" onAction="#updatePersonList" text="Opdate list" />
+                                              <SeparatorMenuItem mnemonicParsing="false" />
+                                              <MenuItem mnemonicParsing="false" text="Slet" onAction="#sletPerson"/>
+                                            </items>
+                                          </ContextMenu>
+                                       </contextMenu>
+                                    </TableView>
+                                    <HBox alignment="CENTER_LEFT" prefWidth="956.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                       <children>
+                                          <SVGPath content="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z">
+                                             <HBox.margin>
+                                                <Insets right="5.0" />
+                                             </HBox.margin>
+                                          </SVGPath>
+                                          <TextField prefHeight="25.0" prefWidth="956.0" />
+                                          <Button mnemonicParsing="false" style="-fx-background-color: transparent;" onAction="#opretNewPerson">
+                                             <graphic>
+                                                <SVGPath content="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9-2V7H4v3H1v2h3v3h2v-3h3v-2H6zm9 4c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                                             </graphic>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </Button>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                      <Tab text="Interesser">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" prefWidth="956.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                       <children>
+                                          <SVGPath content="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z">
+                                             <HBox.margin>
+                                                <Insets right="5.0" />
+                                             </HBox.margin>
+                                          </SVGPath>
+                                          <TextField prefHeight="25.0" prefWidth="956.0" />
+                                       </children>
+                                    </HBox>
+                                    <TableView fx:id="interesserTable" layoutX="209.0" layoutY="47.0" prefHeight="525.0" prefWidth="956.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="45.0">
+                                      <columns>
+                                        <TableColumn fx:id="interesserId" prefWidth="75.0" text="ID" />
+                                        <TableColumn fx:id="interesserNavn" prefWidth="75.0" text="Interesser" />
+                                      </columns>
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                    </tabs>
+                  </TabPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="opretPerson" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="603.0" prefWidth="967.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <VBox prefHeight="601.0" prefWidth="345.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                     <children>
+                        <HBox alignment="BASELINE_LEFT">
+                           <children>
+                              <Label style="-fx-text-fill: #999999;" text="Interesser">
+                                 <HBox.margin>
+                                    <Insets left="5.0" right="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Line endX="150.0" startX="-100.0" stroke="#999999" />
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT">
+                           <children>
+                              <SVGPath content="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z">
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
+                              </SVGPath>
+                              <TextField maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="311.0" />
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <ListView prefHeight="539.0" prefWidth="345.0" />
+                     </children>
+                  </VBox>
+                  <GridPane prefHeight="215.0" prefWidth="335.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="56.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="144.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="37.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="27.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label text="Fornavn" GridPane.rowIndex="1" />
+                        <TextField fx:id="opretPersonFornavn" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label text="Efternavn" GridPane.rowIndex="2" />
+                        <TextField fx:id="opretPersonEfternavn" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label layoutX="10.0" layoutY="72.0" text="Title" GridPane.rowIndex="3" />
+                        <TextField fx:id="opretPersonTitle" layoutX="105.0" layoutY="68.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label text="Telefon" GridPane.rowIndex="4" />
+                        <TextField fx:id="opretPersonTelefon" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label text="Email" GridPane.rowIndex="5" />
+                        <TextField fx:id="opretPersonEmail" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <HBox alignment="BASELINE_LEFT" GridPane.columnSpan="2">
+                           <children>
+                              <Label style="-fx-text-fill: #999999;" text="Oplysinger">
+                                 <HBox.margin>
+                                    <Insets left="5.0" right="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Line endX="150.0" startX="-100.0" stroke="#999999" />
+                           </children>
+                        </HBox>
+                        <Label layoutX="10.0" layoutY="164.0" text="Fødselsdag" GridPane.rowIndex="6" />
+                        <DatePicker fx:id="opretPersonBirthday" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                     </children>
+                  </GridPane>
+                  <GridPane layoutX="14.0" layoutY="237.0" prefHeight="184.0" prefWidth="335.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="250.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="56.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="144.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="27.0" minHeight="10.0" prefHeight="23.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label text="Gade" GridPane.rowIndex="1" />
+                        <TextField fx:id="opretPersonGade" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label text="Nr." GridPane.rowIndex="2" />
+                        <TextField fx:id="opretPersonNr" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label layoutX="10.0" layoutY="72.0" text="By" GridPane.rowIndex="3" />
+                        <TextField fx:id="opretPersonBy" layoutX="105.0" layoutY="68.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label text="Post nr." GridPane.rowIndex="4" />
+                        <TextField fx:id="opretPersonPostNr" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label text="Land" GridPane.rowIndex="5" />
+                        <TextField fx:id="opretPersonLand" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <HBox alignment="BASELINE_LEFT" prefHeight="16.0" prefWidth="335.0" GridPane.columnSpan="2">
+                           <children>
+                              <Label style="-fx-text-fill: #999999;" text="Adresse">
+                                 <HBox.margin>
+                                    <Insets left="5.0" right="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Line endX="150.0" startX="-100.0" stroke="#999999" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </GridPane>
+                  <Button layoutX="14.0" layoutY="572.0" mnemonicParsing="false" onAction="#goBack" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <SVGPath content="M10 9V5l-7 7 7 7v-4.1c5 0 8.5 1.6 11 5.1-1-5-4-10-11-11z" />
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Button layoutX="69.0" layoutY="572.0" mnemonicParsing="false" onAction="#savePerson" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <SVGPath content="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z" />
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="viewPerson" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="611.0" prefWidth="976.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <GridPane layoutX="424.0" layoutY="250.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="483.0" minWidth="10.0" prefWidth="199.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="757.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="568.0" minHeight="10.0" prefHeight="556.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="290.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <VBox alignment="TOP_CENTER" prefHeight="609.0" prefWidth="245.0">
+                           <children>
+                              <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@default%20profile.png" />
+                                 </image>
+                              </ImageView>
+                              <HBox alignment="BASELINE_LEFT">
+                                 <children>
+                                    <Label style="-fx-text-fill: #999999;" text="Oplysninger">
+                                       <HBox.margin>
+                                          <Insets right="5.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <Line startX="-100.0" stroke="#999999" />
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </HBox>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="108.0" prefWidth="200.0">
+                                 <children>
+                                    <GridPane layoutX="-40.0" prefHeight="143.0" prefWidth="200.0" AnchorPane.bottomAnchor="-35.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                      <columnConstraints>
+                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="42.0" minWidth="10.0" prefWidth="28.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="157.00000190734863" minWidth="10.0" prefWidth="156.00000190734863" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" valignment="CENTER" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="20.0" valignment="CENTER" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
+                                             <children>
+                                                <HBox>
+                                                   <children>
+                                                      <Text fx:id="viewPersonGade" strokeType="OUTSIDE" strokeWidth="0.0" text="Østervang">
+                                                         <HBox.margin>
+                                                            <Insets right="3.0" />
+                                                         </HBox.margin>
+                                                      </Text>
+                                                      <Text fx:id="viewPersonNr" strokeType="OUTSIDE" strokeWidth="0.0" text="30">
+                                                         <HBox.margin>
+                                                            <Insets right="3.0" />
+                                                         </HBox.margin>
+                                                      </Text>
+                                                   </children>
+                                                </HBox>
+                                                <HBox layoutX="10.0" layoutY="10.0">
+                                                   <children>
+                                                      <Text fx:id="viewPersonPostNr" strokeType="OUTSIDE" strokeWidth="0.0" text="6900">
+                                                         <HBox.margin>
+                                                            <Insets right="3.0" />
+                                                         </HBox.margin>
+                                                      </Text>
+                                                      <Text fx:id="viewPersonBy" strokeType="OUTSIDE" strokeWidth="0.0" text="Skjern">
+                                                         <HBox.margin>
+                                                            <Insets right="3.0" />
+                                                         </HBox.margin>
+                                                      </Text>
+                                                   </children>
+                                                   <opaqueInsets>
+                                                      <Insets />
+                                                   </opaqueInsets>
+                                                </HBox>
+                                                <HBox layoutX="10.0" layoutY="26.0">
+                                                   <children>
+                                                      <Text fx:id="viewPersonLand" strokeType="OUTSIDE" strokeWidth="0.0" text="Danmark">
+                                                         <HBox.margin>
+                                                            <Insets right="3.0" />
+                                                         </HBox.margin>
+                                                      </Text>
+                                                   </children>
+                                                   <opaqueInsets>
+                                                      <Insets />
+                                                   </opaqueInsets>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                          <SVGPath content="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                                          <SVGPath content="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" GridPane.rowIndex="1" />
+                                          <Text fx:id="viewPersonEmail" strokeType="OUTSIDE" strokeWidth="0.0" text="chri11g6@eamv.dk" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <SVGPath content="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" GridPane.rowIndex="2" />
+                                          <Text fx:id="viewPersonTelefon" strokeType="OUTSIDE" strokeWidth="0.0" text="12345678" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <Text fx:id="viewPersonBirthday" layoutX="52.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="26-09-1994 (26)" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                          <SVGPath content="M12 6c1.11 0 2-.9 2-2 0-.38-.1-.73-.29-1.03L12 0l-1.71 2.97c-.19.3-.29.65-.29 1.03 0 1.1.9 2 2 2zm4.6 9.99l-1.07-1.07-1.08 1.07c-1.3 1.3-3.58 1.31-4.89 0l-1.07-1.07-1.09 1.07C6.75 16.64 5.88 17 4.96 17c-.73 0-1.4-.23-1.96-.61V21c0 .55.45 1 1 1h16c.55 0 1-.45 1-1v-4.61c-.56.38-1.23.61-1.96.61-.92 0-1.79-.36-2.44-1.01zM18 9h-5V7h-2v2H6c-1.66 0-3 1.34-3 3v1.54c0 1.08.88 1.96 1.96 1.96.52 0 1.02-.2 1.38-.57l2.14-2.13 2.13 2.13c.74.74 2.03.74 2.77 0l2.14-2.13 2.13 2.13c.37.37.86.57 1.38.57 1.08 0 1.96-.88 1.96-1.96V12C21 10.34 19.66 9 18 9z" layoutX="19.0" layoutY="87.0" GridPane.rowIndex="3" />
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </AnchorPane>
+                           </children>
+                        </VBox>
+                        <AnchorPane prefHeight="591.0" prefWidth="751.0" GridPane.columnIndex="1" GridPane.rowSpan="2">
+                           <children>
+                              <VBox AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <HBox>
+                                       <children>
+                                          <Text fx:id="viewPersonFornavn" strokeType="OUTSIDE" strokeWidth="0.0" text="Christian">
+                                             <HBox.margin>
+                                                <Insets right="5.0" />
+                                             </HBox.margin>
+                                             <font>
+                                                <Font name="System Bold" size="18.0" />
+                                             </font>
+                                          </Text>
+                                          <Text fx:id="viewPersonEfternavn" layoutX="10.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Christensen">
+                                             <font>
+                                                <Font name="System Bold" size="18.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets right="5.0" />
+                                             </HBox.margin>
+                                          </Text>
+                                       </children>
+                                    </HBox>
+                                    <Text fx:id="viewPersonTitle" strokeType="OUTSIDE" strokeWidth="0.0" text="Datamartiker" />
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </padding>
+                              </VBox>
+                              <VBox prefHeight="295.0" prefWidth="737.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+                                 <children>
+                                    <HBox alignment="BASELINE_LEFT">
+                                       <children>
+                                          <Label style="-fx-text-fill: #999999;" text="Interesser">
+                                             <HBox.margin>
+                                                <Insets left="5.0" right="5.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Line endX="550.0" startX="-100.0" stroke="#999999" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <ListView prefHeight="278.0" prefWidth="737.0" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="209.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.rowIndex="1">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#goToOpretPerson" onMouseClicked="#goToOpretPerson" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <graphic>
+                                    <SVGPath content="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
+                                 </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#goToOverView" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <graphic>
+                                    <SVGPath content="M10 9V5l-7 7 7 7v-4.1c5 0 8.5 1.6 11 5.1-1-5-4-10-11-11z" />
+                                 </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+         </children>
+    </AnchorPane>
+  </children>
+</VBox>

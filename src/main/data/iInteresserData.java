@@ -9,7 +9,8 @@ public interface iInteresserData extends iDatabase {
 	public void addAll(List<iInteresser> datas);
 	public void addFresh(List<iInteresser> datas);
 	public void update(iInteresser data, int index);
-	public void update(iInteresser data);
+	public boolean update(iInteresser data);
+	public void updateOrAdd(iInteresser data);
 	public void remove(iInteresser data);
 	public iInteresser get(int index);
 	public iInteresser[] getAll();

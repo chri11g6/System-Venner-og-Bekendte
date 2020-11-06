@@ -27,6 +27,11 @@ public class PesonLogicData implements iPesonLogicData {
 	}
 
 	@Override
+	public void updateOrAdd(iPerson data) {
+		personData.updateOrAdd(data);
+	}
+
+	@Override
 	public void remove(iPerson data) {
 		personData.remove(data);
 	}
@@ -55,5 +60,5 @@ public class PesonLogicData implements iPesonLogicData {
 	public int size() {
 		return personData.size();
 	}
-	
+
 }

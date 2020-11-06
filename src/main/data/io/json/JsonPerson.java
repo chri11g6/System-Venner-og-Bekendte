@@ -6,7 +6,9 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import main.dto.Address;
 import main.dto.Person;
+import main.dto.iAddress;
 import main.dto.iPerson;
 
 public class JsonPerson {
@@ -26,8 +28,10 @@ public class JsonPerson {
 			personJson.put("forNavn", person.getForNavn());
 			personJson.put("efterNavn", person.getEfterNavn());
 			personJson.put("fødselsdage", person.getBirthday().getBirthdays());
-			personJson.put("Telefon", person.getTelefon());
-			personJson.put("Email", person.getEmail());
+			personJson.put("telefon", person.getTelefon());
+			personJson.put("email", person.getEmail());
+			personJson.put("address", fromAddressToJson(person.getAddress()));
+
 			JSONArray interesserArray = new JSONArray();
 
 			for (int j = 0; j < person.getInteresser().size(); j++) {
@@ -41,6 +45,30 @@ public class JsonPerson {
 		return jsonArray;
 	}
 
+	private static JSONObject fromAddressToJson(iAddress address){
+		JSONObject addressJson = new JSONObject();
+
+		addressJson.put("gade", address.getGade());
+		addressJson.put("nr", address.getNr());
+		addressJson.put("by", address.getBy());
+		addressJson.put("postNr", address.getPostNr());
+		addressJson.put("land", address.getLand());
+
+		return addressJson;
+	}
+
+	private static iAddress fromJsonToAddress(JSONObject json){
+		iAddress address = new Address();
+
+		address.setBy(json.getString("by"));
+		address.setGade(json.getString("gade"));
+		address.setNr(json.getString("nr"));
+		address.setLand(json.getString("land"));
+		address.setPostNr(json.getString("postNr"));
+
+		return address;
+	}
+
 	public static List<iPerson> decode(String data) {
 		JSONArray personsJson = new JSONArray(data);
 		List<iPerson> personList = new ArrayList<iPerson>();
@@ -51,8 +79,9 @@ public class JsonPerson {
 			person.setForNavn(personJson.getString("forNavn"));
 			person.setEfterNavn(personJson.getString("efterNavn"));
 			person.getBirthday().setBirthdays(personJson.getString("fødselsdage"));
-			person.setTelefon(personJson.getString("Telefon"));
-			person.setEmail(personJson.getString("Email"));
+			person.setTelefon(personJson.getString("telefon"));
+			person.setEmail(personJson.getString("email"));
+			person.setAddress(fromJsonToAddress(personJson.getJSONObject("address")));
 
 			personList.add(person);
 		}

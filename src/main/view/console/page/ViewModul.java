@@ -29,7 +29,7 @@ public class ViewModul implements iPageModul {
 					try {
 						if (key.length >= 2) {
 
-							Global.personHolder = Global.personList.get(Integer.parseInt(key[1]));
+							Global.setPersonHolder(Global.personList.get(Integer.parseInt(key[1])));
 
 							personView.run();
 						} else {

@@ -27,6 +27,11 @@ public class InteresserLogicData implements iInteresserLogicData {
 	}
 
 	@Override
+	public void updateOrAdd(iInteresser data) {
+		interesserData.updateOrAdd(data);
+	}
+
+	@Override
 	public void remove(iInteresser data) {
 		interesserData.remove(data);
 	}
@@ -55,5 +60,5 @@ public class InteresserLogicData implements iInteresserLogicData {
 	public int size() {
 		return interesserData.size();
 	}
-	
+
 }

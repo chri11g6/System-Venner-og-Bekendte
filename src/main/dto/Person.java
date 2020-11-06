@@ -10,9 +10,11 @@ public class Person implements iPerson {
 	private static int counter = 0;
 	private String forNavn;
 	private String efterNavn;
+	private String title;
 	private String telefon;
 	private String email;
 
+	private iAddress address = new Address();
 	private iBirthday birthday = new Birthday();
 
 	private List<iInteresser> interesser = new ArrayList<iInteresser>();
@@ -85,6 +87,17 @@ public class Person implements iPerson {
 	}
 
 	@Override
+	public String getInteresserToString() {
+		List<String> localList = new ArrayList<String>();
+
+		for(iInteresser interesserData : interesser){
+			localList.add(interesserData.getNavn());
+		}
+
+		return String.join(", ", localList);
+	}
+
+	@Override
 	public String getForNavn() {
 		return forNavn;
 	}
@@ -107,5 +120,38 @@ public class Person implements iPerson {
 	@Override
 	public iBirthday getBirthday() {
 		return birthday;
+	}
+
+	@Override
+	public String getTitle() {
+		return title;
+	}
+
+	@Override
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	@Override
+	public iAddress getAddress() {
+		return address;
+	}
+
+	@Override
+	public void setAddress(iAddress address) {
+		this.address = address;
+	}
+
+	@Override
+	public iPerson clone() {
+		iPerson x = null;
+		
+		try {
+			x = (iPerson) super.clone();
+		} catch (CloneNotSupportedException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return x;
 	}
 }

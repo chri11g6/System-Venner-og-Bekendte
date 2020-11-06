@@ -49,19 +49,19 @@ public class ViewPersonModul implements iPageModul {
 					try {
 						switch (key[1]) {
 							case "fornavn":
-								Global.personHolder.setForNavn(key[2]);
+								Global.getPersonHolder().setForNavn(key[2]);
 								break;
 							case "efternavn":
-								Global.personHolder.setEfterNavn(key[2]);
+								Global.getPersonHolder().setEfterNavn(key[2]);
 								break;
 							case "fødselsdage":
-								Global.personHolder.getBirthday().setBirthdays(key[2]);
+								Global.getPersonHolder().getBirthday().setBirthdays(key[2]);
 								break;
 							case "telefon":
-								Global.personHolder.setTelefon(key[2]);
+								Global.getPersonHolder().setTelefon(key[2]);
 								break;
 							case "email":
-								Global.personHolder.setEmail(key[2]);
+								Global.getPersonHolder().setEmail(key[2]);
 								break;
 							default:
 								throw new IllegalArgumentException("Den parmeter finds ikke [" + key[1] + "]");
@@ -77,19 +77,19 @@ public class ViewPersonModul implements iPageModul {
 					try {
 						switch (key[1]) {
 							case "fornavn":
-								System.out.println(Global.personHolder.getForNavn());
+								System.out.println(Global.getPersonHolder().getForNavn());
 								break;
 							case "efternavn":
-								System.out.println(Global.personHolder.getEfterNavn());
+								System.out.println(Global.getPersonHolder().getEfterNavn());
 								break;
 							case "alder":
-								System.out.println(Global.personHolder.getBirthday().getAlder());
+								System.out.println(Global.getPersonHolder().getBirthday().getAlder());
 								break;
 							case "telefon":
-								System.out.println(Global.personHolder.getTelefon());
+								System.out.println(Global.getPersonHolder().getTelefon());
 								break;
 							case "email":
-								System.out.println(Global.personHolder.getEmail());
+								System.out.println(Global.getPersonHolder().getEmail());
 								break;
 							default:
 								throw new IllegalArgumentException("Den parmeter finds ikke [" + key[1] + "]");
@@ -102,16 +102,16 @@ public class ViewPersonModul implements iPageModul {
 					}
 					break;
 				case "pwd":
-					System.out.println("Du er på Person view og du ser på " + Global.personHolder.getForNavn() + " "
-							+ Global.personHolder.getEfterNavn());
+					System.out.println("Du er på Person view og du ser på " + Global.getPersonHolder().getForNavn() + " "
+							+ Global.getPersonHolder().getEfterNavn());
 					break;
 				case "q":
 				case "exit":
 					isRun = false;
 
 					for (int i = 0; i < Global.personList.size(); i++) {
-						if (Global.personList.get(i).getId() == Global.personHolder.getId()) {
-							Global.personList.update(Global.personHolder, i);
+						if (Global.personList.get(i).getId() == Global.getPersonHolder().getId()) {
+							Global.personList.update(Global.getPersonHolder(), i);
 							break;
 						}
 					}

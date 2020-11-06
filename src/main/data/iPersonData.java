@@ -9,7 +9,8 @@ public interface iPersonData extends iDatabase {
 	public void addAll(List<iPerson> datas);
 	public void addFresh(List<iPerson> datas);
 	public void update(iPerson data, int index);
-	public void update(iPerson data);
+	public boolean update(iPerson data);
+	public void updateOrAdd(iPerson data);
 	public void remove(iPerson data);
 	public iPerson get(int index);
 	public iPerson[] getAll();

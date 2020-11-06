@@ -9,9 +9,25 @@ public class Global {
 	public static iPesonLogicData personList = new PesonLogicData();
 	public static iInteresserLogicData interesserList = new InteresserLogicData();
 
-	public static iPerson personHolder;
+	private static iPerson personHolder;
 
 	public static Stack<String> sti = new Stack<String>();
+
+	public static void setPersonHolder(iPerson person) {
+		personHolder = person;
+	}
+
+	public static iPerson getPersonHolder() {
+		return personHolder.clone();
+	}
+
+	public static void saveToPersonList() {
+		personList.updateOrAdd(personHolder);
+	}
+
+	public static void SletFromPersonList() {
+		personList.remove(personHolder);
+	}
 
 	public static String getSti() {
 		StringBuilder sti = new StringBuilder();

@@ -24,4 +24,16 @@ public class Interesser implements iInteresser {
 	public void setNavn(String navn) {
 		this.navn = navn;
 	}
+
+	public iInteresser clone() {
+		iInteresser x = null;
+		
+		try {
+			x = (iInteresser) super.clone();
+		} catch (CloneNotSupportedException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return x;
+	}
 }

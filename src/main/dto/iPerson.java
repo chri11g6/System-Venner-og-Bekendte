@@ -2,10 +2,11 @@ package main.dto;
 
 import java.util.List;
 
-public interface iPerson {
+public interface iPerson extends Cloneable {
 	public int getId();
 
 	public List<iInteresser> getInteresser();
+	public String getInteresserToString();
 	
 	public String getEmail();
 	public void setEmail(String email);
@@ -19,5 +20,13 @@ public interface iPerson {
 	public String getEfterNavn();
 	public void setEfterNavn(String efterNavn);
 
+	public String getTitle();
+	public void setTitle(String title);
+
 	public iBirthday getBirthday();
+
+	public iAddress getAddress();
+	public void setAddress(iAddress address);
+
+	public iPerson clone();
 }

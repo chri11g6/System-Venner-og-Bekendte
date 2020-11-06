@@ -34,11 +34,11 @@ public class DisplayViewPerson implements iDisplay {
 		int maxSizeEmail = 5;
 		int addSpaceTo = 2;
 
-		maxSizeForNavn = Math.max(maxSizeForNavn, Global.personHolder.getForNavn().length());
-		maxSizeEfterNavn = Math.max(maxSizeEfterNavn, Global.personHolder.getEfterNavn().length());
-		maxSizeTelefon = Math.max(maxSizeTelefon, Global.personHolder.getTelefon().length());
-		maxSizeEmail = Math.max(maxSizeEmail, Global.personHolder.getEmail().length());
-		maxSizeAlder = Math.max(maxSizeAlder, String.valueOf(Global.personHolder.getBirthday().getAlder()).length());
+		maxSizeForNavn = Math.max(maxSizeForNavn, Global.getPersonHolder().getForNavn().length());
+		maxSizeEfterNavn = Math.max(maxSizeEfterNavn, Global.getPersonHolder().getEfterNavn().length());
+		maxSizeTelefon = Math.max(maxSizeTelefon, Global.getPersonHolder().getTelefon().length());
+		maxSizeEmail = Math.max(maxSizeEmail, Global.getPersonHolder().getEmail().length());
+		maxSizeAlder = Math.max(maxSizeAlder, String.valueOf(Global.getPersonHolder().getBirthday().getAlder()).length());
 
 		StringBuilder header = new StringBuilder();
 
@@ -60,24 +60,24 @@ public class DisplayViewPerson implements iDisplay {
 
 		StringBuilder personText = new StringBuilder();
 
-		personText.append(Global.personHolder.getForNavn());
-		personText.append(Tools.loopString(maxSizeForNavn - Global.personHolder.getForNavn().length() + addSpaceTo, " "));
-		personText.append(Global.personHolder.getEfterNavn());
+		personText.append(Global.getPersonHolder().getForNavn());
+		personText.append(Tools.loopString(maxSizeForNavn - Global.getPersonHolder().getForNavn().length() + addSpaceTo, " "));
+		personText.append(Global.getPersonHolder().getEfterNavn());
 		personText
-				.append(Tools.loopString(maxSizeEfterNavn - Global.personHolder.getEfterNavn().length() + addSpaceTo, " "));
-		personText.append(Global.personHolder.getBirthday().getAlder());
+				.append(Tools.loopString(maxSizeEfterNavn - Global.getPersonHolder().getEfterNavn().length() + addSpaceTo, " "));
+		personText.append(Global.getPersonHolder().getBirthday().getAlder());
 		personText.append(
-				Tools.loopString(maxSizeAlder - String.valueOf(Global.personHolder.getBirthday().getAlder()).length() + addSpaceTo, " "));
-		personText.append(Global.personHolder.getTelefon());
+				Tools.loopString(maxSizeAlder - String.valueOf(Global.getPersonHolder().getBirthday().getAlder()).length() + addSpaceTo, " "));
+		personText.append(Global.getPersonHolder().getTelefon());
 		personText.append(Tools.loopString(
-				maxSizeTelefon - String.valueOf(Global.personHolder.getTelefon()).length() + addSpaceTo, " "));
-		personText.append(Global.personHolder.getEmail());
+				maxSizeTelefon - String.valueOf(Global.getPersonHolder().getTelefon()).length() + addSpaceTo, " "));
+		personText.append(Global.getPersonHolder().getEmail());
 		personText.append(Tools
-				.loopString(maxSizeEmail - String.valueOf(Global.personHolder.getEmail()).length() + addSpaceTo, " "));
+				.loopString(maxSizeEmail - String.valueOf(Global.getPersonHolder().getEmail()).length() + addSpaceTo, " "));
 
-		for (int j = 0; j < Global.personHolder.getInteresser().size(); j++) {
-			personText.append(Global.personHolder.getInteresser().get(j).getNavn());
-			if (j < Global.personHolder.getInteresser().size() - 1) {
+		for (int j = 0; j < Global.getPersonHolder().getInteresser().size(); j++) {
+			personText.append(Global.getPersonHolder().getInteresser().get(j).getNavn());
+			if (j < Global.getPersonHolder().getInteresser().size() - 1) {
 				personText.append(", ");
 			}
 		}

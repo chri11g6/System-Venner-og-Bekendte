@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Dialog;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -29,11 +30,15 @@ public class UIController {
 	public ObservableList<iPerson> personList = FXCollections.observableArrayList();
 	public ObservableList<iInteresser> interesserList = FXCollections.observableArrayList();
 
+	public ObservableList<String> viewPersonInteresserOb = FXCollections.observableArrayList();
+
 	private Dialog<String> dialog = new Dialog();
 
 	public AnchorPane overView;
 	public AnchorPane opretPerson;
 	public AnchorPane viewPerson;
+
+	public ListView<String> viewPersonInteresserList;
 
 	public TableView<iPerson> personTable;
 	public TableView<iInteresser> interesserTable;
@@ -172,6 +177,14 @@ public class UIController {
 		interesserList.addAll(Global.interesserList.getAllAsList());
 	}
 
+	public void updateviewPersonInteresserOb(){
+		viewPersonInteresserOb.clear();
+
+		for(iInteresser interesser : Global.getPersonHolder().getPersonInteresserList().getInteresser()){
+			viewPersonInteresserOb.add(interesser.getNavn());
+		}
+	}
+
 	private void getSelectionFormPersonTalbe() {
 		Global.setPersonHolder(personTable.getSelectionModel().getSelectedItem());
 	}
@@ -243,6 +256,8 @@ public class UIController {
 		viewPersonFornavn.setText(Global.getPersonHolder().getForNavn());
 		viewPersonEfternavn.setText(Global.getPersonHolder().getEfterNavn());
 		viewPersonTitle.setText(Global.getPersonHolder().getTitle());
+
+		updateviewPersonInteresserOb();
 	}
 
 	public void initialize(){
@@ -254,6 +269,7 @@ public class UIController {
 		setupPersonTable();
 		setupInteresserTable();
 		setupDialog();
+		setupViewPersonInteresserList();
 	}
 
 	private void setupDialog() {
@@ -261,6 +277,10 @@ public class UIController {
 		ButtonType type = new ButtonType("Ok", ButtonData.OK_DONE);
 		dialog.setContentText("Errer text");
 		dialog.getDialogPane().getButtonTypes().add(type);
+	}
+
+	private void setupViewPersonInteresserList() {
+		viewPersonInteresserList.setItems(viewPersonInteresserOb);
 	}
 
 	private void setupPersonTable(){

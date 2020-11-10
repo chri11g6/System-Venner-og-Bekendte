@@ -7,7 +7,7 @@ import main.data.DataFactory;
 import main.data.iPersonData;
 import main.dto.iPerson;
 
-public class PesonLogicData implements iPesonLogicData {
+class PersonLogicData implements iPersonLogicData {
 
 	private iPersonData personData = DataFactory.getPersonData();
 

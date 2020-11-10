@@ -1,9 +1,9 @@
 package main;
 
-import main.logic.Global;
 import main.dto.Interesser;
 import main.dto.Person;
 import main.dto.iPerson;
+import main.logic.LogicFactory;
 import main.view.ViewFactory;
 import main.view.iView;
 
@@ -18,10 +18,10 @@ public class App {
 	}
 
 	private static void load() {
-		Global.interesserList.add(new Interesser("Skak"));
-		Global.interesserList.add(new Interesser("CounterStrike"));
-		Global.interesserList.add(new Interesser("Litteratur"));
-		Global.interesserList.add(new Interesser("Natur"));
+		LogicFactory.getGlobal().getInteresserList().add(new Interesser("Skak"));
+		LogicFactory.getGlobal().getInteresserList().add(new Interesser("CounterStrike"));
+		LogicFactory.getGlobal().getInteresserList().add(new Interesser("Litteratur"));
+		LogicFactory.getGlobal().getInteresserList().add(new Interesser("Natur"));
 
 		iPerson per = new Person();
 		per.setForNavn("Christian");
@@ -62,8 +62,8 @@ public class App {
 		per2.getAddress().setNr("30");
 		per2.getAddress().setLand("Danmark");
 		
-		Global.personList.add(per);
-		Global.personList.add(per1);
-		Global.personList.add(per2);
+		LogicFactory.getGlobal().getPersonList().add(per);
+		LogicFactory.getGlobal().getPersonList().add(per1);
+		LogicFactory.getGlobal().getPersonList().add(per2);
 	}
 }

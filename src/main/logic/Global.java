@@ -1,44 +1,65 @@
 package main.logic;
 
+import java.io.File;
 import java.util.Stack;
 
 import main.dto.iPerson;
 
-public class Global {
+class Global implements iGlobal{
 
-	public static iPesonLogicData personList = new PesonLogicData();
-	public static iInteresserLogicData interesserList = new InteresserLogicData();
+	private iPersonLogicData personList = new PersonLogicData();
+	private iInteresserLogicData interesserList = new InteresserLogicData();
+	
+	private iPerson personHolder;
+	
+	private File filePathHolder;
 
-	private static iPerson personHolder;
+	public Stack<String> sti = new Stack<String>();
 
-	public static Stack<String> sti = new Stack<String>();
+	public void setFilePathHolder(File filePath){
+		filePathHolder = filePath;
+	}
 
-	public static void setPersonHolder(iPerson person) {
+	public File getFilePathHolder(){
+		return filePathHolder;
+	}
+
+	public void setPersonHolder(iPerson person) {
 		personHolder = person;
 	}
 
-	public static iPerson getPersonHolder() {
+	public iPerson getPersonHolder() {
 		return personHolder.clone();
 	}
 
-	public static void saveToPersonList() {
+	public void saveToPersonList() {
 		personList.updateOrAdd(personHolder);
 	}
 
-	public static void SletFromPersonList() {
+	public void SletFromPersonList() {
 		personList.remove(personHolder);
 	}
 
-	public static String getSti() {
+	public String getSti() {
 		StringBuilder sti = new StringBuilder();
 
-		for (int i = 0; i < Global.sti.size(); i++) {
-			sti.append(Global.sti.get(i));
-			if (i < Global.sti.size() - 1) {
+		for (int i = 0; i < this.sti.size(); i++) {
+			sti.append(this.sti.get(i));
+			if (i < this.sti.size() - 1) {
 				sti.append("> ");
 			}
 		}
 
 		return sti.toString();
+	}
+
+	@Override
+	public iPersonLogicData getPersonList() {
+		return personList;
+	}
+
+	@Override
+	public iInteresserLogicData getInteresserList() {
+		return interesserList;
 	}
 }

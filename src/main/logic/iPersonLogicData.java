@@ -4,7 +4,7 @@ import java.util.List;
 
 import main.dto.iPerson;
 
-public interface iPesonLogicData {
+public interface iPersonLogicData {
 	public void add(iPerson data);
 	public void update(iPerson data, int index);
 	public void update(iPerson data);

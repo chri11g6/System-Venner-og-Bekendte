@@ -1,5 +1,6 @@
 package main.view.fxml.window;
 
+import java.io.File;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -15,24 +16,35 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javafx.util.StringConverter;
 import main.dto.Address;
 import main.dto.Person;
 import main.dto.iAddress;
 import main.dto.iInteresser;
 import main.dto.iPerson;
-import main.logic.Global;
+import main.logic.LogicFactory;
+import main.logic.iGlobal;
+import main.logic.iSaveAndLoadLogic;
 
 public class UIController {
 	private PageEnum lastePage;
 	private PageEnum nowPage = PageEnum.OverView;
+
+	private iSaveAndLoadLogic saveAndLoadLogic = LogicFactory.getSaveAndLoadLogic();
+	private iGlobal global = LogicFactory.getGlobal();
+
 	public ObservableList<iPerson> personList = FXCollections.observableArrayList();
 	public ObservableList<iInteresser> interesserList = FXCollections.observableArrayList();
 
 	public ObservableList<String> viewPersonInteresserOb = FXCollections.observableArrayList();
 
-	private Dialog<String> dialog = new Dialog();
+	private Dialog<String> dialog = new Dialog<String>();
+
+	public VBox root;
 
 	public AnchorPane overView;
 	public AnchorPane opretPerson;
@@ -111,7 +123,7 @@ public class UIController {
 
 	public void opretNewPerson() {
 		clearOpretPersonInput();
-		Global.setPersonHolder(new Person());
+		global.setPersonHolder(new Person());
 		goToOpretPerson();
 	}
 
@@ -120,19 +132,34 @@ public class UIController {
 		dialog.showAndWait();
 	}
 
+	public void openFile(){
+		openFileDialog();
+	}
+
+	public void saveFile(){
+		if (global.getFilePathHolder() == null){
+			saveFileDialog();
+		}
+	}
+
+	public void saveAsFile(){
+		saveFileDialog();
+	}
+
 	public void openTestDialog() {
-		openDialog("Test Dialog");
+		// openDialog("Test Dialog");
+		openFileDialog();
 	}
 
 	public void sletPerson(){
 		getSelectionFormPersonTalbe();
-		Global.SletFromPersonList();
+		global.SletFromPersonList();
 		updatePersonList();
 	}
 
 	public void savePerson() {
 		try {
-			iPerson person = Global.getPersonHolder();
+			iPerson person = global.getPersonHolder();
 
 			person.setForNavn(opretPersonFornavn.getText());
 			person.setEfterNavn(opretPersonEfternavn.getText());
@@ -151,9 +178,9 @@ public class UIController {
 
 			person.setAddress(address);
 
-			Global.setPersonHolder(person);
+			global.setPersonHolder(person);
 
-			Global.saveToPersonList();
+			global.saveToPersonList();
 			updateAll();
 
 		} catch (Exception e) {
@@ -169,24 +196,24 @@ public class UIController {
 
 	public void updatePersonList(){
 		personList.clear();
-		personList.addAll(Global.personList.getAllAsList());
+		personList.addAll(global.getPersonList().getAllAsList());
 	}
 
 	public void updateInteresserList(){
 		interesserList.clear();
-		interesserList.addAll(Global.interesserList.getAllAsList());
+		interesserList.addAll(global.getInteresserList().getAllAsList());
 	}
 
 	public void updateviewPersonInteresserOb(){
 		viewPersonInteresserOb.clear();
 
-		for(iInteresser interesser : Global.getPersonHolder().getPersonInteresserList().getInteresser()){
+		for(iInteresser interesser : global.getPersonHolder().getPersonInteresserList().getInteresser()){
 			viewPersonInteresserOb.add(interesser.getNavn());
 		}
 	}
 
 	private void getSelectionFormPersonTalbe() {
-		Global.setPersonHolder(personTable.getSelectionModel().getSelectedItem());
+		global.setPersonHolder(personTable.getSelectionModel().getSelectedItem());
 	}
 
 	private void goTo(PageEnum page) {
@@ -214,6 +241,38 @@ public class UIController {
 		}
 	}
 
+	private void openFileDialog() {
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.setTitle("Open JSON file");
+		Stage stage = (Stage)root.getScene().getWindow();
+
+		fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("JSON files (*.json)", "*.json"));
+		fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("All files (*.*)", "*.*"));
+
+		File file = fileChooser.showOpenDialog(stage);
+
+		if(file != null){
+			global.setFilePathHolder(file);
+			saveAndLoadLogic.loadAllFromGlobal();
+		}
+	}
+
+	private void saveFileDialog() {
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.setTitle("Save as JSON file");
+		Stage stage = (Stage)root.getScene().getWindow();
+
+		fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("JSON files (*.json)", "*.json"));
+		fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("All files (*.*)", "*.*"));
+
+		File file = fileChooser.showSaveDialog(stage);
+
+		if(file != null){
+			global.setFilePathHolder(file);
+			saveAndLoadLogic.saveAllFromGlobal();
+		}
+	}
+
 	private void clearOpretPersonInput() {
 		opretPersonGade.setText("");
 		opretPersonNr.setText("");
@@ -230,32 +289,32 @@ public class UIController {
 	}
 
 	private void updateOpretPersonPage() {
-		opretPersonGade.setText(Global.getPersonHolder().getAddress().getGade());
-		opretPersonNr.setText(Global.getPersonHolder().getAddress().getNr());
-		opretPersonPostNr.setText(Global.getPersonHolder().getAddress().getPostNr());
-		opretPersonBy.setText(Global.getPersonHolder().getAddress().getBy());
-		opretPersonLand.setText(Global.getPersonHolder().getAddress().getLand());
-		opretPersonEmail.setText(Global.getPersonHolder().getEmail());
-		opretPersonTelefon.setText(Global.getPersonHolder().getTelefon());
-		opretPersonFornavn.setText(Global.getPersonHolder().getForNavn());
-		opretPersonEfternavn.setText(Global.getPersonHolder().getEfterNavn());
-		opretPersonTitle.setText(Global.getPersonHolder().getTitle());
+		opretPersonGade.setText(global.getPersonHolder().getAddress().getGade());
+		opretPersonNr.setText(global.getPersonHolder().getAddress().getNr());
+		opretPersonPostNr.setText(global.getPersonHolder().getAddress().getPostNr());
+		opretPersonBy.setText(global.getPersonHolder().getAddress().getBy());
+		opretPersonLand.setText(global.getPersonHolder().getAddress().getLand());
+		opretPersonEmail.setText(global.getPersonHolder().getEmail());
+		opretPersonTelefon.setText(global.getPersonHolder().getTelefon());
+		opretPersonFornavn.setText(global.getPersonHolder().getForNavn());
+		opretPersonEfternavn.setText(global.getPersonHolder().getEfterNavn());
+		opretPersonTitle.setText(global.getPersonHolder().getTitle());
 
-		opretPersonBirthday.setValue(Global.getPersonHolder().getBirthday().getLocalDateBirthdays());
+		opretPersonBirthday.setValue(global.getPersonHolder().getBirthday().getLocalDateBirthdays());
 	}
 
 	private void updateViewPersonPage() {
-		viewPersonGade.setText(Global.getPersonHolder().getAddress().getGade());
-		viewPersonNr.setText(Global.getPersonHolder().getAddress().getNr());
-		viewPersonPostNr.setText(Global.getPersonHolder().getAddress().getPostNr());
-		viewPersonBy.setText(Global.getPersonHolder().getAddress().getBy());
-		viewPersonLand.setText(Global.getPersonHolder().getAddress().getLand());
-		viewPersonEmail.setText(Global.getPersonHolder().getEmail());
-		viewPersonTelefon.setText(Global.getPersonHolder().getTelefon());
-		viewPersonBirthday.setText(Global.getPersonHolder().getBirthday().toString());
-		viewPersonFornavn.setText(Global.getPersonHolder().getForNavn());
-		viewPersonEfternavn.setText(Global.getPersonHolder().getEfterNavn());
-		viewPersonTitle.setText(Global.getPersonHolder().getTitle());
+		viewPersonGade.setText(global.getPersonHolder().getAddress().getGade());
+		viewPersonNr.setText(global.getPersonHolder().getAddress().getNr());
+		viewPersonPostNr.setText(global.getPersonHolder().getAddress().getPostNr());
+		viewPersonBy.setText(global.getPersonHolder().getAddress().getBy());
+		viewPersonLand.setText(global.getPersonHolder().getAddress().getLand());
+		viewPersonEmail.setText(global.getPersonHolder().getEmail());
+		viewPersonTelefon.setText(global.getPersonHolder().getTelefon());
+		viewPersonBirthday.setText(global.getPersonHolder().getBirthday().toString());
+		viewPersonFornavn.setText(global.getPersonHolder().getForNavn());
+		viewPersonEfternavn.setText(global.getPersonHolder().getEfterNavn());
+		viewPersonTitle.setText(global.getPersonHolder().getTitle());
 
 		updateviewPersonInteresserOb();
 	}
@@ -326,4 +385,5 @@ public class UIController {
 			}
 		});
 	}
+
 }

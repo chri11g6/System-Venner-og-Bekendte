@@ -7,7 +7,7 @@ import main.data.DataFactory;
 import main.data.iInteresserData;
 import main.dto.iInteresser;
 
-public class InteresserLogicData implements iInteresserLogicData {
+class InteresserLogicData implements iInteresserLogicData {
 
 	private iInteresserData interesserData = DataFactory.getInteresserData();
 

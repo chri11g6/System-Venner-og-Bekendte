@@ -54,4 +54,34 @@ public class SaveAndLoad implements iSaveAndLoad {
 		DataFactory.getPersonData().addFresh(data.persons);
 	}
 
+	@Override
+	public void saveInteressersAsJSON(java.io.File filePath) throws IOException {
+		saveInteressersAsJSON(filePath.getAbsolutePath());
+	}
+
+	@Override
+	public void savePersonsAsJSON(java.io.File filePath) throws IOException {
+		savePersonsAsJSON(filePath.getAbsolutePath());
+	}
+
+	@Override
+	public void saveAllAsJSON(java.io.File filePath) throws IOException {
+		saveAllAsJSON(filePath.getAbsolutePath());
+	}
+
+	@Override
+	public void loadInteressersAsJSON(java.io.File filePath) throws IOException {
+		loadInteressersAsJSON(filePath.getAbsolutePath());
+	}
+
+	@Override
+	public void loadPersonsAsJSON(java.io.File filePath) throws IOException {
+		loadPersonsAsJSON(filePath.getAbsolutePath());
+	}
+
+	@Override
+	public void loadAllAsJSON(java.io.File filePath) throws IOException {
+		loadAllAsJSON(filePath.getAbsolutePath());
+	}
+
 }

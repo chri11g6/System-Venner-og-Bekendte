@@ -11,8 +11,6 @@ public class App {
 	public static void main(String[] args) throws Exception {
 		load();
 
-		// iView menu = ViewFactory.getGUI();
-		// iView menu = ViewFactory.getConsole();
 		iView menu = ViewFactory.getGUIFxml();
 
 		menu.run();

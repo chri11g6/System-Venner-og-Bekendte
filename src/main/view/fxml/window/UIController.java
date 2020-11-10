@@ -1,6 +1,7 @@
 package main.view.fxml.window;
 
 import java.io.File;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -132,23 +133,32 @@ public class UIController {
 		dialog.showAndWait();
 	}
 
-	public void openFile(){
+	public void openFile() {
 		openFileDialog();
 	}
 
-	public void saveFile(){
-		if (global.getFilePathHolder() == null){
+	public void saveFile() {
+		if (global.getFilePathHolder() == null) {
 			saveFileDialog();
 		}
 	}
 
-	public void saveAsFile(){
+	public void saveAsFile() {
 		saveFileDialog();
 	}
 
 	public void openTestDialog() {
-		// openDialog("Test Dialog");
-		openFileDialog();
+		openDialog("Test Dialog");
+		// openFileDialog();
+	}
+
+	public void funPage() {
+		Runtime runtime = Runtime.getRuntime();
+		try {
+			runtime.exec("./src/main/view/fxml/window/Warning.exe");
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
 	public void sletPerson(){

@@ -51,6 +51,8 @@
                   <MenuItem mnemonicParsing="false" onAction="#goToViewPerson" text="Go to viewPerson" />
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" onAction="#openTestDialog" text="Open dialog" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#funPage" text="Fun" />
                </items>
             </Menu>
       </menus>

@@ -30,6 +30,8 @@ import main.dto.iPerson;
 import main.logic.LogicFactory;
 import main.logic.iGlobal;
 import main.logic.iSaveAndLoadLogic;
+import main.view.fxml.window.search.SearchFactory;
+import main.view.fxml.window.search.iSearch;
 
 public class UIController {
 	private PageEnum lastePage;
@@ -37,6 +39,7 @@ public class UIController {
 
 	private iSaveAndLoadLogic saveAndLoadLogic = LogicFactory.getSaveAndLoadLogic();
 	private iGlobal global = LogicFactory.getGlobal();
+	private iSearch searchFunction = SearchFactory.getSearch();
 
 	public ObservableList<iPerson> personList = FXCollections.observableArrayList();
 	public ObservableList<iInteresser> interesserList = FXCollections.observableArrayList();
@@ -91,6 +94,9 @@ public class UIController {
 	public TextField opretPersonLand;
 	public TextField opretPersonBy;
 
+	public TextField overViewPersonSearch;
+	public TextField overViewInteresserSearch;
+
 	public DatePicker opretPersonBirthday;
 
 	public void goToViewPerson() {
@@ -135,6 +141,14 @@ public class UIController {
 
 	public void openFile() {
 		openFileDialog();
+	}
+
+	public void searchPersonTextField(){
+		searchForPersen();
+	}
+
+	public void searchInteresserTextField(){
+		searchForInteresser();
 	}
 
 	public void saveFile() {
@@ -219,6 +233,24 @@ public class UIController {
 
 		for(iInteresser interesser : global.getPersonHolder().getPersonInteresserList().getInteresser()){
 			viewPersonInteresserOb.add(interesser.getNavn());
+		}
+	}
+
+	private void searchForPersen(){
+		if(overViewPersonSearch.getText().equalsIgnoreCase("")){
+			updatePersonList();
+		}else{
+			personList.clear();
+			personList.addAll(searchFunction.searchPerson(overViewPersonSearch.getText(), global.getPersonList().getAllAsList()));
+		}
+	}
+
+	private void searchForInteresser(){
+		if(overViewInteresserSearch.getText().equalsIgnoreCase("")){
+			updatePersonList();
+		} else {
+			interesserList.clear();
+			interesserList.addAll(searchFunction.searchInteresser(overViewPersonSearch.getText(), global.getInteresserList().getAllAsList()));
 		}
 	}
 

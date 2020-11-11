@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 import main.dto.iInteresser;
 
-public class InteresserData implements iInteresserData {
+class InteresserData implements iInteresserData {
 	private List<iInteresser> interesserList = new ArrayList<iInteresser>();
 
 	@Override
@@ -30,7 +30,8 @@ public class InteresserData implements iInteresserData {
 	}
 
 	@Override
-	public boolean update(iInteresser data) {
+	public boolean isExists(iInteresser data) {
+		//TODO skal lave det til private eller om omdøbe til isExits
 		boolean isUpdate = false;
 		if(data == null){
 			return isUpdate;
@@ -49,7 +50,7 @@ public class InteresserData implements iInteresserData {
 
 	@Override
 	public void updateOrAdd(iInteresser data) {
-		if(!update(data)){
+		if(!isExists(data)){
 			add(data);
 		}
 	}

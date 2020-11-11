@@ -23,7 +23,7 @@ class PersonLogicData implements iPersonLogicData {
 
 	@Override
 	public void update(iPerson data) {
-		personData.update(data);
+		personData.isExists(data);
 	}
 
 	@Override

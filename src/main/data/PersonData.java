@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import main.dto.Person;
 import main.dto.iPerson;
 
-public class PersonData implements iPersonData {
+class PersonData implements iPersonData {
 	private List<iPerson> personList = new ArrayList<iPerson>();
 
 	@Override
@@ -45,7 +45,7 @@ public class PersonData implements iPersonData {
 	}
 
 	@Override
-	public boolean update(iPerson data) {
+	public boolean isExists(iPerson data) {
 		boolean isUpdate = false;
 
 		if(data == null){
@@ -65,7 +65,7 @@ public class PersonData implements iPersonData {
 
 	@Override
 	public void updateOrAdd(iPerson data) {
-		if(!update(data)){
+		if(!isExists(data)){
 			add(data);
 		}
 	}

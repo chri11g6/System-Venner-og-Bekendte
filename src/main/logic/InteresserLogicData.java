@@ -23,7 +23,7 @@ class InteresserLogicData implements iInteresserLogicData {
 
 	@Override
 	public void update(iInteresser data) {
-		interesserData.update(data);
+		interesserData.isExists(data);
 	}
 
 	@Override

@@ -3,12 +3,12 @@ package main.logic;
 import java.io.File;
 import java.io.IOException;
 
-import main.data.SaveAndLoad;
+import main.data.DataFactory;
 import main.data.iSaveAndLoad;
 
 class SaveAndLoadLogic implements iSaveAndLoadLogic {
 
-	private iSaveAndLoad saveAndLoad = new SaveAndLoad();
+	private iSaveAndLoad saveAndLoad = DataFactory.getSaveAndLoad();
 
 	@Override
 	public void saveInteressersAsJSON(String path) throws IOException {

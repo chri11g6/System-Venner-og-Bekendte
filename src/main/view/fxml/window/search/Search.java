@@ -126,6 +126,11 @@ class Search implements iSearch {
 				SearchFilter filter = new SearchFilter();
 				if (isSearchForPerson) {
 					switch (words[i]) {
+						case "not":
+							if(i == 0){
+								filter.type = SearchFilter.Operators.NOT;
+								i += 1;
+							}
 						case "fornavn":
 							filter.permeter = "fornavn";
 							break;
@@ -170,6 +175,10 @@ class Search implements iSearch {
 					}
 					filter.keyword = words[i + 1];
 				} else {
+					if(i == 0){
+						filter.type = SearchFilter.Operators.NOT;
+						i += 1;
+					}
 					filter.permeter = "interesser";
 					filter.keyword = words[i];
 				}
@@ -191,7 +200,9 @@ class Search implements iSearch {
 						// break;
 					}
 				} else {
-					filter.type = SearchFilter.Operators.OR;
+					if(filter.type == null){
+						filter.type = SearchFilter.Operators.OR;
+					}
 				}
 
 				filtersList.add(filter);
@@ -220,7 +231,12 @@ class Search implements iSearch {
 
 		personSearchList.clear();
 
-		personSearchList.addAll(searchPersonData(orList, personsList));
+		if(orList.size() != 0){
+			personSearchList.addAll(searchPersonData(orList, personsList));
+		}else{
+			personSearchList.addAll(personsList);
+		}
+
 		bufferList.clear();
 		if (andList.size() != 0) {
 			bufferList.addAll(searchPersonData(andList, personSearchList));
@@ -258,15 +274,20 @@ class Search implements iSearch {
 
 		interesserSearchList.clear();
 
-		interesserSearchList.addAll(searchInteresserData(orList, interessersList));
+		if (orList.size() != 0){
+			interesserSearchList.addAll(searchInteresserData(orList, interessersList));
+		} else {
+			interesserSearchList.addAll(interessersList);
+		}
+
+		bufferList.clear();
 		if (andList.size() != 0) {
-			bufferList.clear();
 			bufferList.addAll(searchInteresserData(andList, interesserSearchList));
 			interesserSearchList.clear();
 			interesserSearchList.addAll(bufferList);
 		}
+		bufferList.clear();
 		if (notList.size() != 0) {
-			bufferList.clear();
 			bufferList = searchInteresserData(notList, interesserSearchList);
 		}
 

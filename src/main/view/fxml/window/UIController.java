@@ -247,10 +247,10 @@ public class UIController {
 
 	private void searchForInteresser(){
 		if(overViewInteresserSearch.getText().equalsIgnoreCase("")){
-			updatePersonList();
+			updateInteresserList();
 		} else {
 			interesserList.clear();
-			interesserList.addAll(searchFunction.searchInteresser(overViewPersonSearch.getText(), global.getInteresserList().getAllAsList()));
+			interesserList.addAll(searchFunction.searchInteresser(overViewInteresserSearch.getText(), global.getInteresserList().getAllAsList()));
 		}
 	}
 

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="23cm" height="16cm" viewBox="14 19 456 306" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <ellipse style="fill: #ffffff" cx="250.85" cy="52" rx="90.85" ry="32"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="250.85" cy="52" rx="90.85" ry="32"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="250.85" y="47.9">
+      <tspan x="250.85" y="47.9">Oprette</tspan>
+      <tspan x="250.85" y="63.9">oplysningerne</tspan>
+    </text>
+  </g>
+  <g>
+    <ellipse style="fill: #ffffff" cx="250.85" cy="132" rx="90.85" ry="32"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="250.85" cy="132" rx="90.85" ry="32"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="250.85" y="127.9">
+      <tspan x="250.85" y="127.9">Ændre</tspan>
+      <tspan x="250.85" y="143.9">oplysningerne</tspan>
+    </text>
+  </g>
+  <g>
+    <ellipse style="fill: #ffffff" cx="250.85" cy="212" rx="90.85" ry="32"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="250.85" cy="212" rx="90.85" ry="32"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="250.85" y="207.9">
+      <tspan x="250.85" y="207.9">Søge</tspan>
+      <tspan x="250.85" y="223.9">oplysningerne</tspan>
+    </text>
+  </g>
+  <g>
+    <ellipse style="fill: #ffffff" cx="250.85" cy="292" rx="90.85" ry="32"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="250.85" cy="292" rx="90.85" ry="32"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="250.85" y="287.9">
+      <tspan x="250.85" y="287.9">Slette</tspan>
+      <tspan x="250.85" y="303.9">oplysningerne</tspan>
+    </text>
+  </g>
+  <g>
+    <ellipse style="fill: #ffffff" cx="40" cy="104" rx="6" ry="6"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="40" cy="104" rx="6" ry="6"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="16" y1="116" x2="64" y2="116"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="40" y1="110" x2="40" y2="140"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="40" y1="140" x2="16" y2="166"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="40" y1="140" x2="64" y2="166"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="40" y="189.9">
+      <tspan x="40" y="189.9">User</tspan>
+    </text>
+  </g>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="65,140 112.5,140 112.5,52 160,52 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="65,140 112.5,140 112.5,132 160,132 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="65,140 112.5,140 112.5,212 160,212 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="65,140 112.5,140 112.5,292 160,292 "/>
+  <g>
+    <polygon style="fill: #ffffff" points="420,120 456.8,120 468.8,132 468.8,170 420,170 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="420,120 456.8,120 468.8,132 468.8,170 420,170 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" points="456.8,120 456.8,132 468.8,132 "/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="427" y="144.9">
+      <tspan x="427" y="144.9">File</tspan>
+      <tspan x="427" y="160.9"></tspan>
+    </text>
+  </g>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="341.7,52 380.85,52 380.85,145 420,145 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="341.7,132 380.85,132 380.85,145 420,145 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="341.7,212 380.85,212 380.85,145 420,145 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="341.7,292 380.85,292 380.85,145 420,145 "/>
+</svg>

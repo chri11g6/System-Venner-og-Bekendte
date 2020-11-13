@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="50cm" height="26cm" viewBox="39 59 993 511" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <rect style="fill: #ffffff" x="40" y="80" width="220" height="140"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="40" y="80" width="220" height="140"/>
+    <rect style="fill: #ffffff" x="40" y="60" width="40" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="40" y="60" width="40" height="20"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="42" y="75">view</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="340" y="80" width="140" height="140"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="340" y="80" width="140" height="140"/>
+    <rect style="fill: #ffffff" x="340" y="60" width="42.5" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="340" y="60" width="42.5" height="20"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="342" y="75">logic</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="600" y="80" width="300" height="200"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="600" y="80" width="300" height="200"/>
+    <rect style="fill: #ffffff" x="600" y="60" width="40" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="600" y="60" width="40" height="20"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="602" y="75">data</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="40" y="340" width="80" height="80"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="40" y="340" width="80" height="80"/>
+    <rect style="fill: #ffffff" x="40" y="320" width="40" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="40" y="320" width="40" height="20"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="42" y="335">main</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="60" y="120" width="80" height="80"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="60" y="120" width="80" height="80"/>
+    <rect style="fill: #ffffff" x="60" y="100" width="40" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="60" y="100" width="40" height="20"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="62" y="115">gui</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="160" y="120" width="80" height="80"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="160" y="120" width="80" height="80"/>
+    <rect style="fill: #ffffff" x="160" y="100" width="57.9" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="160" y="100" width="57.9" height="20"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="162" y="115">console</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="780" y="120" width="100" height="140"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="780" y="120" width="100" height="140"/>
+    <rect style="fill: #ffffff" x="780" y="100" width="40" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="780" y="100" width="40" height="20"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="782" y="115">io</text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #000000" points="80,318.993 80,274.001 150,274.001 150,227.714 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="155,240.361 150,224.361 145,240.361 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #000000" points="260,150 261,150 329.991,150 332.286,150 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="319.639,155 335.639,150 319.639,145 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #000000" points="481.009,150 536,150 536,180 592.286,180 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="579.638,185 595.638,180 579.638,175 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="360" y="100" width="110.1" height="44"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="360" y="100" width="110.1" height="44"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="415.05" y="116">&lt;&lt;interface&gt;&gt;</text>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="415.05" y="135">Adapter</text>
+    <rect style="fill: #ffffff" x="360" y="144" width="110.1" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="360" y="144" width="110.1" height="8"/>
+    <rect style="fill: #ffffff" x="360" y="152" width="110.1" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="360" y="152" width="110.1" height="8"/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="620" y="100" width="110.1" height="44"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="620" y="100" width="110.1" height="44"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="675.05" y="116">&lt;&lt;interface&gt;&gt;</text>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="675.05" y="135">Adapter</text>
+    <rect style="fill: #ffffff" x="620" y="144" width="110.1" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="620" y="144" width="110.1" height="8"/>
+    <rect style="fill: #ffffff" x="620" y="152" width="110.1" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="620" y="152" width="110.1" height="8"/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="730.1,122 755.05,122 755.05,190 775.528,190 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="767.764,195 777.764,190 767.764,185 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="800" y="140" width="50.7" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="800" y="140" width="50.7" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="825.35" y="159">Filer</text>
+    <rect style="fill: #ffffff" x="800" y="168" width="50.7" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="800" y="168" width="50.7" height="8"/>
+    <rect style="fill: #ffffff" x="800" y="176" width="50.7" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="800" y="176" width="50.7" height="8"/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="800" y="200" width="54.45" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="800" y="200" width="54.45" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="827.225" y="219">JSON</text>
+    <rect style="fill: #ffffff" x="800" y="228" width="54.45" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="800" y="228" width="54.45" height="8"/>
+    <rect style="fill: #ffffff" x="800" y="236" width="54.45" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="800" y="236" width="54.45" height="8"/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="440" y="480" width="99" height="89"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="440" y="480" width="99" height="89"/>
+    <rect style="fill: #ffffff" x="440" y="460" width="40" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="440" y="460" width="40" height="20"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="442" y="475">DTO</text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #000000" points="261.008,150 300,150 300,524.5 432.291,524.5 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="419.644,529.5 435.644,524.5 419.644,519.5 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #000000" points="410,221.009 410,336 489.5,336 489.5,452.287 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="484.5,439.639 489.5,455.639 494.5,439.639 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #000000" points="900.972,180 1030,180 1030,524.5 545.705,524.5 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="558.353,519.5 542.353,524.5 558.353,529.5 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="459" y="489" width="72.4" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="459" y="489" width="72.4" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="495.2" y="508">Person</text>
+    <rect style="fill: #ffffff" x="459" y="517" width="72.4" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="459" y="517" width="72.4" height="8"/>
+    <rect style="fill: #ffffff" x="459" y="525" width="72.4" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="459" y="525" width="72.4" height="8"/>
+  </g>
+</svg>
